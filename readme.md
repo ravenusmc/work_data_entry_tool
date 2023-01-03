@@ -1,7 +1,8 @@
 # Work_data_entry_tool
 ## Intro
 
-First this is a project based on a problem that I have a work.
+First this is a project based on a problem that I have a work. We have this spreadsheet where 
+all of my coworkers and I have to input data to. The spreadsheet is extremely slow and takes a while to load all of your information into. 
 
 
 # Getting started
