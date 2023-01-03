@@ -4,6 +4,9 @@
 First this is a project based on a problem that I have a work. We have this spreadsheet where 
 all of my coworkers and I have to input data to. The spreadsheet is extremely slow and takes a while to load all of your information into. 
 
+Thus I thought I'd create a simple little site where a user could log in, enter their information, submit it and they are done. The next part of the project would be to have an administrator come log into the project and see graphs based on the data that's been 
+entered into the system. 
+
 
 # Getting started
 ### Installing
