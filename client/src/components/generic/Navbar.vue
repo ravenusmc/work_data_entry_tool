@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="#">Work Data Tool</a>
       <button
         class="navbar-toggler"
@@ -96,4 +96,5 @@ export default {
 </script>
 
 <style scoped>
+
 </style>
