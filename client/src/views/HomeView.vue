@@ -4,28 +4,36 @@
       role="banner"
       class="jumbotron-style jumbotron jumbotron-fluid text-center jumbotron-image"
     >
-      <div class='jumbotron_div_area'>
+      <div class="jumbotron_div_area">
         <h1 class="display-3 title-font">Work Data Tool</h1>
         <p class="lead title-font">An Easier Way to Enter Data</p>
       </div>
     </header>
 
-    <section>
+    <section class="paragraph-section">
       <p>
-        This site is a basic security system site. I got the idea for it one day
-        when I briefly worked as a security guard waiting for my federal job to
-        start. There was this monitor up on the wall that showed all of the
-        buildings on site. If there was an issue, like a fire alarm, the
-        building that would have the issue would start to light up. I want to
-        recreate a similar thing with this.
+        At my job we have this spreadsheet where we have to enter in data. Now,
+        that would seem easy. The issue is that multiple people are in the
+        spreadsheet at any given time making edits and that drastically slows
+        everything down in it. Imagine entering data, hitting tab, waiting 3-5
+        seconds, moving over to the next column, enter data and the same process
+        repeating over and over again. I got sick of this. I started to imagine
+        what a new work flow would be like so I decided to create this site.
       </p>
       <p>
-        The true purpose of this is to build something in PHP again and to use
-        some vanilla JavaScript. Both of these tools I've not used in quite some
-        time. I've just been doing so many python and vue.js projects one after
-        another that it may be almost a year since I've done a PHP project -
-        time really fly's by!
+        The purpose of this site would be to speed up my workflow with entering
+        data. It would also give a manager the ability to see statitics on the
+        data that people have entered in the form of graphs. Now, saying all of
+        that, I don't believe that I'll ever actually use this website at my
+        job. I work for the government and there are probably way to many
+        security and other requirements for me to get this site used. I may
+        mention it though and see where things go from there.
       </p>
+    </section>
+
+    <section class="picture-section">
+      <div class="image-1 image"></div>
+      <div class="image-2 image"></div>
     </section>
   </div>
 </template>
@@ -57,11 +65,33 @@ export default {
   background-color: rgba(0, 0, 0, 0.6);
   text-transform: uppercase;
   padding: 15px;
+  border-radius: 10px;
 }
 
-section {
+.paragraph-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
 
+.picture-section {
+  display: grid;
+  grid-gap: 30px;
+  grid-template-columns: 1fr 1fr;
+  height: 500px;
+  margin: 30px;
+}
+
+.image {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.image-1 {
+  background-image: url("../assets/images/image-1.jpg");
+}
+
+.image-2 {
+  background-image: url("../assets/images/image-2.jpg");
+}
 </style>
