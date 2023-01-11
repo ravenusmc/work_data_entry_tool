@@ -31,6 +31,19 @@
       </p>
     </section>
 
+    <section class="sign-in-area">
+      <div class="sign-in-div">
+        <p>
+          <a>
+            <router-link v-if="!loginFlag" to="/login">Login | </router-link>
+          </a>
+          <a>
+            <router-link v-if="!loginFlag" to="/sign_up">Sign up</router-link>
+          </a>
+        </p>
+      </div>
+    </section>
+
     <section class="picture-section">
       <div class="image-1 image"></div>
       <div class="image-2 image"></div>
@@ -71,6 +84,29 @@ export default {
 .paragraph-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
+}
+
+.sign-in-area {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 30px;
+}
+
+.sign-in-div {
+  width: 200px;
+  height: 200px;
+  line-height: 200px;
+  border-radius: 50%;
+  font-size: 20px;
+  color: #fff;
+  text-align: center;
+  background: #343a40;
+}
+
+a {
+  color: white;
 }
 
 .picture-section {
