@@ -101,6 +101,6 @@ form {
   border-radius: 15px;
   margin: 50px;
   padding: 20px;
-	background-color: blue;
+	background-color: #2DA5E5;
 }
 </style>
