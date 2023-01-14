@@ -1,7 +1,6 @@
 <template>
   <div>
-
-    <div class='signup-heading'>
+    <div class="signup-heading">
       <h1>Sign Up</h1>
     </div>
 
@@ -83,11 +82,57 @@
 </template>
 
 <script>
+// import { mapActions } from "vuex";
+
+export default {
+  name: "Form",
+  data() {
+    return {
+      firstName: "",
+      lastName: "",
+      email: "",
+      ienumber: "",
+      password: "",
+      confirmPassword: "",
+    };
+  },
+  methods: {
+    ...mapActions("common", ["setUpUser"]),
+    signup(evt) {
+      evt.preventDefault();
+      if (this.firstName === "") {
+        alert("First name must be entered");
+      } else if (this.lastName === "") {
+        alert("Last name must be entered");
+      } else if (this.email === "") {
+        alert("Email must be entered");
+      } else if (this.userName === "") {
+        alert("User name must be entered");
+      } else if (this.password === "") {
+        alert("Password must be entered");
+      } else if (this.password !== this.confirmPassword) {
+        alert("Passwords must be the same");
+      } else if (this.password.length < 6) {
+        alert("Password must be at least 6 characters long");
+      } else {
+        const payload = {
+          firstName: this.firstName,
+          lastName: this.lastName,
+          email: this.email,
+          userName: this.userName,
+          password: this.password,
+          confirmPassword: this.confirmPassword,
+        };
+        this.setUpUser({ payload });
+      }
+    },
+  },
+};
 </script>
 
 <style scoped>
 .signup-heading {
-	margin-top: 30px;
+  margin-top: 30px;
 }
 
 .form-div {
@@ -101,6 +146,6 @@ form {
   border-radius: 15px;
   margin: 50px;
   padding: 20px;
-	background-color: #2DA5E5;
+  background-color: #2da5e5;
 }
 </style>
