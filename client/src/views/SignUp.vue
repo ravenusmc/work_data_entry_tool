@@ -6,12 +6,13 @@
 
     <section class="container">
       <div class="form-div">
-        <form>
+        <form @submit="signup">
           <div class="form-group form-inline">
             <label for="firstname">First Name:</label>
             <input
               type="text"
               name="firstname"
+              v-model="firstName"
               class="form-control"
               id="firstname"
               placeholder="Enter First Name"
@@ -24,6 +25,7 @@
               name="lastName"
               class="form-control"
               id="lastName"
+              v-model="lastName"
               placeholder="Enter Last Name"
             />
           </div>
@@ -34,6 +36,7 @@
               name="email"
               class="form-control"
               id="email"
+               v-model="email"
               placeholder="Enter Email"
             />
           </div>
@@ -43,7 +46,8 @@
               type="text"
               name="ienumber"
               class="form-control"
-              id="username"
+              id="ieNumber"
+              v-model="ieNumber"
               placeholder="Enter IE Number"
             />
           </div>
@@ -54,6 +58,7 @@
               name="password"
               class="form-control"
               id="exampleInputPassword1"
+              v-model="password"
               placeholder="Password"
             />
           </div>
@@ -64,6 +69,7 @@
               name="password2"
               class="form-control"
               id="exampleInputPassword2"
+              v-model="confirmPassword"
               placeholder="Confirm Password"
             />
           </div>
@@ -91,13 +97,13 @@ export default {
       firstName: "",
       lastName: "",
       email: "",
-      ienumber: "",
+      ieNumber: "",
       password: "",
       confirmPassword: "",
     };
   },
   methods: {
-    ...mapActions("common", ["setUpUser"]),
+    // ...mapActions("common", ["setUpUser"]),
     signup(evt) {
       evt.preventDefault();
       if (this.firstName === "") {
@@ -106,7 +112,7 @@ export default {
         alert("Last name must be entered");
       } else if (this.email === "") {
         alert("Email must be entered");
-      } else if (this.userName === "") {
+      } else if (this.ieNumber === "") {
         alert("User name must be entered");
       } else if (this.password === "") {
         alert("Password must be entered");
@@ -119,11 +125,11 @@ export default {
           firstName: this.firstName,
           lastName: this.lastName,
           email: this.email,
-          userName: this.userName,
+          ieNumber: this.ieNumber,
           password: this.password,
           confirmPassword: this.confirmPassword,
         };
-        this.setUpUser({ payload });
+        // this.setUpUser({ payload });
       }
     },
   },
