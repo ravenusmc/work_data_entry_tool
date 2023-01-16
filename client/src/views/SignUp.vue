@@ -88,7 +88,7 @@
 </template>
 
 <script>
-// import { mapActions } from "vuex";
+import { mapActions } from "vuex";
 
 export default {
   name: "Form",
@@ -103,7 +103,7 @@ export default {
     };
   },
   methods: {
-    // ...mapActions("common", ["setUpUser"]),
+    ...mapActions("common", ["setUpUser"]),
     signup(evt) {
       evt.preventDefault();
       if (this.firstName === "") {
@@ -129,7 +129,7 @@ export default {
           password: this.password,
           confirmPassword: this.confirmPassword,
         };
-        // this.setUpUser({ payload });
+        this.setUpUser({ payload });
       }
     },
   },
