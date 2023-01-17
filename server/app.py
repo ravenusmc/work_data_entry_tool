@@ -22,17 +22,18 @@ CORS(app, resources={r'/*': {'origins': '*'}})
 def ping_pong():
     return jsonify('pong!')
 
-# @app.route('/signup', methods=['GET', 'POST'])
-# def signup():
-#     if request.method == 'POST':
-#         db = Connection()
-#         post_data = request.get_json()
-#         user = User(post_data['firstName'], post_data['lastName'], post_data['email'],
-#                     post_data['userName'], post_data['password'])
-#         hashed = db.encrypt_pass(post_data)
-#         user_created = db.insert(user, hashed)
-#         print('DONE')
-#         return jsonify(user_created)
+@app.route('/signup', methods=['GET', 'POST'])
+def signup():
+    if request.method == 'POST':
+        # db = Connection()
+        post_data = request.get_json()
+        print(post_data)
+        # user = User(post_data['firstName'], post_data['lastName'], post_data['email'],
+        #             post_data['userName'], post_data['password'])
+        # hashed = db.encrypt_pass(post_data)
+        # user_created = db.insert(user, hashed)
+        # return jsonify(user_created)
+        return jsonify('5')
 
 # @app.route('/login', methods=['GET', 'POST'])
 # def login():
