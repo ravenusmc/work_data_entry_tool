@@ -1,7 +1,7 @@
 
 CREATE DATABASE work_data_entry_tool;
 
-use work_data_entry_tool;;
+use work_data_entry_tool;
 
 --Table for the users. 
 CREATE TABLE users

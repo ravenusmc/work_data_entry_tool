@@ -3,7 +3,7 @@ from flask_cors import CORS
 
 # Importing files that I created for the project
 # from data import *
-# from db import *
+from db import *
 # from user import *
 
 
@@ -25,9 +25,8 @@ def ping_pong():
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
-        # db = Connection()
+        db = Connection()
         post_data = request.get_json()
-        print(post_data)
         # user = User(post_data['firstName'], post_data['lastName'], post_data['email'],
         #             post_data['userName'], post_data['password'])
         # hashed = db.encrypt_pass(post_data)
