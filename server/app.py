@@ -4,7 +4,7 @@ from flask_cors import CORS
 # Importing files that I created for the project
 # from data import *
 from db import *
-# from user import *
+from user import *
 
 
 # configuration
@@ -27,9 +27,9 @@ def signup():
     if request.method == 'POST':
         db = Connection()
         post_data = request.get_json()
-        # user = User(post_data['firstName'], post_data['lastName'], post_data['email'],
-        #             post_data['userName'], post_data['password'])
-        # hashed = db.encrypt_pass(post_data)
+        user = User(post_data['firstName'], post_data['lastName'], post_data['email'],
+                    post_data['userName'], post_data['password'])
+        hashed = db.encrypt_pass(post_data)
         # user_created = db.insert(user, hashed)
         # return jsonify(user_created)
         return jsonify('5')
