@@ -30,8 +30,8 @@ def signup():
         user = User(post_data['firstName'], post_data['lastName'], post_data['email'],
                     post_data['userName'], post_data['password'])
         hashed = db.encrypt_pass(post_data)
-        # user_created = db.insert(user, hashed)
-        # return jsonify(user_created)
+        user_created = db.insert(user, hashed)
+        return jsonify(user_created)
         return jsonify('5')
 
 # @app.route('/login', methods=['GET', 'POST'])
