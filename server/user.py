@@ -3,9 +3,9 @@
 class User():
 
     # Here I describe all the properties that each user object will have
-    def __init__(self, first_name, last_name, email, username, password):
+    def __init__(self, first_name, last_name, email, ieNumber, password):
         self.first_name = first_name
         self.last_name = last_name
         self.email = email
-        self.username = username
+        self.ieNumber = ieNumber
         self.password = password

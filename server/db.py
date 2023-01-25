@@ -26,10 +26,10 @@ class Connection():
     def insert(self, user, hashed):
         user_created = True
         self._SQL = """insert into users
-      (firstName, lastName, email, username, password)
+      (firstName, lastName, email, ieNumber, password)
       values
       (%s, %s, %s, %s, %s)"""
         self.cursor.execute(self._SQL, (user.first_name,
-                            user.last_name, user.email, user.username, hashed))
+                            user.last_name, user.email, user.ieNumber, hashed))
         self.conn.commit()
         return user_created

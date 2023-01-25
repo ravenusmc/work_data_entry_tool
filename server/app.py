@@ -27,10 +27,12 @@ def signup():
     if request.method == 'POST':
         db = Connection()
         post_data = request.get_json()
+        print(post_data)
         user = User(post_data['firstName'], post_data['lastName'], post_data['email'],
-                    post_data['userName'], post_data['password'])
+                    post_data['ieNumber'], post_data['password'])
         hashed = db.encrypt_pass(post_data)
         user_created = db.insert(user, hashed)
+        print('DONE')
         return jsonify('5')
 
 # @app.route('/login', methods=['GET', 'POST'])
