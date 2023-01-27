@@ -20,8 +20,8 @@
               <input
                 class="input is-primary is-rounded"
                 type="name"
-                v-model="userName"
-                placeholder="UserName"
+                v-model="ieNumber"
+                placeholder="ieNumber"
               />
             </div>
             <div class="field">
@@ -33,7 +33,7 @@
               />
             </div>
             <div class="button-div">
-              <button class="btn btn-success">Explore</button>
+              <button class="btn btn-primary form-submit-btn">Login</button>
             </div>
           </form>
         </div>
@@ -60,7 +60,7 @@ export default {
     login(evt) {
       evt.preventDefault();
       const payload = {
-        userName: this.userName,
+        ieNumber: this.ieNumber,
         password: this.password,
       };
       this.loginUser({ payload });
@@ -71,16 +71,17 @@ export default {
 
 <style scoped>
 section {
-  /* height: 95vh;
+  height: 75vh;
   margin: 3%;
-  background-image: url("../../assets/images/login.jpg");
+  /* background-image: url("../../assets/images/login.jpg");
   background-position: center;
   background-size: cover;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
   display: flex;
   flex-direction: column;
-  justify-content: center; */
+  justify-content: center;
 }
+
 .signup-title {
   text-transform: uppercase;
   font-weight: bold;
@@ -97,9 +98,10 @@ section {
   align-items: center;
 }
 .form-input-area {
-  background-color: rgb(0, 0, 0, 0.8);
+  background-color: #2da5e5;
   padding: 15px;
-  border-radius: 12%;
+  border-radius: 15px;
+  border: 2px solid black;
 }
 .button-div {
   display: flex;

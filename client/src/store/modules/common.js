@@ -24,7 +24,23 @@ const actions = {
 		axios.post(path, payload)
 			.then((res) => {
 				console.log(res.data)
-				// router.push({ name: 'login' });
+				router.push({ name: 'login' });
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	},
+
+	loginUser: ({ commit }, { payload }) => {
+		const path = 'http://localhost:5000/login';
+		axios.post(path, payload)
+			.then((res) => {
+				if (res.data.login_flag) {
+					commit('setLoginFlag', res.data.login_flag);
+					router.push({ name: 'main' });
+				}
+				commit('setNoPasswordMatch', res.data.Password_no_match);
+				commit('setUserNotFound', res.data.Not_found);
 			})
 			.catch((error) => {
 				console.log(error);
