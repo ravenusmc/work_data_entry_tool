@@ -35,14 +35,14 @@ class Connection():
         return user_created
 
     # This method will check to ensure that the username is in the database.
-    def check(self, username, password):
+    def check(self, ieNumber, password):
         # Setting up a user dictionary
         user = {}
         # encoding the password to utf-8
         password = password.encode('utf-8')
         # Creating the query for the database
-        query = ("""SELECT * FROM users WHERE username = %s""")
-        self.cursor.execute(query, (username,))
+        query = ("""SELECT * FROM users WHERE ieNumber = %s""")
+        self.cursor.execute(query, (ieNumber,))
         row = self.cursor.fetchone()
         # Here I check to see if the username is in the database.
         if str(row) == 'None':
@@ -58,7 +58,7 @@ class Connection():
                 user['first_name'] = row[1]
                 user['last_name'] = row[2]
                 user['email'] = row[3]
-                user['username'] = row[4]
+                user['ieNumber'] = row[4]
                 login_flag = True
                 not_found = False
                 password_no_match = False

@@ -17,6 +17,7 @@
           </h1>
           <form @submit="login">
             <div class="field">
+              <label for="exampleInputPassword2">IE Number:</label>
               <input
                 class="input is-primary is-rounded"
                 type="name"
@@ -25,6 +26,7 @@
               />
             </div>
             <div class="field">
+              <label class='password-label' for="exampleInputPassword2">Password:</label>
               <input
                 class="input is-primary is-rounded"
                 type="password"
@@ -51,7 +53,7 @@ export default {
   },
   data() {
     return {
-      userName: "",
+      ieNumber: "",
       password: "",
     };
   },
@@ -73,10 +75,6 @@ export default {
 section {
   height: 75vh;
   margin: 3%;
-  /* background-image: url("../../assets/images/login.jpg");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -109,6 +107,10 @@ section {
   justify-content: center;
   align-items: center;
 }
+.password-label {
+  margin-right: 3%;
+}
+
 button {
   margin-top: 10px;
 }

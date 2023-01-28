@@ -35,6 +35,7 @@ const actions = {
 		const path = 'http://localhost:5000/login';
 		axios.post(path, payload)
 			.then((res) => {
+				console.log(res.data)
 				if (res.data.login_flag) {
 					commit('setLoginFlag', res.data.login_flag);
 					router.push({ name: 'main' });
