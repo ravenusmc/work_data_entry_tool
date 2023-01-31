@@ -6,7 +6,6 @@ from bson.son import SON
 import mysql.connector
 from datetime import datetime
 
-
 class Connection():
 
     def __init__(self):

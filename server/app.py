@@ -27,7 +27,6 @@ def signup():
     if request.method == 'POST':
         db = Connection()
         post_data = request.get_json()
-        print(post_data)
         user = User(post_data['firstName'], post_data['lastName'], post_data['email'],
                     post_data['ieNumber'], post_data['password'])
         hashed = db.encrypt_pass(post_data)
@@ -51,6 +50,17 @@ def login():
         login_values['Password_no_match'] = password_no_match
         login_values['user'] = user
     return jsonify(login_values)
+
+@app.route('/locateAction', methods=['GET', 'POST'])
+def locateAction():
+    if request.method == 'POST':
+        db = Connection()
+        post_data = request.get_json()
+        
+    # return jsonify(login_values)
+    return jsonify('5')
+
+
 
 
 if __name__ == '__main__':
