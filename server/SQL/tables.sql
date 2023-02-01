@@ -32,7 +32,6 @@ CREATE TABLE actions
   Keyed BOOLEAN, 
   Applied BOOLEAN, 
   FOREIGN KEY (user_id) REFERENCES users(user_id)
-  PRIMARY KEY(action_id)
 );
 
 Show databases;
@@ -41,6 +40,11 @@ DESCRIBE users;
 
 DROP TABLE users;
 
--- Use dresses; 
 
 -- DELETE FROM users WHERE user_id = 2;
+
+-- Inserting data 
+INSERT INTO actions
+VALUES (1, 1, True, False, 'TST-TST-2023-0001', 101, 'BWA', 'ie7046', '2023-01-01', False, True, True);
+
+DELETE FROM actions WHERE action_id = 1;

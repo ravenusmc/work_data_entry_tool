@@ -68,3 +68,12 @@ class Connection():
                 not_found = False
                 password_no_match = True
         return login_flag, not_found, password_no_match, user
+    
+    def locateAction(self, post_data):
+        query = ("""SELECT * FROM actions WHERE action_number = %s""")
+        self.cursor.execute(query, (post_data['actionNumber'],))
+        row = self.cursor.fetchone()
+        if str(row) == 'None':
+            return False
+        else: 
+            return True

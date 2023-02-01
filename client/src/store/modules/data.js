@@ -5,34 +5,40 @@ import axios from 'axios';
 Vue.use(Vuex);
 
 const data = {
+	actionFound: false,
+	actionNumber: '',
 };
 
 const getters = {
+	actionFound: (state) => state.actionFound,
+	actionNumber: (state) => state.actionNumber,
 };
 
 const actions = {
 
 	locateAction: ({ commit }, { payload }) => {
-		console.log("ACTION")
 		const path = 'http://localhost:5000/locateAction';
 		axios.post(path, payload)
 			.then((res) => {
-				console.log(res.data)
-				// commit('setLoginFlag', res.data.login_flag);
+				commit('setActionFound', res.data);
+				commit('setActionNumber', payload['actionNumber'])
 			})
 			.catch((error) => {
 				console.log(error);
 			});
 	},
 
-
 };
 
 const mutations = {
 
-	// setUserNotFound(state, value) {
-	// 	state.userNotFound = value;
-	// },
+	setActionFound(state, value) {
+		state.actionFound = value;
+	},
+
+	setActionNumber(state, value) {
+		state.actionNumber = value
+	},
 
 };
 

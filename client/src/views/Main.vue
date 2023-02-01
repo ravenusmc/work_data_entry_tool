@@ -39,7 +39,7 @@ export default {
     findAction(evt) {
       evt.preventDefault();
       const payload = {
-        ieNumber: this.actionNumber,
+        actionNumber: this.actionNumber,
       };
       this.locateAction({ payload });
     },

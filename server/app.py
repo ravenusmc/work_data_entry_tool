@@ -56,9 +56,8 @@ def locateAction():
     if request.method == 'POST':
         db = Connection()
         post_data = request.get_json()
-        
-    # return jsonify(login_values)
-    return jsonify('5')
+        action_found = db.locateAction(post_data)
+    return jsonify(action_found)
 
 
 
