@@ -1,10 +1,7 @@
 <template>
   <div>
-    I need to make two forms - one for if the action is found and one if it's
-    not. Use two seperate components for this. -The first form will ask the user
-    to enter an action number -if it's found then one form will be used -If the
-    action number is not found then another form will be returned..
-    <form @submit="findAction">
+    TST-TST-2023-0001
+    <form class='location-action-form' @submit="findAction">
       <div class="field">
         <label for="exampleInputPassword2">Action Number:</label>
         <input
@@ -14,21 +11,26 @@
           placeholder="Action Number"
         />
       </div>
-      <div class="button-div">
+      <div v-if="!actionFound" class="button-div">
         <button class="btn btn-primary form-submit-btn">Submit</button>
       </div>
     </form>
+    <ActionsForm v-if="actionFound" />
   </div>
 </template>
 
 <script>
+import ActionsForm from '@/components/actionForms/ActionsForm.vue'
 import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "Main",
-  // computed: {
-  //   ...mapGetters("common", ["userNotFound", "passwordNoMatch"]),
-  // },
+  components: {
+    ActionsForm,
+  },
+  computed: {
+    ...mapGetters("data", ["actionFound",]),
+  },
   data() {
     return {
       actionNumber: "",
@@ -46,3 +48,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.location-action-form {
+  margin-top: 50px;
+}
+</style>

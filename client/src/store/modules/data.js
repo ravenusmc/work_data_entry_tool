@@ -28,6 +28,19 @@ const actions = {
 			});
 	},
 
+	submitAction: ({ commit }, { payload }) => {
+		const path = 'http://localhost:5000/submitAction';
+		axios.post(path, payload)
+			.then((res) => {
+				
+				commit('setActionNumber', payload['actionNumber'])
+				commit('setActionFound', false);
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	},
+
 };
 
 const mutations = {

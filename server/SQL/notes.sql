@@ -20,3 +20,5 @@ def update_username_and_email(self, post_data):
 
 SQL reference from previous projects:
 https://github.com/ravenusmc/statues/blob/main/server/sql/tables.sql
+
+https://stackoverflow.com/questions/43193721/vue-js-dynamic-dropdown

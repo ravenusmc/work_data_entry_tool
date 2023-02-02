@@ -21,9 +21,31 @@ CREATE TABLE actions
 (
   action_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   user_id INT NOT NULL,
-  recruit_action BOOLEAN NOT NULL, 
-  missing BOOLEAN NOT NULL, 
+  recruit_action BOOLEAN NOT NULL,
   action_number VARCHAR(240) NOT NULL,
+  NOA INT NOT NULL,
+  Authority VARCHAR(240) NOT NULL,
+  Processor_ieNumber VARCHAR(240) NOT NULL, 
+  Date_Receieved TIMESTAMP NOT NULL, 
+  Returned BOOLEAN,
+  Keyed BOOLEAN, 
+  Applied BOOLEAN, 
+  FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+--Table for missing actions 
+CREATE TABLE missing_actions 
+(
+  action_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  user_id INT NOT NULL,
+  recruit_action BOOLEAN NOT NULL, 
+  action_number VARCHAR(240) NOT NULL,
+  title VARCHAR(240) NOT NULL,
+  create_date TIMESTAMP NOT NULL, 
+  effective_date TIMESTAMP NOT NULL, 
+  received_by_class TIMESTAMP NOT NULL, 
+  received_by_staffing TIMESTAMP NOT NULL, 
+  received_by_processing TIMESTAMP NOT NULL, 
   NOA INT NOT NULL,
   Authority VARCHAR(240) NOT NULL,
   Processor_ieNumber VARCHAR(240) NOT NULL, 
@@ -45,6 +67,6 @@ DROP TABLE users;
 
 -- Inserting data 
 INSERT INTO actions
-VALUES (1, 1, True, False, 'TST-TST-2023-0001', 101, 'BWA', 'ie7046', '2023-01-01', False, True, True);
+VALUES (1, 1, True, 'TST-TST-2023-0001', 101, 'BWA', 'ie7046', '2023-01-01', False, True, True);
 
 DELETE FROM actions WHERE action_id = 1;
