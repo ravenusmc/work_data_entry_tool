@@ -1,7 +1,7 @@
 <template>
   <div>
-    <form @submit="submitAction">
-      <div class="form-group form-inline">
+    <form class="contact-form" @submit="submitAction">
+      <div class="form-group">
         <label for="firstname">Recruit Action:</label>
         <select v-model="selectedValueRecruitAction">
           <option disabled value="">Please select one</option>
@@ -10,121 +10,133 @@
           </option>
         </select>
       </div>
-      <!-- <div class="form-group form-inline">
-        <label for="lastName">Last Name:</label>
+      <div class="form-group">
+        <label for="NOA">Nature of Action:</label>
         <input
           type="text"
-          name="lastName"
+          name="NOA"
           class="form-control"
-          id="lastName"
-          v-model="lastName"
-          placeholder="Enter Last Name"
+          id="NOA"
+          v-model="NOA"
         />
       </div>
-      <div class="form-group form-inline">
-        <label for="email">Email:</label>
+      <div class="form-group">
+        <label for="Authority">Authority:</label>
         <input
           type="text"
-          name="email"
+          name="Authority"
           class="form-control"
-          id="email"
-          v-model="email"
-          placeholder="Enter Email"
+          id="Authority"
+          v-model="Authority"
         />
       </div>
-      <div class="form-group form-inline">
-        <label for="ienumber">IE Number:</label>
+      <div class="form-group">
+        <label for="Date_Receieved">Date Receieved:</label>
         <input
-          type="text"
+          type="date"
           name="ienumber"
           class="form-control"
-          id="ieNumber"
-          v-model="ieNumber"
-          placeholder="Enter IE Number"
+          id="Date_Receieved"
+          v-model="Date_Receieved"
         />
       </div>
-      <div class="form-group form-inline">
-        <label for="exampleInputPassword1">Password: </label>
-        <input
-          type="password"
-          name="password"
-          class="form-control"
-          id="exampleInputPassword1"
-          v-model="password"
-          placeholder="Password"
-        />
+      <div class="form-group">
+        <label for="firstname">Action Returned:</label>
+        <select v-model="selectedValueReturned">
+          <option disabled value="">Please select one</option>
+          <option v-for="item in Returned" :key="item" :value="item">
+            {{ item }}
+          </option>
+        </select>
       </div>
-      <div class="form-group form-inline">
-        <label for="exampleInputPassword2">Confirm Password:</label>
-        <input
-          type="password"
-          name="password2"
-          class="form-control"
-          id="exampleInputPassword2"
-          v-model="confirmPassword"
-          placeholder="Confirm Password"
-        />
-      </div> -->
+      <div class="form-group">
+        <label for="Keyed">Action Keyed:</label>
+        <select v-model="selectedValueKeyed">
+          <option disabled value="">Please select one</option>
+          <option v-for="item in Keyed" :key="item" :value="item">
+            {{ item }}
+          </option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="firstname">Action Applied:</label>
+        <select v-model="selectedValueApplied">
+          <option disabled value="">Please select one</option>
+          <option v-for="item in Applied" :key="item" :value="item">
+            {{ item }}
+          </option>
+        </select>
+      </div>
 
-      <button
-        type="submit"
-        name="login"
-        class="btn btn-primary form-submit-btn"
-      >
-        Submit
-      </button>
+      <div class="btn-div">
+        <button @click.prevent="submitAction" type="submit" name="login" class="btn btn-primary button-fix">
+          Submit
+        </button>
+      </div>
     </form>
   </div>
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
+
 export default {
   name: "ActionsForm",
+  computed: {
+    ...mapGetters("data", ["actionNumber"]),
+    ...mapGetters("session", ["userObject"]),
+  },
   data() {
     return {
-			recruit_action: ["True", "False"],
-			selectedValueRecruitAction: null,
-      action_number: "", // Get in payload?
+      recruit_action: ["True", "False"],
+      selectedValueRecruitAction: null,
+      action_number: "",
       NOA: "",
       Authority: "",
       Processor_ieNumber: "", // Get from user
       Date_Receieved: "",
-      Returned: "",
-      Keyed: "",
-      Applied: "",
+      Returned: ["True", "False"],
+      selectedValueReturned: null,
+      Keyed: ["True", "False"],
+      selectedValueKeyed: null,
+      Applied: ["True", "False"],
+      selectedValueApplied: null,
     };
   },
   methods: {
-    // ...mapActions("data", ["setUpUser"]),
-    submitAction(evt) {
-      evt.preventDefault();
-      console.log(this.selectedValueRecruitAction);
-      // if (this.firstName === "") {
-      //   alert("First name must be entered");
-      // } else if (this.lastName === "") {
-      //   alert("Last name must be entered");
-      // } else if (this.email === "") {
-      //   alert("Email must be entered");
-      // } else if (this.ieNumber === "") {
-      //   alert("User name must be entered");
-      // } else if (this.password === "") {
-      //   alert("Password must be entered");
-      // } else if (this.password !== this.confirmPassword) {
-      //   alert("Passwords must be the same");
-      // } else if (this.password.length < 6) {
-      //   alert("Password must be at least 6 characters long");
-      // } else {
-      //   const payload = {
-      //     firstName: this.firstName,
-      //     lastName: this.lastName,
-      //     email: this.email,
-      //     ieNumber: this.ieNumber,
-      //     password: this.password,
-      //     confirmPassword: this.confirmPassword,
-      //   };
-      //   this.setUpUser({ payload });
-      // }
+    ...mapActions("data", ["submitActionToDatabase"]),
+     submitAction() {
+      const payload = {
+        recruit_action: this.selectedValueRecruitAction,
+        action_number: this.actionNumber,
+        NOA: this.NOA,
+        Authority: this.Authority,
+        Processor_ieNumber: this.userObject['ieNumber'],
+        Date_Receieved: this.Date_Receieved,
+        Returned: this.selectedValueReturned,
+        Keyed: this.selectedValueKeyed,
+        Applied: this.selectedValueApplied
+      };
+      this.submitActionToDatabase({ payload });
     },
   },
 };
 </script>
+
+<style scoped>
+.contact-form {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 1fr 1fr;
+  margin: 3% 20% 3% 20%;
+}
+
+.form-group {
+  display: grid;
+}
+
+.button-fix {
+  width: 100px;
+  height: 50px;
+}
+</style>

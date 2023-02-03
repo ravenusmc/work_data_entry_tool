@@ -1,7 +1,7 @@
 <template>
   <div>
     TST-TST-2023-0001
-    <form class='location-action-form' @submit="findAction">
+    <!-- <form class='location-action-form' @submit="findAction">
       <div class="field">
         <label for="exampleInputPassword2">Action Number:</label>
         <input
@@ -14,43 +14,41 @@
       <div v-if="!actionFound" class="button-div">
         <button class="btn btn-primary form-submit-btn">Submit</button>
       </div>
-    </form>
+    </form> -->
+    <LocateAction />
     <ActionsForm v-if="actionFound" />
   </div>
 </template>
 
 <script>
+import LocateAction from '@/components/main/LocateAction.vue'
 import ActionsForm from '@/components/actionForms/ActionsForm.vue'
 import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "Main",
   components: {
+    LocateAction,
     ActionsForm,
   },
   computed: {
     ...mapGetters("data", ["actionFound",]),
   },
-  data() {
-    return {
-      actionNumber: "",
-    };
-  },
-  methods: {
-    ...mapActions("data", ["locateAction"]),
-    findAction(evt) {
-      evt.preventDefault();
-      const payload = {
-        actionNumber: this.actionNumber,
-      };
-      this.locateAction({ payload });
-    },
-  },
+  // data() {
+  //   return {
+  //     actionNumber: "",
+  //   };
+  // },
+  // methods: {
+  //   ...mapActions("data", ["locateAction"]),
+  //   findAction(evt) {
+  //     evt.preventDefault();
+  //     const payload = {
+  //       actionNumber: this.actionNumber,
+  //     };
+  //     this.locateAction({ payload });
+  //   },
+  // },
 };
 </script>
 
-<style scoped>
-.location-action-form {
-  margin-top: 50px;
-}
-</style>

@@ -28,11 +28,12 @@ const actions = {
 			});
 	},
 
-	submitAction: ({ commit }, { payload }) => {
+	submitActionToDatabase: ({ commit }, { payload }) => {
+		console.log('ACTION')
+		console.log(payload)
 		const path = 'http://localhost:5000/submitAction';
 		axios.post(path, payload)
 			.then((res) => {
-				
 				commit('setActionNumber', payload['actionNumber'])
 				commit('setActionFound', false);
 			})
