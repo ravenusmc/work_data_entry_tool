@@ -20,13 +20,14 @@ CREATE TABLE users
 CREATE TABLE actions 
 (
   action_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  user_id INT NOT NULL,
-  recruit_action BOOLEAN NOT NULL,
   action_number VARCHAR(240) NOT NULL,
-  NOA INT NOT NULL,
-  Authority VARCHAR(240) NOT NULL,
-  Processor_ieNumber VARCHAR(240) NOT NULL, 
-  Date_Receieved TIMESTAMP NOT NULL, 
+  date_created TIMESTAMP NOT NULL, 
+  recruit_action BOOLEAN NOT NULL,
+  user_id INT,
+  NOA INT,
+  Authority VARCHAR(240),
+  Processor_ieNumber VARCHAR(240), 
+  Date_Receieved TIMESTAMP, 
   Returned BOOLEAN,
   Keyed BOOLEAN, 
   Applied BOOLEAN, 
@@ -67,6 +68,9 @@ DROP TABLE users;
 
 -- Inserting data 
 INSERT INTO actions
-VALUES (1, 1, True, 'TST-TST-2023-0001', 101, 'BWA', 'ie7046', '2023-01-01', False, True, True);
+(action_id, action_number, date_created, recruit_action)
+VALUES (1, 'TST-TST-2023-0001', '2023-01-01', 1);
+-- INSERT INTO actions
+-- VALUES (1, 1, True, 'TST-TST-2023-0001', 101, 'BWA', 'ie7046', '2023-01-01', False, True, True);
 
 DELETE FROM actions WHERE action_id = 1;

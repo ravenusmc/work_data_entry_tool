@@ -107,6 +107,7 @@ export default {
     ...mapActions("data", ["submitActionToDatabase"]),
      submitAction() {
       const payload = {
+        user_id: this.userObject['id'],
         recruit_action: this.selectedValueRecruitAction,
         action_number: this.actionNumber,
         NOA: this.NOA,

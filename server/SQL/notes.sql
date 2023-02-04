@@ -18,6 +18,15 @@ def update_username_and_email(self, post_data):
         self.cursor.execute(self._SQL, (post_data['username'], post_data['email'], post_data['id']))
         self.conn.commit()
 
+
+        --     def update_number_of_votes_on_discussion(self, post_data):
+        -- self._SQL = """UPDATE discussions 
+        -- SET votes =  %s
+        -- where discussion_id = %s"""
+        -- self.cursor.execute(
+        --     self._SQL, (post_data['numberOfVotesCalculated'], post_data['discussionID']))
+        -- self.conn.commit()
+
 SQL reference from previous projects:
 https://github.com/ravenusmc/statues/blob/main/server/sql/tables.sql
 
