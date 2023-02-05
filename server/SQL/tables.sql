@@ -22,7 +22,7 @@ CREATE TABLE actions
   action_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   action_number VARCHAR(240) NOT NULL,
   date_created TIMESTAMP NOT NULL, 
-  recruit_action BOOLEAN NOT NULL,
+  recruit_action BOOLEAN,
   user_id INT,
   NOA INT,
   Authority VARCHAR(240),
@@ -68,8 +68,8 @@ DROP TABLE users;
 
 -- Inserting data 
 INSERT INTO actions
-(action_id, action_number, date_created, recruit_action)
-VALUES (1, 'TST-TST-2023-0001', '2023-01-01', 1);
+(action_id, action_number, date_created)
+VALUES (1, 'TST-TST-2023-0001', '2023-01-01');
 -- INSERT INTO actions
 -- VALUES (1, 1, True, 'TST-TST-2023-0001', 101, 'BWA', 'ie7046', '2023-01-01', False, True, True);
 

@@ -56,8 +56,14 @@ def locateAction():
     if request.method == 'POST':
         db = Connection()
         post_data = request.get_json()
-        action_found = db.locateAction(post_data)
-    return jsonify(action_found)
+        data = []
+        action_found, action_id = db.locateAction(post_data)
+        if action_found == 'None':
+            data.append(action_found)
+        else:
+            data.append(action_found)
+            data.append(action_id)
+    return jsonify(data)
 
 @app.route('/submitActionToDatabase', methods=['GET', 'POST'])
 def submitActionToDatabase():

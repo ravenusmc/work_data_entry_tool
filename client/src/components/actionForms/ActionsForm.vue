@@ -83,23 +83,23 @@ import { mapGetters, mapActions } from "vuex";
 export default {
   name: "ActionsForm",
   computed: {
-    ...mapGetters("data", ["actionNumber"]),
+    ...mapGetters("data", ["actionNumber", "actionID"]),
     ...mapGetters("session", ["userObject"]),
   },
   data() {
     return {
-      recruit_action: ["True", "False"],
+      recruit_action: [true, false],
       selectedValueRecruitAction: null,
       action_number: "",
       NOA: "",
       Authority: "",
       Processor_ieNumber: "", // Get from user
       Date_Receieved: "",
-      Returned: ["True", "False"],
+      Returned: [true, false],
       selectedValueReturned: null,
-      Keyed: ["True", "False"],
+      Keyed: [true, false],
       selectedValueKeyed: null,
-      Applied: ["True", "False"],
+      Applied: [true, false],
       selectedValueApplied: null,
     };
   },
@@ -107,6 +107,7 @@ export default {
     ...mapActions("data", ["submitActionToDatabase"]),
      submitAction() {
       const payload = {
+        action_id: this.actionID,
         user_id: this.userObject['id'],
         recruit_action: this.selectedValueRecruitAction,
         action_number: this.actionNumber,

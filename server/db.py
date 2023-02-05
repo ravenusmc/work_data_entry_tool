@@ -75,17 +75,30 @@ class Connection():
         self.cursor.execute(query, (post_data['actionNumber'],))
         row = self.cursor.fetchone()
         if str(row) == 'None':
-            return False
+            return False, False
         else:
-            return True
+            action_id = row[0]
+            return True, action_id
 
     def submitAction(self, post_data):
-        self._SQL = """insert into actions 
-        (user_id, recruit_action, action_number, NOA, Authority, Processor_ieNumber, Date_Receieved, Returned, Keyed, Applied)
-        values
-        (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"""
-        self.cursor.execute(self._SQL, (post_data['user_id'], post_data['recruit_action'], post_data['action_number'], post_data['NOA'], post_data['Authority'],
-        post_data['Processor_ieNumber'], post_data['Date_Receieved'], post_data['Returned'], post_data['Keyed'], post_data['Applied']))
+        print(post_data)
+        self._SQL = """UPDATE actions SET
+        recruit_action = %s,
+        user_id = %s, 
+        NOA = %s, 
+        Authority = %s, 
+        Processor_ieNumber = %s, 
+        Date_Receieved = %s, 
+        Returned = %s, 
+        Keyed = %s, 
+        Applied = %s 
+        WHERE action_id = %s"""
+        self.cursor.execute(self._SQL, (post_data['recruit_action'], post_data['user_id'], 
+        post_data['NOA'], post_data['Authority'], post_data['Processor_ieNumber'], 
+        post_data['Date_Receieved'], post_data['Returned'], post_data['Keyed'], 
+        post_data['Applied'], post_data['action_id']))
         self.conn.commit()
         print('CHECK!!')
+
+
 
