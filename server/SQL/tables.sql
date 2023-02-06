@@ -38,9 +38,9 @@ CREATE TABLE actions
 CREATE TABLE missing_actions 
 (
   action_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  action_number VARCHAR(240) NOT NULL,
   user_id INT NOT NULL,
   recruit_action BOOLEAN NOT NULL, 
-  action_number VARCHAR(240) NOT NULL,
   title VARCHAR(240) NOT NULL,
   create_date TIMESTAMP NOT NULL, 
   effective_date TIMESTAMP NOT NULL, 

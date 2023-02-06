@@ -69,7 +69,12 @@
       </div>
 
       <div class="btn-div">
-        <button @click.prevent="submitAction" type="submit" name="login" class="btn btn-primary button-fix">
+        <button
+          @click.prevent="submitAction"
+          type="submit"
+          name="login"
+          class="btn btn-primary button-fix"
+        >
           Submit
         </button>
       </div>
@@ -108,16 +113,26 @@ export default {
      submitAction() {
       const payload = {
         action_id: this.actionID,
-        user_id: this.userObject['id'],
-        recruit_action: this.selectedValueRecruitAction,
-        action_number: this.actionNumber,
-        NOA: this.NOA,
-        Authority: this.Authority,
-        Processor_ieNumber: this.userObject['ieNumber'],
-        Date_Receieved: this.Date_Receieved,
-        Returned: this.selectedValueReturned,
-        Keyed: this.selectedValueKeyed,
-        Applied: this.selectedValueApplied
+        action_number: ,
+        user_id: ,
+        recruit_action: [true, false],
+        selectedValueRecruitAction: null,
+        title: ,
+        create_date: , 
+        effective_date: , 
+        received_by_class:, 
+        received_by_staffing: , 
+        received_by_processing: , 
+        NOA: ,
+        Authority:,
+        Processor_ieNumber: , 
+        Date_Receievd: , 
+        Returned: [true, false],
+        selectedValueReturned: null,
+        Keyed: [true, false],
+        selectedValueKeyed: null,
+        Applied: [true, false],
+        selectedValueApplied: null,
       };
       this.submitActionToDatabase({ payload });
     },
