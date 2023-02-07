@@ -11,6 +11,46 @@
         </select>
       </div>
       <div class="form-group">
+        <label for="title">Title:</label>
+        <input
+          type="text"
+          name="title"
+          class="form-control"
+          id="title"
+          v-model="title"
+        />
+      </div>
+      <div class="form-group">
+        <label for="create_date">Create Date:</label>
+        <input
+          type="date"
+          name="create_date"
+          class="form-control"
+          id="create_date"
+          v-model="create_date"
+        />
+      </div>
+      <div class="form-group">
+        <label for="create_date">Effective Date:</label>
+        <input
+          type="date"
+          name="effective_date"
+          class="form-control"
+          id="effective_date"
+          v-model="effective_date"
+        />
+      </div>
+      <div class="form-group">
+        <label for="create_date">Received by Class Date:</label>
+        <input
+          type="date"
+          name="received_by_class"
+          class="form-control"
+          id="received_by_class"
+          v-model="received_by_class"
+        />
+      </div>
+      <!-- <div class="form-group">
         <label for="NOA">Nature of Action:</label>
         <input
           type="text"
@@ -66,7 +106,7 @@
             {{ item }}
           </option>
         </select>
-      </div>
+      </div> -->
 
       <div class="btn-div">
         <button
@@ -96,45 +136,48 @@ export default {
       recruit_action: [true, false],
       selectedValueRecruitAction: null,
       action_number: "",
-      NOA: "",
-      Authority: "",
-      Processor_ieNumber: "", // Get from user
-      Date_Receieved: "",
-      Returned: [true, false],
-      selectedValueReturned: null,
-      Keyed: [true, false],
-      selectedValueKeyed: null,
-      Applied: [true, false],
-      selectedValueApplied: null,
+      title: "",
+      create_date: "",
+      effective_date: "",
+      received_by_class: "",
+      // NOA: "",
+      // Authority: "",
+      // Processor_ieNumber: "", // Get from user
+      // Date_Receieved: "",
+      // Returned: [true, false],
+      // selectedValueReturned: null,
+      // Keyed: [true, false],
+      // selectedValueKeyed: null,
+      // Applied: [true, false],
+      // selectedValueApplied: null,
     };
   },
   methods: {
     ...mapActions("data", ["submitActionToDatabase"]),
-     submitAction() {
+    submitAction() {
       const payload = {
-        action_id: this.actionID,
-        action_number: ,
-        user_id: ,
-        recruit_action: [true, false],
-        selectedValueRecruitAction: null,
-        title: ,
-        create_date: , 
-        effective_date: , 
-        received_by_class:, 
-        received_by_staffing: , 
-        received_by_processing: , 
-        NOA: ,
-        Authority:,
-        Processor_ieNumber: , 
-        Date_Receievd: , 
-        Returned: [true, false],
-        selectedValueReturned: null,
-        Keyed: [true, false],
-        selectedValueKeyed: null,
-        Applied: [true, false],
-        selectedValueApplied: null,
+        action_number: this.actionNumber,
+        user_id: this.userObject["id"],
+        selectedValueRecruitAction: this.selectedValueRecruitAction,
+        title: this.title,
+        create_date: this.create_date,
+        effective_date: this.effective_date,
+        received_by_class: this.received_by_class,
+        // received_by_staffing: ,
+        // received_by_processing: ,
+        // NOA: ,
+        // Authority:,
+        // Processor_ieNumber: ,
+        // Date_Receievd: ,
+        // Returned: [true, false],
+        // selectedValueReturned: null,
+        // Keyed: [true, false],
+        // selectedValueKeyed: null,
+        // Applied: [true, false],
+        // selectedValueApplied: null,
       };
-      this.submitActionToDatabase({ payload });
+      console.log(payload);
+      // this.submitActionToDatabase({ payload });
     },
   },
 };

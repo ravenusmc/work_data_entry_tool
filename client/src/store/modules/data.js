@@ -6,12 +6,14 @@ Vue.use(Vuex);
 
 const data = {
 	actionFound: false,
+	actionNotFound: false, 
 	actionID: 0,
 	actionNumber: '',
 };
 
 const getters = {
 	actionFound: (state) => state.actionFound,
+	actionNotFound: (state) => state.actionNotFound,
 	actionID: (state) => state.actionID,
 	actionNumber: (state) => state.actionNumber,
 };
@@ -22,13 +24,14 @@ const actions = {
 		const path = 'http://localhost:5000/locateAction';
 		axios.post(path, payload)
 			.then((res) => {
-				console.log(res.data)
 				if (res.data[0] === true) {
 					commit('setActionFound', res.data[0]);
 					commit('setActionID', res.data[1]);
 					commit('setActionNumber', payload['actionNumber'])
 				} else {
-					commit('setActionFound', res.data[0]);
+					let ActionNotFound = !res.data[0] 
+					commit('setActionNotFound', ActionNotFound);
+					commit('setActionNumber', payload['actionNumber'])
 				}
 			})
 			.catch((error) => {
@@ -54,6 +57,10 @@ const mutations = {
 
 	setActionFound(state, value) {
 		state.actionFound = value;
+	},
+
+	setActionNotFound(state, value) {
+		state.actionNotFound = value;
 	},
 
 	setActionID(state, value) {
