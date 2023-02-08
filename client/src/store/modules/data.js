@@ -51,6 +51,18 @@ const actions = {
 			});
 	},
 
+	submitMissingActionToDatabase: ({ commit }, { payload }) => {
+		const path = 'http://localhost:5000/submitMissingActionToDatabase';
+		axios.post(path, payload)
+			.then((res) => {
+				commit('setActionNumber', payload['actionNumber'])
+				commit('setActionFound', false);
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	},
+
 };
 
 const mutations = {

@@ -50,7 +50,27 @@
           v-model="received_by_class"
         />
       </div>
-      <!-- <div class="form-group">
+      <div class="form-group">
+        <label for="received_by_staffing">Received by Staffing Date:</label>
+        <input
+          type="date"
+          name="received_by_staffing"
+          class="form-control"
+          id="received_by_staffing"
+          v-model="received_by_staffing"
+        />
+      </div>
+      <div class="form-group">
+        <label for="received_by_processing">Received by Processing Date:</label>
+        <input
+          type="date"
+          name="received_by_processing"
+          class="form-control"
+          id="received_by_processing"
+          v-model="received_by_processing"
+        />
+      </div>
+      <div class="form-group">
         <label for="NOA">Nature of Action:</label>
         <input
           type="text"
@@ -106,7 +126,7 @@
             {{ item }}
           </option>
         </select>
-      </div> -->
+      </div>
 
       <div class="btn-div">
         <button
@@ -140,20 +160,21 @@ export default {
       create_date: "",
       effective_date: "",
       received_by_class: "",
-      // NOA: "",
-      // Authority: "",
-      // Processor_ieNumber: "", // Get from user
-      // Date_Receieved: "",
-      // Returned: [true, false],
-      // selectedValueReturned: null,
-      // Keyed: [true, false],
-      // selectedValueKeyed: null,
-      // Applied: [true, false],
-      // selectedValueApplied: null,
+      received_by_staffing: "",
+      received_by_processing: "",
+      NOA: "",
+      Authority: "",
+      Date_Receieved: "",
+      Returned: [true, false],
+      selectedValueReturned: null,
+      Keyed: [true, false],
+      selectedValueKeyed: null,
+      Applied: [true, false],
+      selectedValueApplied: null,
     };
   },
   methods: {
-    ...mapActions("data", ["submitActionToDatabase"]),
+    ...mapActions("data", ["submitActionToDatabase", "submitMissingActionToDatabase"]),
     submitAction() {
       const payload = {
         action_number: this.actionNumber,
@@ -163,21 +184,18 @@ export default {
         create_date: this.create_date,
         effective_date: this.effective_date,
         received_by_class: this.received_by_class,
-        // received_by_staffing: ,
-        // received_by_processing: ,
-        // NOA: ,
-        // Authority:,
-        // Processor_ieNumber: ,
-        // Date_Receievd: ,
-        // Returned: [true, false],
-        // selectedValueReturned: null,
-        // Keyed: [true, false],
-        // selectedValueKeyed: null,
-        // Applied: [true, false],
-        // selectedValueApplied: null,
+        received_by_staffing: this.received_by_staffing,
+        received_by_processing: this.received_by_processing,
+        NOA: this.NOA,
+        Authority: this.Authority,
+        Processor_ieNumber: this.userObject['ieNumber'],
+        Date_Receievd: this.Date_Receieved,
+        Returned: this.selectedValueReturned,
+        Keyed: this.selectedValueKeyed,
+        Applied: this.selectedValueApplied,
       };
       console.log(payload);
-      // this.submitActionToDatabase({ payload });
+      // this.submitMissingActionToDatabase({ payload });
     },
   },
 };
