@@ -70,8 +70,18 @@ def submitActionToDatabase():
     if request.method == 'POST':
         db = Connection()
         post_data = request.get_json()
-        action_found = db.submitAction(post_data)
+        db.submitAction(post_data)
     return jsonify('5')
+
+@app.route('/submitMissingActionToDatabase', methods=['GET', 'POST'])
+def submitMissingActionToDatabase():
+    if request.method == 'POST':
+        db = Connection()
+        post_data = request.get_json()
+        action_found = db.addMissingActionToDb(post_data)
+    return jsonify('5')
+
+
 
 
 

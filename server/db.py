@@ -81,7 +81,6 @@ class Connection():
             return True, action_id
 
     def submitAction(self, post_data):
-        print(post_data)
         self._SQL = """UPDATE actions SET
         recruit_action = %s,
         user_id = %s, 
@@ -93,12 +92,22 @@ class Connection():
         Keyed = %s, 
         Applied = %s 
         WHERE action_id = %s"""
-        self.cursor.execute(self._SQL, (post_data['recruit_action'], post_data['user_id'], 
-        post_data['NOA'], post_data['Authority'], post_data['Processor_ieNumber'], 
-        post_data['Date_Receieved'], post_data['Returned'], post_data['Keyed'], 
-        post_data['Applied'], post_data['action_id']))
+        self.cursor.execute(self._SQL, (post_data['recruit_action'], post_data['user_id'],
+                                        post_data['NOA'], post_data['Authority'], post_data['Processor_ieNumber'],
+                                        post_data['Date_Receieved'], post_data['Returned'], post_data['Keyed'],
+                                        post_data['Applied'], post_data['action_id']))
         self.conn.commit()
-        print('CHECK!!')
 
-
-
+    def submitMissingActionToDatabase(self, post_data):
+        self._SQL = """insert into missing_actions
+        (action_number, user_id, recruit_action, title, create_date, effective_date,
+        received_by_class, received_by_staffing, received_by_processing, NOA, Authority, 
+        Processor_ieNumber, Date_Receievd, Returned, Keyed, Applied)
+        values
+        (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"""
+        self.cursor.execute(self._SQL, (post_data['action_number'], post_data['user_id'], post_data['selectedValueRecruitAction'],
+        post_data['title'], post_data['create_date'], post_data['effective_date'], post_data['received_by_class'],
+        post_data['received_by_staffing'], post_data['received_by_processing'], post_data['NOA'], post_data['Authority'],
+        post_data['Processor_ieNumber'], post_data['Date_Receievd'], post_data['Returned'], post_data['Keyed'],
+        post_data['Applied']))
+        self.conn.commit()
