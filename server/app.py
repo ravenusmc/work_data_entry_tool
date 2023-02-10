@@ -65,6 +65,7 @@ def locateAction():
             data.append(action_id)
     return jsonify(data)
 
+# May need to get rid of methods here and only use post
 @app.route('/submitActionToDatabase', methods=['GET', 'POST'])
 def submitActionToDatabase():
     if request.method == 'POST':
