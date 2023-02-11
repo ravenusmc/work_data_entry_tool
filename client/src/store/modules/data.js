@@ -9,6 +9,7 @@ const data = {
 	actionNotFound: false, 
 	actionID: 0,
 	actionNumber: '',
+	missingActionSubmitted: false, 
 };
 
 const getters = {
@@ -16,11 +17,13 @@ const getters = {
 	actionNotFound: (state) => state.actionNotFound,
 	actionID: (state) => state.actionID,
 	actionNumber: (state) => state.actionNumber,
+	missingActionSubmitted: (state) => state.missingActionSubmitted,
 };
 
 const actions = {
 
 	locateAction: ({ commit }, { payload }) => {
+		commit('setMissingActionSubmitted', false)
 		const path = 'http://localhost:5000/locateAction';
 		axios.post(path, payload)
 			.then((res) => {
@@ -28,6 +31,7 @@ const actions = {
 					commit('setActionFound', res.data[0]);
 					commit('setActionID', res.data[1]);
 					commit('setActionNumber', payload['actionNumber'])
+
 				} else {
 					let ActionNotFound = !res.data[0] 
 					commit('setActionNotFound', ActionNotFound);
@@ -55,8 +59,7 @@ const actions = {
 		const path = 'http://localhost:5000/submitMissingActionToDatabase';
 		axios.post(path, payload)
 			.then((res) => {
-				commit('setActionNumber', payload['actionNumber'])
-				commit('setActionFound', false);
+				commit('setMissingActionSubmitted', res.data)
 			})
 			.catch((error) => {
 				console.log(error);
@@ -81,6 +84,10 @@ const mutations = {
 
 	setActionNumber(state, value) {
 		state.actionNumber = value
+	},
+
+	setMissingActionSubmitted(state, value) {
+		state.missingActionSubmitted = value
 	},
 
 };

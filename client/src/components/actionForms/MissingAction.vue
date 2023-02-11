@@ -139,6 +139,7 @@
         </button>
       </div>
     </form>
+    <h1 v-if="missingActionSubmitted">Action Submitted</h1>
   </div>
 </template>
 
@@ -148,7 +149,7 @@ import { mapGetters, mapActions } from "vuex";
 export default {
   name: "ActionsForm",
   computed: {
-    ...mapGetters("data", ["actionNumber", "actionID"]),
+    ...mapGetters("data", ["actionNumber", "actionID", "missingActionSubmitted"]),
     ...mapGetters("session", ["userObject"]),
   },
   data() {
@@ -195,7 +196,7 @@ export default {
         Applied: this.selectedValueApplied,
       };
       console.log(payload);
-      // this.submitMissingActionToDatabase({ payload });
+      this.submitMissingActionToDatabase({ payload });
     },
   },
 };
