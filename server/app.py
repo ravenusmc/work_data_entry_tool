@@ -78,15 +78,10 @@ def submitActionToDatabase():
 def submitMissingActionToDatabase():
     if request.method == 'POST':
         db = Connection()
-        print('Hi')
         post_data = request.get_json()
-        # action_found = db.addMissingActionToDb(post_data)
+        db.submitMissingActionToDatabase(post_data)
     missing_action_submitted = True
     return jsonify(missing_action_submitted)
-
-
-
-
 
 
 if __name__ == '__main__':
