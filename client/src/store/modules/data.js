@@ -56,6 +56,7 @@ const actions = {
 	},
 
 	submitMissingActionToDatabase: ({ commit }, { payload }) => {
+		console.log('payload')
 		const path = 'http://localhost:5000/submitMissingActionToDatabase';
 		axios.post(path, payload)
 			.then((res) => {

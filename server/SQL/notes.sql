@@ -31,3 +31,42 @@ SQL reference from previous projects:
 https://github.com/ravenusmc/statues/blob/main/server/sql/tables.sql
 
 https://stackoverflow.com/questions/43193721/vue-js-dynamic-dropdown
+
+Applied: true
+Authority: "BWA"
+Date_Receievd: "2023-02-07"
+Keyed: true
+NOA: "101"
+Processor_ieNumber: 
+"ie7046"
+Returned
+: 
+false
+action_number
+: 
+"TST-TST-2023-0002"
+create_date
+: 
+"2023-02-01"
+effective_date
+: 
+"2023-02-02"
+received_by_class
+: 
+"2023-02-03"
+received_by_processing
+: 
+"2023-02-05"
+received_by_staffing
+: 
+"2023-02-04"
+selectedValueRecruitAction
+: 
+false
+title
+: 
+"New person"
+user_id
+: 
+1
+
