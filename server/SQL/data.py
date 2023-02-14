@@ -20,13 +20,25 @@ class Connection():
                                             database='work_data_entry_tool')
         self.cursor = self.conn.cursor()
 
-    def create_random_data(self):
+    def create_random_data_missing_actions(self):
+        support = Support()
         creator = Creator()
         count = 0
         while count < 12:
             data_holder = {}
-            full_action_number = creator.create_action_number(count)
+            full_action_number = creator.create_action_number(support, count)
             data_holder['action_number'] = full_action_number
+            # Getting user_id
+            user_id = creator.create_user_id()
+            data_holder['user_id'] = user_id
+            #####
+            selected_value = creator.create_recruit_action_boolean()
+            data_holder['recruit_action'] = selected_value
+            ###
+            title = creator.create_title(support)
+            data_holder['title'] = title
+            ####
+
             print(data_holder)
             count+=1
     
@@ -50,8 +62,21 @@ class Connection():
 
 
 obj = Connection()
-obj.create_random_data()
+obj.create_random_data_missing_actions()
 
+
+#   create_date TIMESTAMP NOT NULL, 
+#   effective_date TIMESTAMP NOT NULL, 
+#   received_by_class TIMESTAMP NOT NULL, 
+#   received_by_staffing TIMESTAMP NOT NULL, 
+#   received_by_processing TIMESTAMP NOT NULL, 
+#   NOA INT NOT NULL,
+#   Authority VARCHAR(240) NOT NULL,
+#   Processor_ieNumber VARCHAR(240) NOT NULL, 
+#   Date_Receievd TIMESTAMP NOT NULL, 
+#   Returned BOOLEAN,
+#   Keyed BOOLEAN, 
+#   Applied BOOLEAN, 
 
 
 
