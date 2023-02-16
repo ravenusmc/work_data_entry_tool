@@ -26,37 +26,20 @@ class Connection():
         count = 0
         while count < 12:
             data_holder = {}
-            full_action_number = creator.create_action_number(support, count)
-            data_holder['action_number'] = full_action_number
-            # Getting user_id
-            user_id = creator.create_user_id(support)
-            data_holder['user_id'] = user_id
-            #####
-            selected_value = creator.create_recruit_action_boolean(support)
-            data_holder['recruit_action'] = selected_value
-            ###
-            title = creator.create_title(support)
-            data_holder['title'] = title
+            data_holder['action_number'] = creator.create_action_number(support, count)
+            data_holder['user_id'] = creator.create_user_id(support)
+            data_holder['recruit_action'] = creator.create_recruit_action_boolean(support)
+            data_holder['title'] = creator.create_title(support)
+            data_holder['create_date'] = creator.create_date(support, 'create_date')
+            data_holder['effective_date'] = creator.create_date(support, 'effective_date')
+            data_holder['received_by_class'] = creator.create_date(support, 'received_by_class')
+            data_holder['received_by_staffing'] = creator.create_date(support, 'received_by_staffing')            
+            data_holder['received_by_processing'] = creator.create_date(support, 'received_by_processing')
+            data_holder['NOA'] = creator.create_NOA(data_holder['title'])
+            data_holder['Authority'] = creator.create_authority(data_holder['NOA'])
             ####
-            create_date = creator.create_date(support, 'create_date')
-            data_holder['create_date'] = create_date
-            ####
-            effective_date = creator.create_date(support, 'effective_date')
-            data_holder['effective_date'] = effective_date
-            ####
-            received_by_class = creator.create_date(support, 'received_by_class')
-            data_holder['received_by_class'] = received_by_class
-            ####
-            received_by_staffing = creator.create_date(support, 'received_by_staffing')
-            data_holder['received_by_staffing'] = received_by_staffing
-            ####
-            received_by_processing = creator.create_date(support, 'received_by_processing')
-            data_holder['received_by_processing'] = received_by_processing
-            ####
-            NOA = creator.create_NOA(title)
-            data_holder['NOA'] = NOA
-            ####
-
+            data_holder['Processor_ieNumber'] = creator.create_ieNumber(support)
+            
             print(data_holder)
             count+=1
     
@@ -83,7 +66,6 @@ obj = Connection()
 obj.create_random_data_missing_actions()
 
 
-#   Authority VARCHAR(240) NOT NULL,
 #   Processor_ieNumber VARCHAR(240) NOT NULL, 
 #   Date_Receievd TIMESTAMP NOT NULL, 
 #   Returned BOOLEAN,

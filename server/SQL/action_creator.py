@@ -58,6 +58,21 @@ class Creator():
             return 101
         elif title == 'Conversion':
             return 500
+    
+    def create_authority(self, NOA):
+        if NOA == 702:
+            return 'MOW'
+        elif NOA == 792:
+            return 'CHG'
+        elif NOA == 101:
+            return 'ACC'
+        elif NOA == 500:
+            return 'CON'
+    
+    def create_ieNumber(self, obj):
+        rand_ieNumber_selector = obj.random_number_generator(0,3)
+        ieNumbers = ['ie7046', 'ie7000',  'ie7001', 'ie7002']
+        return  ieNumbers[rand_ieNumber_selector]
 
 
 
