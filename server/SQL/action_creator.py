@@ -73,6 +73,12 @@ class Creator():
         rand_ieNumber_selector = obj.random_number_generator(0,3)
         ieNumbers = ['ie7046', 'ie7000',  'ie7001', 'ie7002']
         return  ieNumbers[rand_ieNumber_selector]
+    
+    def true_false_selector(self, obj):
+        rand_number = obj.random_number_generator(0,1)
+        boolean_list = [True, False]
+        return boolean_list[rand_number]
+
 
 
 

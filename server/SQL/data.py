@@ -37,10 +37,14 @@ class Connection():
             data_holder['received_by_processing'] = creator.create_date(support, 'received_by_processing')
             data_holder['NOA'] = creator.create_NOA(data_holder['title'])
             data_holder['Authority'] = creator.create_authority(data_holder['NOA'])
-            ####
             data_holder['Processor_ieNumber'] = creator.create_ieNumber(support)
-            
-            print(data_holder)
+            data_holder['Date_Receievd'] = data_holder['received_by_processing']
+            data_holder['Returned'] = creator.true_false_selector(support)
+            data_holder['Keyed'] = creator.true_false_selector(support)
+            if data_holder['Keyed'] == False:
+                data_holder['Applied'] = False 
+            else:
+                data_holder['Applied'] = creator.true_false_selector(support)
             count+=1
     
 
@@ -64,14 +68,6 @@ class Connection():
 
 obj = Connection()
 obj.create_random_data_missing_actions()
-
-
-#   Processor_ieNumber VARCHAR(240) NOT NULL, 
-#   Date_Receievd TIMESTAMP NOT NULL, 
-#   Returned BOOLEAN,
-#   Keyed BOOLEAN, 
-#   Applied BOOLEAN, 
-
 
 
 # {'action_number': 'TST-TST-2023-0002', 'user_id': 1, 'selectedValueRecruitAction': False, 
