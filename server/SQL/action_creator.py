@@ -10,13 +10,15 @@ class Creator():
         action_type = action_types[random_int]
         if count < 10:
             ending = '000' + str(count)
+        elif count >= 10 and count < 100:
+             ending = '00' + str(count)
         else: 
-            ending = '00' + str(count)
+            ending = '0' + str(count)
         full_action_number = action_type + ending
         return full_action_number
     
     def create_user_id(self, obj):
-        user_id = obj.random_number_generator(0,4)
+        user_id = obj.random_number_generator(1,4)
         return user_id
     
     def create_recruit_action_boolean(self, obj):
@@ -69,10 +71,9 @@ class Creator():
         elif NOA == 500:
             return 'CON'
     
-    def create_ieNumber(self, obj):
-        rand_ieNumber_selector = obj.random_number_generator(0,3)
-        ieNumbers = ['ie7046', 'ie7000',  'ie7001', 'ie7002']
-        return  ieNumbers[rand_ieNumber_selector]
+    def create_ieNumber(self, user_id):
+        ieNumbers = ['HOLDER', 'ie7046', 'ie7001',  'ie7002', 'ie7003']
+        return  ieNumbers[user_id]
     
     def true_false_selector(self, obj):
         rand_number = obj.random_number_generator(0,1)

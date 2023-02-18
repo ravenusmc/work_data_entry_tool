@@ -23,8 +23,9 @@ class Connection():
     def create_random_data_missing_actions(self):
         support = Support()
         creator = Creator()
+
         count = 0
-        while count < 12:
+        while count < 999:
             data_holder = {}
             data_holder['action_number'] = creator.create_action_number(support, count)
             data_holder['user_id'] = creator.create_user_id(support)
@@ -37,7 +38,7 @@ class Connection():
             data_holder['received_by_processing'] = creator.create_date(support, 'received_by_processing')
             data_holder['NOA'] = creator.create_NOA(data_holder['title'])
             data_holder['Authority'] = creator.create_authority(data_holder['NOA'])
-            data_holder['Processor_ieNumber'] = creator.create_ieNumber(support)
+            data_holder['Processor_ieNumber'] = creator.create_ieNumber(data_holder['user_id'])
             data_holder['Date_Receievd'] = data_holder['received_by_processing']
             data_holder['Returned'] = creator.true_false_selector(support)
             data_holder['Keyed'] = creator.true_false_selector(support)
@@ -45,29 +46,32 @@ class Connection():
                 data_holder['Applied'] = False 
             else:
                 data_holder['Applied'] = creator.true_false_selector(support)
+            obj.submitMissingActionToDatabase(data_holder)
             count+=1
+
     
+    def submitMissingActionToDatabase(self, data_holder):
+        self._SQL = """insert into missing_actions
+        (action_number, user_id, recruit_action, title, create_date, effective_date,
+        received_by_class, received_by_staffing, received_by_processing, NOA, Authority, 
+        Processor_ieNumber, Date_Receievd, Returned, Keyed, Applied)
+        values
+        (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"""
+        self.cursor.execute(self._SQL, (data_holder['action_number'], data_holder['user_id'], data_holder['recruit_action'],
+                                        data_holder['title'], data_holder['create_date'], data_holder['effective_date'], 
+                                        data_holder['received_by_class'], data_holder['received_by_staffing'], 
+                                        data_holder['received_by_processing'], data_holder['NOA'], data_holder['Authority'],
+                                        data_holder['Processor_ieNumber'], data_holder['Date_Receievd'], data_holder['Returned'], data_holder['Keyed'],
+                                        data_holder['Applied']))
+        self.conn.commit()
+    
+    def create_random_data_missing_actions
 
 
-    # def submitMissingActionToDatabase(self, post_data):
-    #     self._SQL = """insert into missing_actions
-    #     (action_number, user_id, recruit_action, title, create_date, effective_date,
-    #     received_by_class, received_by_staffing, received_by_processing, NOA, Authority, 
-    #     Processor_ieNumber, Date_Receievd, Returned, Keyed, Applied)
-    #     values
-    #     (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"""
-    #     self.cursor.execute(self._SQL, (post_data['action_number'], post_data['user_id'], post_data['selectedValueRecruitAction'],
-    #                                     post_data['title'], post_data['create_date'], post_data[
-    #                                         'effective_date'], post_data['received_by_class'],
-    #                                     post_data['received_by_staffing'], post_data[
-    #                                         'received_by_processing'], post_data['NOA'], post_data['Authority'],
-    #                                     post_data['Processor_ieNumber'], post_data['Date_Receievd'], post_data['Returned'], post_data['Keyed'],
-    #                                     post_data['Applied']))
-    #     self.conn.commit()
 
 
 obj = Connection()
-obj.create_random_data_missing_actions()
+# obj.create_random_data_missing_actions()
 
 
 # {'action_number': 'TST-TST-2023-0002', 'user_id': 1, 'selectedValueRecruitAction': False, 
