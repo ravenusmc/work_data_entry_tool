@@ -17,6 +17,19 @@ class Creator():
         full_action_number = action_type + ending
         return full_action_number
     
+    def create_action_number_not_missing(self, obj, count):
+        random_int = obj.random_number_generator(0,2)
+        action_types = ['STT-STT-2023-', 'DNE-DNE-2023-', 'SAL-SAL-2023-']
+        action_type = action_types[random_int]
+        if count < 10:
+            ending = '000' + str(count)
+        elif count >= 10 and count < 100:
+             ending = '00' + str(count)
+        else: 
+            ending = '0' + str(count)
+        full_action_number = action_type + ending
+        return full_action_number
+    
     def create_user_id(self, obj):
         user_id = obj.random_number_generator(1,4)
         return user_id
