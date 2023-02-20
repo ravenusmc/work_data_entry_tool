@@ -93,9 +93,8 @@ class Connection():
                 data_holder['NOA'])
             data_holder['Processor_ieNumber'] = creator.create_ieNumber(
                 data_holder['user_id'])
-            data_holder['Date_Receievd'] = creator.create_date(
+            data_holder['Date_Receieved'] = creator.create_date(
                 support, 'received_by_processing')
-            print()
             data_holder['Returned'] = creator.true_false_selector(support)
             data_holder['Keyed'] = creator.true_false_selector(support)
             if data_holder['Keyed'] == False:
@@ -116,7 +115,7 @@ class Connection():
                                         data_holder['user_id'], data_holder['NOA'], data_holder['Authority'],
                                         data_holder['Processor_ieNumber'], data_holder['Date_Receieved'],
                                         data_holder['Returned'], data_holder['Keyed'], data_holder['Applied']))
-
+        self.conn.commit()
 
 obj = Connection()
 # obj.create_random_data_missing_actions()

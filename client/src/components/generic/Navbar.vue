@@ -24,14 +24,14 @@
           <span v-if="loginFlag">
             <li class="nav-item">
               <a class="nav-link">
-                <router-link to="/main">Data</router-link>
+                <router-link to="/main">Enter Data</router-link>
               </a>
             </li>
           </span>
           <span v-if="loginFlag">
             <li class="nav-item">
               <a class="nav-link">
-                <router-link to="/graphs">Graphs</router-link>
+                <router-link to="/analyze">Analyze</router-link>
               </a>
             </li>
           </span>
@@ -96,5 +96,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>
