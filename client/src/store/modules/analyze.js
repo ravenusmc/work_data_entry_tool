@@ -5,11 +5,15 @@ import axios from 'axios';
 Vue.use(Vuex);
 
 const data = {
-	actionFound: false,
+	allActionsByCount: [['Action Type', 'Count'], 
+	['101', 255], 
+	['500', 239], 
+	['702', 246], 
+	['792', 260]],
 };
 
 const getters = {
-	actionFound: (state) => state.actionFound,
+	allActionsByCount: (state) => state.allActionsByCount,
 };
 
 const actions = {
@@ -40,7 +44,7 @@ const actions = {
 const mutations = {
 
 	setActionFound(state, value) {
-		state.actionFound = value;
+		state.allActionsByCount = value;
 	},
 
 
