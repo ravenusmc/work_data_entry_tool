@@ -7,15 +7,22 @@
 			Graph that shows legal authority types 
 			Graph that shows recurit actions vs non recruit actions - overall and then by individual 
 		-->
-    <h1>HEre</h1>
-  </div>
+    <ActionsByCount/>
+    </div>
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
+import ActionsByCount from "@/components/Graphs/ActionsByCount.vue";
+
+
 export default {
   name: "Analyze",
+  components: {
+    ActionsByCount,
+  },
   mounted() {
-    console.log('MOUNTED');
+    console.log("MOUNTED");
   },
 };
 </script>

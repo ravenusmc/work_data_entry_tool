@@ -11,7 +11,6 @@ import json
 # importing files I built.
 # from db import *
 
-
 class Analyze():
 
     def __init__(self):
