@@ -6,7 +6,9 @@
 			Graph that shows legal authority types 
 			Graph that shows recurit actions vs non recruit actions - overall and then by individual 
 		-->
-    <ActionsByCount/>
+    <section>
+      <ActionsByCount/>
+    </section>
     </div>
 </template>
 
@@ -27,4 +29,10 @@ export default {
 </script>
 
 <style scoped>
+section {
+  border: 2px solid red;
+  display: flex; 
+  justify-content: center;
+  align-items: center;;
+}
 </style>
