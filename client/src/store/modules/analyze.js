@@ -10,10 +10,13 @@ const data = {
 	['500', 239], 
 	['702', 246], 
 	['792', 260]],
+	ieNumbers: ['ie7046', 'ie7001',  'ie7002', 'ie7003'],
+	typeOfAction: ['101', '500', '702', '792']
 };
 
 const getters = {
 	allActionsByCount: (state) => state.allActionsByCount,
+	ieNumbers: (state) => state.ieNumbers,
 };
 
 const actions = {

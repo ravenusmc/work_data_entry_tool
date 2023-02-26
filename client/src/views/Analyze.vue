@@ -1,10 +1,21 @@
 <template>
   <div>
     <!--
-			Types of graphs: 
+			Types of graphs:
+      Static:
+        -Pie Chart of recruit actions versus non recruit 
+
+      Dynamic:   
 			-Graph by IE Number that shows actions that the individual did 
-			Graph that shows legal authority types 
-			Graph that shows recurit actions vs non recruit actions - overall and then by individual 
+        -This will have to have the ability to select an IE Number 
+			Graph that shows legal authority types
+        -The will have to allow the user to select the type of action  
+			Graph that shows recurit actions vs non recruit actionsby individual
+        -Allow user to select individual ie number 
+      
+      FORM:
+        Select IE Number
+        SELECT TYPE OF ACTION
 		-->
     <section>
       <ActionsByCount/>
