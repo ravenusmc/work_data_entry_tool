@@ -11,6 +11,7 @@ import json
 # importing files I built.
 # from db import *
 
+
 class Analyze():
 
     def __init__(self):
@@ -34,9 +35,25 @@ class Analyze():
             rows.append(action_type)
             rows.append(row[0])
             chart_data.append(rows)
-            print(row[0])
+        print(chart_data)
+
+    def get_recruit_vs_nonrecruit(self):
+        chart_data = []
+        columns = ['Recruit Type', 'Count']
+        chart_data.append(columns)
+        recruit_types = [True, False]
+        for recruit_type in recruit_types:
+            rows = []
+            query = (
+                """SELECT COUNT(recruit_action) FROM actions WHERE recruit_action = %s""")
+            self.cursor.execute(query, (recruit_type,))
+            row = self.cursor.fetchone()
+            rows.append(recruit_type)
+            rows.append(row[0])
+            chart_data.append(rows)
         print(chart_data)
 
 
 obj = Analyze()
-obj.get_all_actions_by_noa()
+# obj.get_all_actions_by_noa()
+obj.get_recruit_vs_nonrecruit()

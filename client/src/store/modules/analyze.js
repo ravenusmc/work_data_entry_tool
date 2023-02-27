@@ -10,12 +10,16 @@ const data = {
 	['500', 239], 
 	['702', 246], 
 	['792', 260]],
+	recruitTypes: [['Recruit Type', 'Count'], 
+	['True', 506], 
+	['False', 494]],
 	ieNumbers: ['ie7046', 'ie7001',  'ie7002', 'ie7003'],
 	typeOfAction: ['101', '500', '702', '792']
 };
 
 const getters = {
 	allActionsByCount: (state) => state.allActionsByCount,
+	recruitTypes: (state) => state.recruitTypes,
 	ieNumbers: (state) => state.ieNumbers,
 };
 

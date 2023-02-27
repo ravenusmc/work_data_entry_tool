@@ -19,6 +19,7 @@
 		-->
     <section>
       <ActionsByCount/>
+      <ActionsByRecruitType/>
     </section>
     </div>
 </template>
@@ -26,12 +27,14 @@
 <script>
 import { mapGetters, mapActions } from "vuex";
 import ActionsByCount from "@/components/Graphs/ActionsByCount.vue";
+import ActionsByRecruitType from "@/components/Graphs/ActionsByRecruitType.vue";
 
 
 export default {
   name: "Analyze",
   components: {
     ActionsByCount,
+    ActionsByRecruitType,
   },
   mounted() {
     console.log("MOUNTED");
