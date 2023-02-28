@@ -21,6 +21,7 @@ const getters = {
 	allActionsByCount: (state) => state.allActionsByCount,
 	recruitTypes: (state) => state.recruitTypes,
 	ieNumbers: (state) => state.ieNumbers,
+	typeOfAction: (state) => state.typeOfAction,
 };
 
 const actions = {

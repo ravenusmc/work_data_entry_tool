@@ -2,8 +2,6 @@
   <div>
     <!--
 			Types of graphs:
-      Static:
-        -Pie Chart of recruit actions versus non recruit 
 
       Dynamic:   
 			-Graph by IE Number that shows actions that the individual did 
@@ -18,23 +16,29 @@
         SELECT TYPE OF ACTION
 		-->
     <section>
-      <ActionsByCount/>
-      <ActionsByRecruitType/>
+      <div>
+        <ActionsByCount />
+        <ActionsByRecruitType />
+      </div>
+      <div>
+        <AnalyzeForm/>
+      </div>
     </section>
-    </div>
+  </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from "vuex";
 import ActionsByCount from "@/components/Graphs/ActionsByCount.vue";
 import ActionsByRecruitType from "@/components/Graphs/ActionsByRecruitType.vue";
-
+import AnalyzeForm from "@/components/graphForms/AnalyzeForm.vue";
 
 export default {
   name: "Analyze",
   components: {
     ActionsByCount,
     ActionsByRecruitType,
+    AnalyzeForm,
   },
   mounted() {
     console.log("MOUNTED");
@@ -45,8 +49,8 @@ export default {
 <style scoped>
 section {
   border: 2px solid red;
-  display: flex; 
+  display: flex;
   justify-content: center;
-  align-items: center;;
+  align-items: center;
 }
 </style>
