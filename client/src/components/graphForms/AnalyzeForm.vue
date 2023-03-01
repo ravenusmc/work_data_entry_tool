@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>FORM</h1>
     <form @submit="submitOptions">
       <select v-model="ieNumber">
         <option v-for="ieNumber in ieNumbers" :key="ieNumber">

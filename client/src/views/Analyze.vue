@@ -2,7 +2,6 @@
   <div>
     <!--
 			Types of graphs:
-
       Dynamic:   
 			-Graph by IE Number that shows actions that the individual did 
         -This will have to have the ability to select an IE Number 
@@ -23,6 +22,9 @@
       <div>
         <AnalyzeForm/>
       </div>
+      <div>
+        <ActionsByIeNumber/>
+      </div>
     </section>
   </div>
 </template>
@@ -31,6 +33,7 @@
 import { mapGetters, mapActions } from "vuex";
 import ActionsByCount from "@/components/Graphs/ActionsByCount.vue";
 import ActionsByRecruitType from "@/components/Graphs/ActionsByRecruitType.vue";
+import ActionsByIeNumber from "@/components/Graphs/ActionsByIeNumber.vue";
 import AnalyzeForm from "@/components/graphForms/AnalyzeForm.vue";
 
 export default {
@@ -39,6 +42,7 @@ export default {
     ActionsByCount,
     ActionsByRecruitType,
     AnalyzeForm,
+    ActionsByIeNumber,
   },
   mounted() {
     console.log("MOUNTED");

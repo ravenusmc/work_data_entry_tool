@@ -14,7 +14,12 @@ const data = {
 	['True', 506], 
 	['False', 494]],
 	ieNumbers: ['ie7046', 'ie7001',  'ie7002', 'ie7003'],
-	typeOfAction: ['101', '500', '702', '792']
+	typeOfAction: ['101', '500', '702', '792'],
+	actionsByIenumber: [['Action Type', 'Count'], 
+	['101', 226], 
+	['500', 226], 
+	['702', 226], 
+	['792', 226]],
 };
 
 const getters = {
@@ -22,6 +27,7 @@ const getters = {
 	recruitTypes: (state) => state.recruitTypes,
 	ieNumbers: (state) => state.ieNumbers,
 	typeOfAction: (state) => state.typeOfAction,
+	actionsByIenumber: (state) => state.actionsByIenumber,
 };
 
 const actions = {
