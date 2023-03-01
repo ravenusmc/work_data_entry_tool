@@ -15,13 +15,16 @@
         SELECT TYPE OF ACTION
 		-->
     <section>
-      <div>
+      <h1>Static Graphs</h1>
+      <div class='static-graphs'>
         <ActionsByCount />
         <ActionsByRecruitType />
       </div>
+      <br/>
       <div>
         <AnalyzeForm/>
       </div>
+      <h1>Dynamic Graphs</h1>
       <div>
         <ActionsByIeNumber/>
       </div>
@@ -52,9 +55,15 @@ export default {
 
 <style scoped>
 section {
-  border: 2px solid red;
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
+}
+
+.static-graphs {
+  margin: 5% 5% 0 5%;
+  display: grid; 
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 2px solid black;
 }
 </style>
