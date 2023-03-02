@@ -5,6 +5,7 @@ from flask_cors import CORS
 # from data import *
 from db import *
 from user import *
+from analyze import *
 
 
 # configuration
@@ -83,6 +84,14 @@ def submitMissingActionToDatabase():
         # db.submitMissingActionToDatabase(post_data)
     missing_action_submitted = True
     return jsonify(missing_action_submitted)
+
+@app.route('/changeDynamicGraphs', methods=['POST'])
+def changeDynamicGraphs():
+    if request.method == 'POST':
+        analyze = Analyze()
+        post_data = request.get_json()
+        chart_data = analyze.get_graph_data_ienumber_by_action(post_data)
+    return jsonify(chart_data)
 
 
 if __name__ == '__main__':

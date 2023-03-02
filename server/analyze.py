@@ -53,7 +53,7 @@ class Analyze():
             chart_data.append(rows)
         print(chart_data)
     
-    def get_graph_data_ienumber_by_action(self):
+    def get_graph_data_ienumber_by_action(self, post_data):
         chart_data = []
         columns = ['Action Type', 'Count']
         chart_data.append(columns)
@@ -62,16 +62,16 @@ class Analyze():
         for action_type in action_types:
             rows = []
             query = ("""SELECT COUNT(NOA) FROM actions WHERE Processor_ieNumber = %s""")
-            self.cursor.execute(query, (ieNumber,))
+            self.cursor.execute(query, (post_data['ieNumber'],))
             row = self.cursor.fetchone()
             rows.append(action_type)
             rows.append(row[0])
             chart_data.append(rows)
-        print(chart_data)
+        return chart_data
 
 
 
-obj = Analyze()
+# obj = Analyze()
 # obj.get_all_actions_by_noa()
 # obj.get_recruit_vs_nonrecruit()
-obj.get_graph_data_ienumber_by_action()
+# obj.get_graph_data_ienumber_by_action()

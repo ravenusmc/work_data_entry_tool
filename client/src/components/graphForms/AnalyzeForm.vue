@@ -32,15 +32,14 @@ export default {
     ...mapGetters("analyze", ["ieNumbers", "typeOfAction"]),
   },
   methods: {
-    ...mapActions("analyze", [""]),
+    ...mapActions("analyze", ["changeDynamicGraphs"]),
     submitOptions(evt) {
       evt.preventDefault();
       const payload = {
         ieNumber: this.ieNumber,
         selectedAction: this.selectedAction,
       };
-      console.log(payload);
-      // this.loginUser({ payload });
+      this.changeDynamicGraphs({ payload });
     },
   },
 };

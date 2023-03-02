@@ -3,8 +3,6 @@
     <!--
 			Types of graphs:
       Dynamic:   
-			-Graph by IE Number that shows actions that the individual did 
-        -This will have to have the ability to select an IE Number 
 			Graph that shows legal authority types
         -The will have to allow the user to select the type of action  
 			Graph that shows recurit actions vs non recruit actionsby individual
