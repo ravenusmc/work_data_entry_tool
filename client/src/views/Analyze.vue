@@ -25,6 +25,7 @@
       <h1>Dynamic Graphs</h1>
       <div>
         <ActionsByIeNumber/>
+        <LegalAuthority />
       </div>
     </section>
   </div>
@@ -35,6 +36,7 @@ import { mapGetters, mapActions } from "vuex";
 import ActionsByCount from "@/components/Graphs/ActionsByCount.vue";
 import ActionsByRecruitType from "@/components/Graphs/ActionsByRecruitType.vue";
 import ActionsByIeNumber from "@/components/Graphs/ActionsByIeNumber.vue";
+import LegalAuthority from "@/components/Graphs/LegalAuthority.vue";
 import AnalyzeForm from "@/components/graphForms/AnalyzeForm.vue";
 
 export default {
@@ -44,6 +46,7 @@ export default {
     ActionsByRecruitType,
     AnalyzeForm,
     ActionsByIeNumber,
+    LegalAuthority,
   },
   mounted() {
     console.log("MOUNTED");
