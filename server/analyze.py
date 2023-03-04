@@ -68,6 +68,22 @@ class Analyze():
             rows.append(row[0])
             chart_data.append(rows)
         return chart_data
+    
+    def get_graph_data_by_legal_authority(self):
+        chart_data = []
+        columns = ['Legal Authority', 'Count']
+        chart_data.append(columns)
+        legal_authorities  = ['MOW', 'CHG', 'ACC', 'CON']
+        for legal_athority in legal_authorities:
+            rows = []
+            query = (
+                """SELECT COUNT(Authority) FROM actions WHERE Authority = %s""")
+            self.cursor.execute(query, (legal_athority,))
+            row = self.cursor.fetchone()
+            rows.append(legal_athority)
+            rows.append(row[0])
+            chart_data.append(rows)
+        print(chart_data)
 
 
 
@@ -75,3 +91,4 @@ class Analyze():
 # obj.get_all_actions_by_noa()
 # obj.get_recruit_vs_nonrecruit()
 # obj.get_graph_data_ienumber_by_action()
+# obj.get_graph_data_by_legal_authority()

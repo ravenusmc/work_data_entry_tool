@@ -2,21 +2,16 @@
   <div>
     <!--
 			Types of graphs:
-      Dynamic:   
-			Graph that shows legal authority types
-        -The will have to allow the user to select the type of action  
 			Graph that shows recurit actions vs non recruit actionsby individual
         -Allow user to select individual ie number 
-      
-      FORM:
-        Select IE Number
-        SELECT TYPE OF ACTION
+    
 		-->
     <section>
       <h1>Static Graphs</h1>
       <div class='static-graphs'>
         <ActionsByCount />
         <ActionsByRecruitType />
+        <LegalAuthority />
       </div>
       <br/>
       <div>
@@ -25,7 +20,6 @@
       <h1>Dynamic Graphs</h1>
       <div>
         <ActionsByIeNumber/>
-        <LegalAuthority />
       </div>
     </section>
   </div>
