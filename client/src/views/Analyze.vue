@@ -1,8 +1,10 @@
 <template>
   <div>
     <!--
+      Static: 
+      Make graph of all actions broken down by person
 			Types of graphs:
-			Graph that shows recurit actions vs non recruit actionsby individual
+			Graph that shows recurit actions vs non recruit actions by individual
         -Allow user to select individual ie number 
     
 		-->
@@ -20,6 +22,7 @@
       <h1>Dynamic Graphs</h1>
       <div>
         <ActionsByIeNumber/>
+        <RecruitActionsGraph/>
       </div>
     </section>
   </div>
@@ -31,6 +34,7 @@ import ActionsByCount from "@/components/Graphs/ActionsByCount.vue";
 import ActionsByRecruitType from "@/components/Graphs/ActionsByRecruitType.vue";
 import ActionsByIeNumber from "@/components/Graphs/ActionsByIeNumber.vue";
 import LegalAuthority from "@/components/Graphs/LegalAuthority.vue";
+import RecruitActionsGraph from "@/components/Graphs/RecruitActionsGraph.vue";
 import AnalyzeForm from "@/components/graphForms/AnalyzeForm.vue";
 
 export default {
@@ -41,9 +45,10 @@ export default {
     AnalyzeForm,
     ActionsByIeNumber,
     LegalAuthority,
+    RecruitActionsGraph,
   },
   mounted() {
-    console.log("MOUNTED");
+    // console.log("MOUNTED");
   },
 };
 </script>

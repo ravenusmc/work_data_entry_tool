@@ -61,8 +61,9 @@ class Analyze():
         ieNumber = 'ie7046'
         for action_type in action_types:
             rows = []
-            query = ("""SELECT COUNT(NOA) FROM actions WHERE Processor_ieNumber = %s""")
-            self.cursor.execute(query, (post_data['ieNumber'],))
+            query = ("""SELECT COUNT(NOA) FROM actions WHERE Processor_ieNumber = %s AND
+            NOA = %s""")
+            self.cursor.execute(query, (post_data['ieNumber'], action_type))
             row = self.cursor.fetchone()
             rows.append(action_type)
             rows.append(row[0])
