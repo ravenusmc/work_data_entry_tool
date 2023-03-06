@@ -20,7 +20,7 @@
         <AnalyzeForm/>
       </div>
       <h1>Dynamic Graphs</h1>
-      <div>
+      <div class='dynamic-graphs'>
         <ActionsByIeNumber/>
         <RecruitActionsGraph/>
       </div>
@@ -65,5 +65,11 @@ section {
   display: grid; 
   grid-template-columns: 1fr 1fr;
   border-bottom: 2px solid black;
+}
+
+.dynamic-graphs {
+  margin: 5% 5% 0 5%;
+  display: grid; 
+  grid-template-columns: 1fr 1fr;
 }
 </style>

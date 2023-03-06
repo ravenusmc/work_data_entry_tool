@@ -25,6 +25,9 @@ const data = {
 	['500', 226], 
 	['702', 226], 
 	['792', 226]],
+	recruitActionCount: [['Recruit Action', 'Count'], 
+	['True', 112], 
+	['False', 114]]
 };
 
 const getters = {
@@ -34,6 +37,7 @@ const getters = {
 	typeOfAction: (state) => state.typeOfAction,
 	actionsByIenumber: (state) => state.actionsByIenumber,
 	legalAuthority: (state) => state.legalAuthority,
+	recruitActionCount: (state) => state.recruitActionCount,
 };
 
 const actions = {
@@ -56,6 +60,10 @@ const mutations = {
 
 	setActionsByIeNumber(state,value) {
 		state.actionsByIenumber = value
+	},
+
+	setRecruitActionCount(state, valuee) {
+		state.recruitActionCount = value
 	},
 
 
