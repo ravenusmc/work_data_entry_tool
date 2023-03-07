@@ -1,7 +1,11 @@
 <template>
   <div>
     <h1>Recruit</h1>
-    <GChart :type="typeOne" :data="recruitActionCount" :options="chartOptionsOne" />
+    <GChart
+      :type="typeOne"
+      :data="recruitActionCount"
+      :options="chartOptionsOne"
+    />
   </div>
 </template>
 
@@ -31,6 +35,10 @@ export default {
         },
         hAxes: {
           0: { title: "Recruit Action" },
+        },
+        animation: {
+          duration: 1000,
+          easing: "linear",
         },
         vAxis: {
           viewWindow: {

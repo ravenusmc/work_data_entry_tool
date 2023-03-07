@@ -195,7 +195,6 @@ export default {
         Keyed: this.selectedValueKeyed,
         Applied: this.selectedValueApplied,
       };
-      console.log(payload);
       this.submitMissingActionToDatabase({ payload });
     },
   },

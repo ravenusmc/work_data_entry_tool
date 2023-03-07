@@ -1,11 +1,7 @@
 <template>
   <div>
     <!--
-      Static: 
-      Make graph of all actions broken down by person
-			Types of graphs:
-			Graph that shows recurit actions vs non recruit actions by individual
-        -Allow user to select individual ie number 
+      Make a graph that shows eachh action by user - a static graph 
     
 		-->
     <section>

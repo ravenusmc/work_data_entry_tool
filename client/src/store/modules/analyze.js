@@ -43,11 +43,12 @@ const getters = {
 const actions = {
 
 	changeDynamicGraphs: ({ commit }, { payload }) => {
-		console.log(payload)
 		const path = 'http://localhost:5000/changeDynamicGraphs';
 		axios.post(path, payload)
 			.then((res) => {
-				commit('setActionsByIeNumber', res.data)
+				console.log(res.data[1])
+				commit('setActionsByIeNumber', res.data[0])
+				commit('setRecruitActionCount', res.data[1])
 			})
 			.catch((error) => {
 				console.log(error);
@@ -62,7 +63,7 @@ const mutations = {
 		state.actionsByIenumber = value
 	},
 
-	setRecruitActionCount(state, valuee) {
+	setRecruitActionCount(state, value) {
 		state.recruitActionCount = value
 	},
 

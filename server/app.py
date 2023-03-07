@@ -90,8 +90,12 @@ def changeDynamicGraphs():
     if request.method == 'POST':
         analyze = Analyze()
         post_data = request.get_json()
+        data_container = []
         chart_data = analyze.get_graph_data_ienumber_by_action(post_data)
-    return jsonify(chart_data)
+        chart_data_2 = analyze.get_graph_data_by_recruit_actions(post_data)
+        data_container.append(chart_data)
+        data_container.append(chart_data_2)
+    return jsonify(data_container)
 
 
 if __name__ == '__main__':

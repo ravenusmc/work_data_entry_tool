@@ -86,23 +86,22 @@ class Analyze():
             chart_data.append(rows)
         print(chart_data)
     
-    def get_graph_data_by_recruit_actions(self):
+    def get_graph_data_by_recruit_actions(self, post_data):
         chart_data = []
         columns = ['Recruit Action', 'Count']
         chart_data.append(columns)
         boolean_list  = [True, False]
-        ienumber = 'ie7046'
         for item in boolean_list:
             rows = []
             query = (
                 """SELECT COUNT(recruit_action) FROM actions WHERE recruit_action = %s AND
                 Processor_ieNumber = %s""")
-            self.cursor.execute(query, (item, ienumber))
+            self.cursor.execute(query, (item, post_data['ieNumber']))
             row = self.cursor.fetchone()
-            rows.append(item)
+            rows.append(str(item))
             rows.append(row[0])
             chart_data.append(rows)
-        print(chart_data)
+        return chart_data
             
 
 # obj = Analyze()
