@@ -10,6 +10,7 @@
         <ActionsByCount />
         <ActionsByRecruitType />
         <LegalAuthority />
+        <StackedGraph />
       </div>
       <br/>
       <div>
@@ -31,6 +32,7 @@ import ActionsByRecruitType from "@/components/Graphs/ActionsByRecruitType.vue";
 import ActionsByIeNumber from "@/components/Graphs/ActionsByIeNumber.vue";
 import LegalAuthority from "@/components/Graphs/LegalAuthority.vue";
 import RecruitActionsGraph from "@/components/Graphs/RecruitActionsGraph.vue";
+import StackedGraph from "@/components/Graphs/StackedGraph.vue";
 import AnalyzeForm from "@/components/graphForms/AnalyzeForm.vue";
 
 export default {
@@ -38,6 +40,7 @@ export default {
   components: {
     ActionsByCount,
     ActionsByRecruitType,
+    StackedGraph,
     AnalyzeForm,
     ActionsByIeNumber,
     LegalAuthority,

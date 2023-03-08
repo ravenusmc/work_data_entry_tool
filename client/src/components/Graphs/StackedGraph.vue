@@ -1,34 +1,34 @@
 <template>
-  <div>
+<div>
     <GChart
       :type="typeOne"
-      :data="allActionsByCount"
+      :data="stackedGraph"
       :options="chartOptionsOne"
     />
-  </div>
+</div>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 import GraphCard from "@/components/Graphs/GraphCard.vue";
 
 export default {
-  name: "ActionsByCount",
+  name: "StackedGraph",
   components: {
     GraphCard,
   },
   computed: {
-    ...mapGetters("analyze", ["allActionsByCount"]),
+    ...mapGetters("analyze", ["stackedGraph"]),
   },
   data() {
     return {
       typeOne: "ColumnChart",
       chartOptionsOne: {
-        title: "All Actions by NOA",
+        title: "All Actions by NOA and Processor",
         legend: { position: "top" },
-        colors: ["#50A8F1"],
         height: 500,
-        width: 650,
+				width: 650,
+				isStacked: true,
         vAxes: {
           0: { title: "Count" },
         },
@@ -48,7 +48,5 @@ export default {
     };
   },
 };
-</script>
 
-<style>
-</style>
+</script>

@@ -5,29 +5,34 @@ import axios from 'axios';
 Vue.use(Vuex);
 
 const data = {
-	allActionsByCount: [['Action Type', 'Count'], 
-	['101', 255], 
-	['500', 239], 
-	['702', 246], 
+	allActionsByCount: [['Action Type', 'Count'],
+	['101', 255],
+	['500', 239],
+	['702', 246],
 	['792', 260]],
-	recruitTypes: [['Recruit Type', 'Count'], 
-	['True', 506], 
+	recruitTypes: [['Recruit Type', 'Count'],
+	['True', 506],
 	['False', 494]],
-	legalAuthority: [['Legal Authority', 'Count'], 
-	['MOW', 246], 
-	['CHG', 260], 
-	['ACC', 254], 
+	legalAuthority: [['Legal Authority', 'Count'],
+	['MOW', 246],
+	['CHG', 260],
+	['ACC', 254],
 	['CON', 239]],
-	ieNumbers: ['ie7046', 'ie7001',  'ie7002', 'ie7003'],
+	ieNumbers: ['ie7046', 'ie7001', 'ie7002', 'ie7003'],
 	typeOfAction: ['101', '500', '702', '792'],
-	actionsByIenumber: [['Action Type', 'Count'], 
-	['101', 226], 
-	['500', 226], 
-	['702', 226], 
+	actionsByIenumber: [['Action Type', 'Count'],
+	['101', 226],
+	['500', 226],
+	['702', 226],
 	['792', 226]],
-	recruitActionCount: [['Recruit Action', 'Count'], 
-	['True', 112], 
-	['False', 114]]
+	recruitActionCount: [['Recruit Action', 'Count'],
+	['True', 112],
+	['False', 114]],
+	stackedGraph: [['Recruit Action', '101', '500', '702', '792'],
+	['101', 54, 69, 63, 69],
+	['500', 60, 59, 61, 59],
+	['702', 55, 70, 57, 64],
+	['792', 57, 65, 75, 63]]
 };
 
 const getters = {
@@ -38,6 +43,7 @@ const getters = {
 	actionsByIenumber: (state) => state.actionsByIenumber,
 	legalAuthority: (state) => state.legalAuthority,
 	recruitActionCount: (state) => state.recruitActionCount,
+	stackedGraph: (state) => state.stackedGraph,
 };
 
 const actions = {
@@ -59,7 +65,7 @@ const actions = {
 
 const mutations = {
 
-	setActionsByIeNumber(state,value) {
+	setActionsByIeNumber(state, value) {
 		state.actionsByIenumber = value
 	},
 

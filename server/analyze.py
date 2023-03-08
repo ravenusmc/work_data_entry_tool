@@ -58,7 +58,6 @@ class Analyze():
         columns = ['Action Type', 'Count']
         chart_data.append(columns)
         action_types = ['101', '500', '702', '792']
-        ieNumber = 'ie7046'
         for action_type in action_types:
             rows = []
             query = ("""SELECT COUNT(NOA) FROM actions WHERE Processor_ieNumber = %s AND
@@ -102,6 +101,24 @@ class Analyze():
             rows.append(row[0])
             chart_data.append(rows)
         return chart_data
+    
+    def get_graph_data_action_all_users(self):
+        chart_data = []
+        columns = ['Recruit Action', 'Count']
+        chart_data.append(columns)
+        action_types = ['101', '500', '702', '792']
+        ieNumbers = ['ie7046', 'ie7001',  'ie7002', 'ie7003']
+        for action_type in action_types:
+            rows = []
+            rows.append(action_type)
+            for ieNumber in ieNumbers:
+                query = ("""SELECT COUNT(NOA) FROM actions WHERE Processor_ieNumber = %s AND
+                NOA = %s""")
+                self.cursor.execute(query, (ieNumber, action_type))
+                row = self.cursor.fetchone()
+                rows.append(row[0])
+            chart_data.append(rows)
+        print(chart_data)
             
 
 # obj = Analyze()
@@ -110,3 +127,4 @@ class Analyze():
 # obj.get_graph_data_ienumber_by_action()
 # obj.get_graph_data_by_legal_authority()
 # obj.get_graph_data_by_recruit_actions()
+# obj.get_graph_data_action_all_users()
