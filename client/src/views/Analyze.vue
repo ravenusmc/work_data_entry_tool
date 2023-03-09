@@ -1,11 +1,6 @@
 <template>
   <div>
-    <!--
-      Make a graph that shows eachh action by user - a static graph 
-    
-		-->
     <section>
-      <h1>Static Graphs</h1>
       <div class='static-graphs'>
         <ActionsByCount />
         <ActionsByRecruitType />
@@ -16,7 +11,6 @@
       <div>
         <AnalyzeForm/>
       </div>
-      <h1>Dynamic Graphs</h1>
       <div class='dynamic-graphs'>
         <ActionsByIeNumber/>
         <RecruitActionsGraph/>

@@ -1,16 +1,18 @@
 <template>
   <div>
     <form @submit="submitOptions">
-      <select v-model="ieNumber">
+      <label for="user">Choose an IE Number:</label>
+      <select id="user" v-model="ieNumber">
         <option v-for="ieNumber in ieNumbers" :key="ieNumber">
           {{ ieNumber }}
         </option>
       </select>
-      <select v-model="selectedAction">
+      <!-- May use this at a future date --> 
+      <!-- <select v-model="selectedAction">
         <option v-for="action in typeOfAction" :key="action">
           {{ action }}
         </option>
-      </select>
+      </select> -->
       <div class="button-div">
         <button class="btn btn-primary form-submit-btn">Submit</button>
       </div>
@@ -25,7 +27,7 @@ export default {
   data() {
     return {
 			ieNumber: "ie7046",
-			selectedAction: "101",
+			// selectedAction: "101",
     };
   },
   computed: {
@@ -37,7 +39,7 @@ export default {
       evt.preventDefault();
       const payload = {
         ieNumber: this.ieNumber,
-        selectedAction: this.selectedAction,
+        // selectedAction: this.selectedAction,
       };
       this.changeDynamicGraphs({ payload });
     },
