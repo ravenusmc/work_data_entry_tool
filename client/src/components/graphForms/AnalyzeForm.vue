@@ -26,7 +26,8 @@ export default {
   name: "AnalyzeForm",
   data() {
     return {
-			ieNumber: "ie7046",
+      ieNumber: "ie7046",
+      // May use this at a future date 
 			// selectedAction: "101",
     };
   },
@@ -39,6 +40,7 @@ export default {
       evt.preventDefault();
       const payload = {
         ieNumber: this.ieNumber,
+        // May use this at a future date 
         // selectedAction: this.selectedAction,
       };
       this.changeDynamicGraphs({ payload });
