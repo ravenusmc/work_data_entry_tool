@@ -1,7 +1,5 @@
 <template>
   <div>
-    TST-TST-2023-0001
-    Missing Actions: TST-TST-2023-0002
     <LocateAction />
     <ActionsForm v-if="actionFound" />
     <MissingAction v-if="actionNotFound" />
@@ -27,21 +25,6 @@ export default {
   computed: {
     ...mapGetters("data", ["actionFound", "actionNotFound",]),
   },
-  // data() {
-  //   return {
-  //     actionNumber: "",
-  //   };
-  // },
-  // methods: {
-  //   ...mapActions("data", ["locateAction"]),
-  //   findAction(evt) {
-  //     evt.preventDefault();
-  //     const payload = {
-  //       actionNumber: this.actionNumber,
-  //     };
-  //     this.locateAction({ payload });
-  //   },
-  // },
 };
 </script>
 
