@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from 'axios';
+import store from '@/store/index';
 
 Vue.use(Vuex);
 
@@ -67,18 +68,19 @@ const actions = {
 			});
 	},
 
-	getSpecificActionsByUser: ({ commit, getters }, { payload }) => {
-		console.log(this.getters.session.userObject)
-		console.log(getters["session/userObject"])
-		console.log('ACTION')
-		// const path = 'http://localhost:5000/submitMissingActionToDatabase';
-		// axios.post(path, payload)
-		// 	.then((res) => {
-		// 		commit('setMissingActionSubmitted', res.data)
-		// 	})
-		// 	.catch((error) => {
-		// 		console.log(error);
-		// 	});
+	getSpecificActionsByUser: ({ commit, getters }) => {
+		const user = {
+			id: store.state.session.userObject.id,
+			ieNumber: store.state.session.userObject.ieNumber
+		};
+		const path = 'http://localhost:5000/actionsByUser';
+		axios.post(path, user)
+			.then((res) => {
+				commit('setMissingActionSubmitted', res.data)
+			})
+			.catch((error) => {
+				console.log(error);
+			});
 	},
 
 };
