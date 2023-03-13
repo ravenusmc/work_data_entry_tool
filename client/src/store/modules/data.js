@@ -67,6 +67,20 @@ const actions = {
 			});
 	},
 
+	getSpecificActionsByUser: ({ commit, getters }, { payload }) => {
+		console.log(this.getters.session.userObject)
+		console.log(getters["session/userObject"])
+		console.log('ACTION')
+		// const path = 'http://localhost:5000/submitMissingActionToDatabase';
+		// axios.post(path, payload)
+		// 	.then((res) => {
+		// 		commit('setMissingActionSubmitted', res.data)
+		// 	})
+		// 	.catch((error) => {
+		// 		console.log(error);
+		// 	});
+	},
+
 };
 
 const mutations = {
