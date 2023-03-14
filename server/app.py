@@ -102,13 +102,8 @@ def actionsByUser():
     if request.method == 'POST':
         analyze = Analyze()
         post_data = request.get_json()
-        print(post_data)
-        # data_container = []
-        # chart_data = analyze.get_graph_data_ienumber_by_action(post_data)
-        # chart_data_2 = analyze.get_graph_data_by_recruit_actions(post_data)
-        # data_container.append(chart_data)
-        # data_container.append(chart_data_2)
-    return jsonify('7')
+        data = analyze.get_non_missing_actions_for_user(post_data)
+    return jsonify(data)
 
 
 if __name__ == '__main__':

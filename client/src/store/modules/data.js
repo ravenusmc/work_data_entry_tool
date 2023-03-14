@@ -11,6 +11,7 @@ const data = {
 	actionID: 0,
 	actionNumber: '',
 	missingActionSubmitted: false, 
+	actionsByUser: {}
 };
 
 const getters = {
@@ -19,6 +20,7 @@ const getters = {
 	actionID: (state) => state.actionID,
 	actionNumber: (state) => state.actionNumber,
 	missingActionSubmitted: (state) => state.missingActionSubmitted,
+	actionsByUser: (state) => state.actionsByUser,
 };
 
 const actions = {
@@ -76,7 +78,8 @@ const actions = {
 		const path = 'http://localhost:5000/actionsByUser';
 		axios.post(path, user)
 			.then((res) => {
-				commit('setMissingActionSubmitted', res.data)
+				console.log(res.data)
+				commit('setActionsByUser', res.data)
 			})
 			.catch((error) => {
 				console.log(error);
@@ -105,6 +108,10 @@ const mutations = {
 
 	setMissingActionSubmitted(state, value) {
 		state.missingActionSubmitted = value
+	},
+
+	setActionsByUser(state, value) {
+		state.actionsByUser = value
 	},
 
 };

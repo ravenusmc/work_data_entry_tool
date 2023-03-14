@@ -52,7 +52,7 @@ class Analyze():
             rows.append(row[0])
             chart_data.append(rows)
         print(chart_data)
-    
+
     def get_graph_data_ienumber_by_action(self, post_data):
         chart_data = []
         columns = ['Action Type', 'Count']
@@ -68,12 +68,12 @@ class Analyze():
             rows.append(row[0])
             chart_data.append(rows)
         return chart_data
-    
+
     def get_graph_data_by_legal_authority(self):
         chart_data = []
         columns = ['Legal Authority', 'Count']
         chart_data.append(columns)
-        legal_authorities  = ['MOW', 'CHG', 'ACC', 'CON']
+        legal_authorities = ['MOW', 'CHG', 'ACC', 'CON']
         for legal_athority in legal_authorities:
             rows = []
             query = (
@@ -84,12 +84,12 @@ class Analyze():
             rows.append(row[0])
             chart_data.append(rows)
         print(chart_data)
-    
+
     def get_graph_data_by_recruit_actions(self, post_data):
         chart_data = []
         columns = ['Recruit Action', 'Count']
         chart_data.append(columns)
-        boolean_list  = [True, False]
+        boolean_list = [True, False]
         for item in boolean_list:
             rows = []
             query = (
@@ -101,7 +101,7 @@ class Analyze():
             rows.append(row[0])
             chart_data.append(rows)
         return chart_data
-    
+
     def get_graph_data_action_all_users(self):
         chart_data = []
         columns = ['Recruit Action', 'Count']
@@ -119,7 +119,15 @@ class Analyze():
                 rows.append(row[0])
             chart_data.append(rows)
         print(chart_data)
-            
+
+    def get_non_missing_actions_for_user(self, post_data):
+        # print(post_data['ieNumber'])
+        query = ("""SELECT action_number, date_created, recruit_action, NOA, Authority, 
+        Processor_ieNumber, Date_Receieved, Returned, Keyed, Applied
+        FROM actions WHERE Processor_ieNumber = %s""")
+        self.cursor.execute(query, (post_data['ieNumber'],))
+        data = self.cursor.fetchall()
+        return data 
 
 # obj = Analyze()
 # obj.get_all_actions_by_noa()
@@ -128,3 +136,5 @@ class Analyze():
 # obj.get_graph_data_by_legal_authority()
 # obj.get_graph_data_by_recruit_actions()
 # obj.get_graph_data_action_all_users()
+
+
