@@ -35,4 +35,5 @@ https://stackoverflow.com/questions/43193721/vue-js-dynamic-dropdown
 REFERENCES CONTINUED: 
 https://stackoverflow.com/questions/43796423/python-converting-mysql-query-result-to-json
 https://www.tutorialspoint.com/explain-the-use-of-count-and-sum-in-mysql-using-python
+https://github.com/ravenusmc/dress_reviews/blob/main/client/src/views/Main.vue
 

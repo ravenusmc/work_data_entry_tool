@@ -102,8 +102,9 @@ def actionsByUser():
     if request.method == 'POST':
         analyze = Analyze()
         post_data = request.get_json()
-        data = analyze.get_non_missing_actions_for_user(post_data)
-    return jsonify(data)
+        table_data = analyze.get_non_missing_actions_for_user(post_data)
+    return jsonify(table_data)
+    # return jsonify('7')
 
 
 if __name__ == '__main__':
