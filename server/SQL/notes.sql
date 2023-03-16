@@ -27,6 +27,9 @@ def update_username_and_email(self, post_data):
         --     self._SQL, (post_data['numberOfVotesCalculated'], post_data['discussionID']))
         -- self.conn.commit()
 
+        <!-- :settings="{ allowHTML: true }" -->
+
+        
 SQL reference from previous projects:
 https://github.com/ravenusmc/statues/blob/main/server/sql/tables.sql
 

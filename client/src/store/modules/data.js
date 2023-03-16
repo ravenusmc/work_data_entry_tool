@@ -78,7 +78,6 @@ const actions = {
 		const path = 'http://localhost:5000/actionsByUser';
 		axios.post(path, user)
 			.then((res) => {
-				console.log(res.data)
 				commit('setActionsByUser', res.data)
 			})
 			.catch((error) => {
