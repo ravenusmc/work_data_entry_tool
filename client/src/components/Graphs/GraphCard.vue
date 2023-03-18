@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Modal :showModal="showModal" :modalTitle="modalTitle" />
     <GChart
       :type="typeOne"
       :data="data"
@@ -11,18 +12,23 @@
 </template>
 
 <script>
+import Modal from "@/components/drilldown/Modal.vue";
 import { GChart } from "vue-google-charts";
+
 export default {
   name: "GraphCard",
   props: ["typeOne", "data", "options"],
   components: {
+    Modal,
     GChart,
   },
   data() {
     return {
+      modalTitle: "",
+      showModal: false,
       chartEvents: {
         select: () => {
-          // this.modalTitle = "Drill Down Data for ";
+          this.modalTitle = "Drill Down Data for ";
           // console.log(this.data) // This will show you the data
           const chart = this.$refs.gChart.chartObject;
           const selection = chart.getSelection()[0];
@@ -32,16 +38,16 @@ export default {
           // This pulls out the specific date from the element that the user
           // clicked on
           let ieNumber = this.data[row][0];
-          // const payload = {
-          //   date,
-          // };
+          const payload = {
+            ieNumber,
+          };
           // this.fetchDrillDownData({ payload });
-          // this.showModal = true;
+          this.showModal = true;
           // this.modalTitle = `${this.modalTitle} ${date}`;
         },
       }, // End Chart Events
-    }
-  }
+    };
+  },
 };
 </script>
 
