@@ -19,9 +19,9 @@
             <!-- Modal Footer area -->
             <div class="modal-footer">
               <slot name="footer">
-                <!-- <button class="button is-success" @click="closeModal()">
+                <button class="button is-success" @click="closeModal()">
                   Close
-                </button> -->
+                </button>
               </slot>
             </div>
             <!-- End Modal Footer area -->
