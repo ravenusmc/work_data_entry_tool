@@ -7,13 +7,7 @@
             <h1>{{ modalTitle }}</h1>
             <hr />
             <!-- Modal Body area -->
-            <!-- <div>
-              <GChart
-                :type="Table"
-                :data="drillDownData"
-                :options="chartOptionsDrillDown"
-              />
-            </div> -->
+            <ActionsForm />
             <!-- End Modal Body area -->
             <hr />
             <!-- Modal Footer area -->
@@ -33,14 +27,18 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import ActionsForm from "@/components/actionForms/ActionsForm.vue";
+import { mapGetters } from "vuex";
 
 export default {
-  name: 'Modal',
-  props: ['showModal', 'modalTitle'],
+  name: "Modal",
+  components: {
+    ActionsForm,
+  },
+  props: ["showModal", "modalTitle"],
   data() {
     return {
-      Table: 'Table',
+      Table: "Table",
       chartOptionsDrillDown: {
         alternatingRowStyle: true,
         height: 300,
@@ -49,13 +47,14 @@ export default {
     };
   },
   computed: {
-    ...mapGetters('data', ['drillDownData']),
+    ...mapGetters("data", ["drillDownData"]),
   }, // End Computed Area
   methods: {
     closeModal() {
+      console.log("here");
       let modalClose = this.showModal;
       modalClose = false;
-      this.$emit('close-modal', modalClose);
+      this.$emit("close-modal", modalClose);
     },
   },
 };

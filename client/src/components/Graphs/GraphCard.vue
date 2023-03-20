@@ -1,6 +1,10 @@
 <template>
   <div>
-    <Modal :showModal="showModal" :modalTitle="modalTitle" />
+    <Modal
+      :showModal="showModal"
+      :modalTitle="modalTitle"
+      @close-modal="update"
+    />
     <GChart
       :type="typeOne"
       :data="data"
@@ -48,6 +52,16 @@ export default {
       }, // End Chart Events
     };
   },
+  methods: {
+    // ...mapActions('data', ['resetDrillDownData']),
+    update(close) {
+      this.showModal = close;
+      // this.resetDrillDownData();
+    },
+    close(close) {
+      // this.showSentimentDrillDown = close;
+    },
+  }, // End of Methods
 };
 </script>
 
