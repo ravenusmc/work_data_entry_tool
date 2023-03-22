@@ -16,6 +16,7 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 import Modal from "@/components/drilldown/Modal.vue";
 import { GChart } from "vue-google-charts";
 
@@ -41,19 +42,18 @@ export default {
           let row = selection.row + 1;
           // This pulls out the specific date from the element that the user
           // clicked on
-          let ieNumber = this.data[row][0];
+          let actionNumber = this.data[row][0];
           const payload = {
-            ieNumber,
+            actionNumber,
           };
-          // this.fetchDrillDownData({ payload });
+          this.fetchDrillDownDataForForm({ payload });
           this.showModal = true;
-          // this.modalTitle = `${this.modalTitle} ${date}`;
         },
       }, // End Chart Events
     };
   },
   methods: {
-    // ...mapActions('data', ['resetDrillDownData']),
+    ...mapActions('data', ['fetchDrillDownDataForForm']),
     update(close) {
       this.showModal = close;
       // this.resetDrillDownData();

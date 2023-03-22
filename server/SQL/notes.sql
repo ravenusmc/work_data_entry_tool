@@ -40,3 +40,8 @@ https://stackoverflow.com/questions/43796423/python-converting-mysql-query-resul
 https://www.tutorialspoint.com/explain-the-use-of-count-and-sum-in-mysql-using-python
 https://github.com/ravenusmc/dress_reviews/blob/main/client/src/views/Main.vue
 
+Github Drill Down:
+https://github.com/ravenusmc/statues/blob/main/client/src/components/Graphs/GraphCard.vue
+https://github.com/ravenusmc/statues/blob/main/client/src/components/data/Modal.vue
+
+

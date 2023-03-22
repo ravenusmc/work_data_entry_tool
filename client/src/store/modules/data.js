@@ -11,7 +11,8 @@ const data = {
 	actionID: 0,
 	actionNumber: '',
 	missingActionSubmitted: false, 
-	actionsByUser: {}
+	actionsByUser: {},
+	actionData: [],
 };
 
 const getters = {
@@ -21,6 +22,7 @@ const getters = {
 	actionNumber: (state) => state.actionNumber,
 	missingActionSubmitted: (state) => state.missingActionSubmitted,
 	actionsByUser: (state) => state.actionsByUser,
+	actionData: (state) => state.actionData,
 };
 
 const actions = {
@@ -84,6 +86,18 @@ const actions = {
 				console.log(error);
 			});
 	},
+	
+	fetchDrillDownDataForForm: ({ commit }, { payload }) => {
+		const path = 'http://localhost:5000/fetchDrillDownDataForForm';
+		axios.post(path, payload)
+			.then((res) => {
+				console.log(res.data)
+				commit('setActionData', res.data)
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	},
 
 };
 
@@ -111,6 +125,10 @@ const mutations = {
 
 	setActionsByUser(state, value) {
 		state.actionsByUser = value
+	},
+
+	setActionData(state, value) {
+		state.actionData = value
 	},
 
 };

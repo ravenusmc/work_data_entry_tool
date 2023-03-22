@@ -104,7 +104,14 @@ def actionsByUser():
         post_data = request.get_json()
         table_data = analyze.get_non_missing_actions_for_user(post_data)
     return jsonify(table_data)
-    # return jsonify('7')
+
+@app.route('/fetchDrillDownDataForForm', methods=['POST'])
+def fetchDrillDownDataForForm():
+    if request.method == 'POST':
+        analyze = Analyze()
+        post_data = request.get_json()
+        action_data = analyze.fetch_drill_down_data_for_form(post_data)
+    return jsonify(action_data)
 
 
 if __name__ == '__main__':

@@ -175,6 +175,14 @@ class Analyze():
             table_data.append(rows)
             count += 1
         return table_data
+    
+    def fetch_drill_down_data_for_form(self, post_data):
+        query = (
+            """SELECT action_number, date_created, recruit_action, user_id, NOA,
+            Authority, Processor_ieNumber, Date_Receieved, Returned, Keyed
+            Applied FROM actions WHERE action_number = %s""")
+        self.cursor.execute(query, (post_data['actionNumber'],))
+        return self.cursor.fetchone()
 
 
 # obj = Analyze()
@@ -184,5 +192,6 @@ class Analyze():
 # obj.get_graph_data_by_legal_authority()
 # obj.get_graph_data_by_recruit_actions()
 # obj.get_graph_data_action_all_users()
+
 
 

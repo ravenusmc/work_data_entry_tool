@@ -7,7 +7,7 @@
             <h1>{{ modalTitle }}</h1>
             <hr />
             <!-- Modal Body area -->
-            <ActionsForm />
+            <DrillDownForm />
             <!-- End Modal Body area -->
             <hr />
             <!-- Modal Footer area -->
@@ -27,13 +27,13 @@
 </template>
 
 <script>
-import ActionsForm from "@/components/actionForms/ActionsForm.vue";
+import DrillDownForm from "@/components/actionForms/DrillDownForm.vue";
 import { mapGetters } from "vuex";
 
 export default {
   name: "Modal",
   components: {
-    ActionsForm,
+    DrillDownForm,
   },
   props: ["showModal", "modalTitle"],
   data() {
