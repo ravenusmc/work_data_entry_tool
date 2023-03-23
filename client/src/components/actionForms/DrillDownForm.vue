@@ -27,6 +27,7 @@
           name="Authority"
           class="form-control"
           id="Authority"
+          :placeholder="Authority"
           v-model="Authority"
         />
       </div>
@@ -88,16 +89,15 @@ import { mapGetters, mapActions } from "vuex";
 export default {
   name: "DrillDownForm",
   computed: {
-    ...mapGetters("data", ["actionNumber", "actionID"]),
-    ...mapGetters("session", ["userObject"]),
+    ...mapGetters("data", ["actionData"]),
   },
   data() {
     return {
       recruit_action: [true, false],
       selectedValueRecruitAction: null,
-      action_number: "",
+      action_number: actionData.action_number,
       NOA: "",
-      Authority: "",
+      Authority: actionData.Authority,
       Processor_ieNumber: "", // Get from user
       Date_Receieved: "",
       Returned: [true, false],
