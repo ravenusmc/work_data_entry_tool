@@ -27,7 +27,7 @@
           name="Authority"
           class="form-control"
           id="Authority"
-          :placeholder="Authority"
+          :placeholder="authorityData"
           v-model="Authority"
         />
       </div>
@@ -90,14 +90,18 @@ export default {
   name: "DrillDownForm",
   computed: {
     ...mapGetters("data", ["actionData"]),
+    authorityData() {
+      console.log(this.actionData)
+      return this.actionData[5];
+    },
   },
   data() {
     return {
       recruit_action: [true, false],
       selectedValueRecruitAction: null,
-      action_number: actionData.action_number,
+      action_number: '',
       NOA: "",
-      Authority: actionData.Authority,
+      Authority: '',
       Processor_ieNumber: "", // Get from user
       Date_Receieved: "",
       Returned: [true, false],
@@ -106,6 +110,7 @@ export default {
       selectedValueKeyed: null,
       Applied: [true, false],
       selectedValueApplied: null,
+      test: "MIKE",
     };
   },
   methods: {
