@@ -1,6 +1,28 @@
 <template>
   <div>
-    <form class="contact-form" @submit="submitAction">
+    <form class="contact-form">
+      <div class="form-group">
+        <label for="actionNumber">Action Number:</label>
+        <input
+          type="text"
+          name="action_number"
+          class="form-control"
+          id="actionNumber"
+          v-model="action_number"
+          :placeholder="actionNumberData"
+        />
+      </div>
+      <div class="form-group">
+        <label for="Date_Created">Date Created:</label>
+        <input
+          type="date"
+          name="ienumber"
+          class="form-control"
+          id="Date_Created"
+          v-model="Date_Created"
+          :placeholder="dateCreatedData"
+        />
+      </div>
       <div class="form-group">
         <label for="firstname">Recruit Action:</label>
         <select v-model="selectedValueRecruitAction">
@@ -71,7 +93,7 @@
 
       <div class="btn-div">
         <button
-          @click.prevent="submitAction"
+          @click.prevent="updateAction"
           type="submit"
           name="login"
           class="btn btn-primary button-fix"
@@ -90,18 +112,24 @@ export default {
   name: "DrillDownForm",
   computed: {
     ...mapGetters("data", ["actionData"]),
+    actionNumberData() {
+      return this.actionData[0];
+    },
+    dateCreatedData() {
+      return this.actionData[1]
+    },
     authorityData() {
-      console.log(this.actionData)
       return this.actionData[5];
     },
   },
   data() {
     return {
+      action_number: "",
+      Date_Created: "",
       recruit_action: [true, false],
       selectedValueRecruitAction: null,
-      action_number: '',
       NOA: "",
-      Authority: '',
+      Authority: "",
       Processor_ieNumber: "", // Get from user
       Date_Receieved: "",
       Returned: [true, false],
@@ -114,25 +142,33 @@ export default {
     };
   },
   methods: {
-    ...mapActions("data", ["submitActionToDatabase"]),
-    submitAction() {
+    ...mapActions("data", ["updateData"]),
+    updateAction() {
+      console.log("HERE")
       const payload = {
-        action_id: this.actionID,
-        user_id: this.userObject["id"],
-        recruit_action: this.selectedValueRecruitAction,
-        action_number: this.actionNumber,
-        NOA: this.NOA,
-        Authority: this.Authority,
-        Processor_ieNumber: this.userObject["ieNumber"],
-        Date_Receieved: this.Date_Receieved,
-        Returned: this.selectedValueReturned,
-        Keyed: this.selectedValueKeyed,
-        Applied: this.selectedValueApplied,
+        action_number: this.action_number,
+        Date_Created: this.Date_Created,
+        // action_id: this.actionID,
+        // user_id: this.userObject["id"],
+        // recruit_action: this.selectedValueRecruitAction,
+
+        // NOA: this.NOA,
+        // Authority: this.Authority,
+        // Processor_ieNumber: this.userObject["ieNumber"],
+        // Date_Receieved: this.Date_Receieved,
+        // Returned: this.selectedValueReturned,
+        // Keyed: this.selectedValueKeyed,
+        // Applied: this.selectedValueApplied,
       };
-      this.submitActionToDatabase({ payload });
+      console.log(payload);
+      this.updateData({ payload });
     },
   },
 };
+//['TST-TST-2023-0001', 'Sun, 01 Jan 2023 00:00:00 GMT', 1, 1, 101, 'BWA', 'ie7046', 'Sun, 29 Jan 2023 00:00:00 GMT', 0, 1, __ob__: Observer]
+// action_number, date_created, recruit_action, user_id, NOA,
+//             Authority, Processor_ieNumber, Date_Receieved, Returned, Keyed
+//             Applied
 </script>
 
 <style scoped>
