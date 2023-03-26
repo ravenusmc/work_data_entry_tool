@@ -26,13 +26,13 @@
       <div class="form-group">
         <label for="firstname">Recruit Action:</label>
         <select v-model="selectedValueRecruitAction">
-          <option disabled value="">Please select one</option>
+          <option disabled value="">{{actionData[2]}}</option>
           <option v-for="item in recruit_action" :key="item" :value="item">
             {{ item }}
           </option>
         </select>
       </div>
-      <div class="form-group">
+      <!-- <div class="form-group">
         <label for="NOA">Nature of Action:</label>
         <input
           type="text"
@@ -66,7 +66,7 @@
       <div class="form-group">
         <label for="firstname">Action Returned:</label>
         <select v-model="selectedValueReturned">
-          <option disabled value="">Please select one</option>
+          <option disabled>Please select one</option>
           <option v-for="item in Returned" :key="item" :value="item">
             {{ item }}
           </option>
@@ -75,7 +75,7 @@
       <div class="form-group">
         <label for="Keyed">Action Keyed:</label>
         <select v-model="selectedValueKeyed">
-          <option disabled value="">Please select one</option>
+          <option disabled>Please select one</option>
           <option v-for="item in Keyed" :key="item" :value="item">
             {{ item }}
           </option>
@@ -84,12 +84,12 @@
       <div class="form-group">
         <label for="firstname">Action Applied:</label>
         <select v-model="selectedValueApplied">
-          <option disabled value="">Please select one</option>
+          <option disabled>Please select one</option>
           <option v-for="item in Applied" :key="item" :value="item">
             {{ item }}
           </option>
         </select>
-      </div>
+      </div> -->
 
       <div class="btn-div">
         <button
@@ -128,17 +128,17 @@ export default {
       Date_Created: "",
       recruit_action: [true, false],
       selectedValueRecruitAction: null,
-      NOA: "",
-      Authority: "",
-      Processor_ieNumber: "", // Get from user
-      Date_Receieved: "",
-      Returned: [true, false],
-      selectedValueReturned: null,
-      Keyed: [true, false],
-      selectedValueKeyed: null,
-      Applied: [true, false],
-      selectedValueApplied: null,
-      test: "MIKE",
+
+      // NOA: "",
+      // Authority: "",
+      // Processor_ieNumber: "",
+      // Date_Receieved: "",
+      // Returned: [true, false],
+      // selectedValueReturned: null,
+      // Keyed: [true, false],
+      // selectedValueKeyed: null,
+      // Applied: [true, false],
+      // selectedValueApplied: null,
     };
   },
   methods: {
@@ -148,9 +148,10 @@ export default {
       const payload = {
         action_number: this.action_number,
         Date_Created: this.Date_Created,
+        recruit_action: this.selectedValueRecruitAction,
         // action_id: this.actionID,
         // user_id: this.userObject["id"],
-        // recruit_action: this.selectedValueRecruitAction,
+
 
         // NOA: this.NOA,
         // Authority: this.Authority,
