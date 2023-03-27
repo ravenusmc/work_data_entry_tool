@@ -15,22 +15,30 @@
       <div class="form-group">
         <label for="Date_Created">Date Created:</label>
         <input
-          type="date"
-          name="ienumber"
-          class="form-control"
           id="Date_Created"
+          type="text"
           v-model="Date_Created"
           :placeholder="dateCreatedData"
+          onfocus="(this.type='date')"
         />
       </div>
-      <div class="form-group">
-        <label for="firstname">Recruit Action:</label>
-        <select v-model="selectedValueRecruitAction">
-          <option disabled value="">{{actionData[2]}}</option>
-          <option v-for="item in recruit_action" :key="item" :value="item">
-            {{ item }}
-          </option>
-        </select>
+      <div class="form-item">
+        <label class="form-item__label" for="select">Recruit Action:</label>
+        <div class="select-wrap">
+          <select
+            id="select"
+            class="form-item__element form-item__element--select"
+            required
+            v-model="selectedValueRecruitAction"
+          >
+            <option disabled selected value="">
+              Current Value: {{ changeRecruitAction }}
+            </option>
+            <option v-for="item in recruit_action" :key="item" :value="item">
+              {{ item }}
+            </option>
+          </select>
+        </div>
       </div>
       <!-- <div class="form-group">
         <label for="NOA">Nature of Action:</label>
@@ -107,6 +115,7 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
+import moment from "moment";
 
 export default {
   name: "DrillDownForm",
@@ -116,7 +125,13 @@ export default {
       return this.actionData[0];
     },
     dateCreatedData() {
-      return this.actionData[1]
+      let convertedDate = new Date(this.actionData[1]);
+      convertedDate.setDate(convertedDate.getDate() + 1);
+      return moment(convertedDate).format("MM/DD/YYYY");
+    },
+    changeRecruitAction() {
+      if (this.actionData[2]) return true;
+      else return false;
     },
     authorityData() {
       return this.actionData[5];
@@ -144,14 +159,13 @@ export default {
   methods: {
     ...mapActions("data", ["updateData"]),
     updateAction() {
-      console.log("HERE")
+      console.log("HERE");
       const payload = {
         action_number: this.action_number,
         Date_Created: this.Date_Created,
         recruit_action: this.selectedValueRecruitAction,
         // action_id: this.actionID,
         // user_id: this.userObject["id"],
-
 
         // NOA: this.NOA,
         // Authority: this.Authority,
