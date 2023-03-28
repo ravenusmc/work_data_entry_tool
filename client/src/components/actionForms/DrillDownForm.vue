@@ -40,6 +40,17 @@
           </select>
         </div>
       </div>
+      <div class="form-group">
+        <label for="NOA">Nature of Action:</label>
+        <input
+          type="text"
+          name="NOA"
+          class="form-control"
+          id="NOA"
+          v-model="NOA"
+          :placeholder="noaData"
+        />
+      </div>
       <!-- <div class="form-group">
         <label for="NOA">Nature of Action:</label>
         <input
@@ -132,9 +143,12 @@ export default {
       if (this.actionData[2]) return true;
       else return false;
     },
-    authorityData() {
-      return this.actionData[5];
+    noaData() {
+      return this.actionData[4]
     },
+    // authorityData() {
+    //   return this.actionData[5];
+    // },
   },
   data() {
     return {
@@ -142,6 +156,8 @@ export default {
       Date_Created: "",
       recruit_action: [true, false],
       selectedValueRecruitAction: null,
+      NOA: "",
+      ieNumber: "",
 
       // NOA: "",
       // Authority: "",
@@ -158,15 +174,16 @@ export default {
   methods: {
     ...mapActions("data", ["updateData"]),
     updateAction() {
-      console.log("HERE");
       const payload = {
         action_number: this.action_number,
         Date_Created: this.Date_Created,
         recruit_action: this.selectedValueRecruitAction,
+        NOA: this.NOA,
+        // ieNumber: this.ieNumber,
+
+
         // action_id: this.actionID,
         // user_id: this.userObject["id"],
-
-        // NOA: this.NOA,
         // Authority: this.Authority,
         // Processor_ieNumber: this.userObject["ieNumber"],
         // Date_Receieved: this.Date_Receieved,
