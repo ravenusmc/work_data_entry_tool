@@ -179,8 +179,8 @@ class Analyze():
     def fetch_drill_down_data_for_form(self, post_data):
         query = (
             """SELECT action_number, date_created, recruit_action, user_id, NOA,
-            Authority, Processor_ieNumber, Date_Receieved, Returned, Keyed
-            Applied FROM actions WHERE action_number = %s""")
+            Authority, Processor_ieNumber, Date_Receieved, Returned, Keyed, Applied 
+            FROM actions WHERE action_number = %s""")
         self.cursor.execute(query, (post_data['actionNumber'],))
         return self.cursor.fetchone()
 

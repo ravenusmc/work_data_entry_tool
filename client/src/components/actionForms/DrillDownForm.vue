@@ -25,13 +25,8 @@
       <div class="form-item">
         <label class="form-item__label" for="select">Recruit Action:</label>
         <div class="select-wrap">
-          <select
-            id="select"
-            class="form-item__element form-item__element--select"
-            required
-            v-model="selectedValueRecruitAction"
-          >
-            <option disabled selected value="">
+          <select id="select" required v-model="selectedValueRecruitAction">
+            <option disabled selected :value="null">
               Current Value: {{ changeRecruitAction }}
             </option>
             <option v-for="item in recruit_action" :key="item" :value="item">
@@ -51,16 +46,6 @@
           :placeholder="noaData"
         />
       </div>
-      <!-- <div class="form-group">
-        <label for="NOA">Nature of Action:</label>
-        <input
-          type="text"
-          name="NOA"
-          class="form-control"
-          id="NOA"
-          v-model="NOA"
-        />
-      </div>
       <div class="form-group">
         <label for="Authority">Authority:</label>
         <input
@@ -73,42 +58,65 @@
         />
       </div>
       <div class="form-group">
-        <label for="Date_Receieved">Date Receieved:</label>
+        <label for="ieNumber">IE Nuumber:</label>
         <input
-          type="date"
-          name="ienumber"
+          type="text"
+          name="ieNumber"
           class="form-control"
-          id="Date_Receieved"
-          v-model="Date_Receieved"
+          id="ieNumber"
+          v-model="Processor_ieNumber"
+          :placeholder="ieNumberData"
         />
       </div>
       <div class="form-group">
-        <label for="firstname">Action Returned:</label>
-        <select v-model="selectedValueReturned">
-          <option disabled>Please select one</option>
-          <option v-for="item in Returned" :key="item" :value="item">
-            {{ item }}
-          </option>
-        </select>
+        <label for="Date_Receieved">Date Receieved:</label>
+        <input
+          id="Date_Receieved"
+          type="text"
+          v-model="Date_Receieved"
+          :placeholder="dateReceivedData"
+          onfocus="(this.type='date')"
+        />
       </div>
-      <div class="form-group">
-        <label for="Keyed">Action Keyed:</label>
-        <select v-model="selectedValueKeyed">
-          <option disabled>Please select one</option>
-          <option v-for="item in Keyed" :key="item" :value="item">
-            {{ item }}
-          </option>
-        </select>
+      <div class="form-item">
+        <label class="form-item__label" for="returned_select">Returned:</label>
+        <div class="select-wrap">
+          <select id="returned_select" required v-model="selectedValueReturned">
+            <option disabled selected :value="null">
+              Current Value: {{ returnedData }}
+            </option>
+            <option v-for="item in Returned" :key="item" :value="item">
+              {{ item }}
+            </option>
+          </select>
+        </div>
       </div>
-      <div class="form-group">
-        <label for="firstname">Action Applied:</label>
-        <select v-model="selectedValueApplied">
-          <option disabled>Please select one</option>
-          <option v-for="item in Applied" :key="item" :value="item">
-            {{ item }}
-          </option>
-        </select>
-      </div> -->
+      <div class="form-item">
+        <label class="form-item__label" for="keyed_select">Returned:</label>
+        <div class="select-wrap">
+          <select id="keyed_select" required v-model="selectedValueKeyed">
+            <option disabled selected :value="null">
+              Current Value: {{ keyedData }}
+            </option>
+            <option v-for="item in Keyed" :key="item" :value="item">
+              {{ item }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="form-item">
+        <label class="form-item__label" for="applied_select">Applied:</label>
+        <div class="select-wrap">
+          <select id="applied_select" required v-model="selectedValueApplied">
+            <option disabled selected :value="null">
+              Current Value: {{ appliedData }}
+            </option>
+            <option v-for="item in Applied" :key="item" :value="item">
+              {{ item }}
+            </option>
+          </select>
+        </div>
+      </div>
       <div class="btn-div">
         <button
           @click.prevent="updateAction"
@@ -144,31 +152,49 @@ export default {
       else return false;
     },
     noaData() {
-      return this.actionData[4]
+      return this.actionData[4];
     },
-    // authorityData() {
-    //   return this.actionData[5];
-    // },
+    authorityData() {
+      return this.actionData[5];
+    },
+    ieNumberData() {
+      return this.actionData[6];
+    },
+    dateReceivedData() {
+      let convertedDate = new Date(this.actionData[7]);
+      convertedDate.setDate(convertedDate.getDate() + 1);
+      return moment(convertedDate).format("MM/DD/YYYY");
+    },
+    returnedData() {
+      if (this.actionData[8]) return true;
+      else return false;
+    },
+    keyedData() {
+      if (this.actionData[9]) return true;
+      else return false;
+    },
+    appliedData() {
+      if (this.actionData[10]) return true;
+      else return false;
+    },
   },
   data() {
     return {
       action_number: "",
       Date_Created: "",
       recruit_action: [true, false],
-      selectedValueRecruitAction: null,
+      selectedValueRecruitAction: "null",
       NOA: "",
       ieNumber: "",
-
-      // NOA: "",
-      // Authority: "",
-      // Processor_ieNumber: "",
-      // Date_Receieved: "",
-      // Returned: [true, false],
-      // selectedValueReturned: null,
-      // Keyed: [true, false],
-      // selectedValueKeyed: null,
-      // Applied: [true, false],
-      // selectedValueApplied: null,
+      Authority: "",
+      Processor_ieNumber: "",
+      Date_Receieved: "",
+      Returned: [true, false],
+      selectedValueReturned: null,
+      Keyed: [true, false],
+      selectedValueKeyed: null,
+      Applied: [true, false],
+      selectedValueApplied: null,
     };
   },
   methods: {
@@ -179,17 +205,14 @@ export default {
         Date_Created: this.Date_Created,
         recruit_action: this.selectedValueRecruitAction,
         NOA: this.NOA,
-        // ieNumber: this.ieNumber,
-
-
+        Authority: this.Authority,
+        ieNumber: this.ieNumber,
+        Date_Receieved: this.Date_Receieved,
+        Returned: this.selectedValueReturned,
+        Keyed: this.selectedValueKeyed,
+        Applied: this.selectedValueApplied,
         // action_id: this.actionID,
         // user_id: this.userObject["id"],
-        // Authority: this.Authority,
-        // Processor_ieNumber: this.userObject["ieNumber"],
-        // Date_Receieved: this.Date_Receieved,
-        // Returned: this.selectedValueReturned,
-        // Keyed: this.selectedValueKeyed,
-        // Applied: this.selectedValueApplied,
       };
       console.log(payload);
       this.updateData({ payload });

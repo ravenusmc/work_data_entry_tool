@@ -91,6 +91,7 @@ const actions = {
 		const path = 'http://localhost:5000/fetchDrillDownDataForForm';
 		axios.post(path, payload)
 			.then((res) => {
+				console.log(res.data)
 				commit('setActionData', res.data)
 			})
 			.catch((error) => {
