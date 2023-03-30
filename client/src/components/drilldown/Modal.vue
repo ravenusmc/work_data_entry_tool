@@ -7,7 +7,7 @@
             <h1>{{ modalTitle }}</h1>
             <hr />
             <!-- Modal Body area -->
-            <DrillDownForm />
+            <DrillDownForm @clicked="onClickChild" />
             <!-- End Modal Body area -->
             <hr />
             <!-- Modal Footer area -->
@@ -51,11 +51,15 @@ export default {
   }, // End Computed Area
   methods: {
     closeModal() {
-      console.log("here");
       let modalClose = this.showModal;
       modalClose = false;
       this.$emit("close-modal", modalClose);
     },
+    // Need to fix this duplication here
+    onClickChild(value) {
+      console.log(value)
+      this.$emit("close-modal", value);
+    }
   },
 };
 </script>
@@ -77,9 +81,9 @@ export default {
   vertical-align: middle;
 }
 .modal-container {
-  width: 600px;
+  width: 800px;
   margin: 0px auto;
-  padding: 20px 30px;
+  padding: 20px;
   background-color: #fff;
   border-radius: 2px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);

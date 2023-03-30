@@ -125,7 +125,7 @@ class Analyze():
         table_data = []
         columns = ['Action Number', 'Date Created', 'Recruit action', 'NOA',
                    'Authority', 'Processor IENumber', 'Date Received', 'Returned', 
-                   'Keyed', 'Applied', 'Update']
+                   'Keyed', 'Applied']
         table_data.append(columns)
         query = ("""SELECT action_number, date_created, recruit_action, NOA, Authority, 
         Processor_ieNumber, Date_Receieved, Returned, Keyed, Applied, action_id
@@ -160,7 +160,6 @@ class Analyze():
             elif data[count][9] == 1:
                 Applied = 'True'
             Link = data[count][10]
-            update = '<a href="Link">Update</a>'
             rows.append(action_number)
             rows.append(date_created)
             rows.append(recruit_action)
@@ -171,7 +170,6 @@ class Analyze():
             rows.append(Returned)
             rows.append(Keyed)
             rows.append(Applied)
-            rows.append(update)
             table_data.append(rows)
             count += 1
         return table_data

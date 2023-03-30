@@ -200,6 +200,36 @@ export default {
   methods: {
     ...mapActions("data", ["updateData"]),
     updateAction() {
+      if (this.action_number === "") {
+        this.action_number = this.actionData[0];
+      }
+      if (this.Date_Created === "") {
+        this.Date_Created = this.actionData[1];
+      }
+      if (this.recruit_action === "") {
+        this.selectedValueRecruitAction = this.actionData[2];
+      }
+      if (this.NOA === "") {
+        this.NOA = this.actionData[4];
+      }
+      if (this.Authority === "") {
+        this.Authority = this.actionData[5];
+      }
+      if (this.ieNumber === "") {
+        this.ieNumber = this.actionData[6];
+      }
+      if (this.Date_Receieved === "") {
+        this.Date_Receieved = this.actionData[7];
+      }
+      if (this.Returned === "") {
+        this.selectedValueReturned = this.actionData[8];
+      }
+      if (this.Keyed === "") {
+        this.selectedValueKeyed = this.actionData[9];
+      }
+      if (this.Applied === "") {
+        this.selectedValueApplied = this.actionData[10];
+      }
       const payload = {
         action_number: this.action_number,
         Date_Created: this.Date_Created,
@@ -216,21 +246,19 @@ export default {
       };
       console.log(payload);
       this.updateData({ payload });
+      let modalClose = this.showModal;
+      modalClose = false;
+      this.$emit("clicked", modalClose);
     },
   },
 };
-//['TST-TST-2023-0001', 'Sun, 01 Jan 2023 00:00:00 GMT', 1, 1, 101, 'BWA', 'ie7046', 'Sun, 29 Jan 2023 00:00:00 GMT', 0, 1, __ob__: Observer]
-// action_number, date_created, recruit_action, user_id, NOA,
-//             Authority, Processor_ieNumber, Date_Receieved, Returned, Keyed
-//             Applied
 </script>
 
 <style scoped>
 .contact-form {
   display: grid;
   gap: 1.25rem;
-  grid-template-columns: 1fr 1fr;
-  margin: 3% 20% 3% 20%;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
 .form-group {
