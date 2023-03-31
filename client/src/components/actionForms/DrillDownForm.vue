@@ -183,7 +183,7 @@ export default {
       action_number: "",
       Date_Created: "",
       recruit_action: [true, false],
-      selectedValueRecruitAction: "null",
+      selectedValueRecruitAction: null,
       NOA: "",
       ieNumber: "",
       Authority: "",
@@ -206,7 +206,7 @@ export default {
       if (this.Date_Created === "") {
         this.Date_Created = this.actionData[1];
       }
-      if (this.recruit_action === "") {
+      if (this.selectedValueRecruitAction === null) {
         this.selectedValueRecruitAction = this.actionData[2];
       }
       if (this.NOA === "") {
@@ -221,13 +221,13 @@ export default {
       if (this.Date_Receieved === "") {
         this.Date_Receieved = this.actionData[7];
       }
-      if (this.Returned === "") {
+      if (this.selectedValueReturned === null) {
         this.selectedValueReturned = this.actionData[8];
       }
-      if (this.Keyed === "") {
+      if (this.selectedValueKeyed === null) {
         this.selectedValueKeyed = this.actionData[9];
       }
-      if (this.Applied === "") {
+      if (this.selectedValueApplied === null) {
         this.selectedValueApplied = this.actionData[10];
       }
       const payload = {

@@ -99,15 +99,14 @@ const actions = {
 	},
 
 	updateData: ({ commit }, { payload }) => {
-		console.log('ACTION!!!')
-		// const path = 'http://localhost:5000/fetchDrillDownDataForForm';
-		// axios.post(path, payload)
-		// 	.then((res) => {
-		// 		commit('setActionData', res.data)
-		// 	})
-		// 	.catch((error) => {
-		// 		console.log(error);
-		// 	});
+		const path = 'http://localhost:5000/updateAction';
+		axios.post(path, payload)
+			.then((res) => {
+				commit('setActionData', res.data)
+			})
+			.catch((error) => {
+				console.log(error);
+			});
 	},
 
 };
