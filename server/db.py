@@ -113,6 +113,8 @@ class Connection():
         self.conn.commit()
 
     def updateAction(self, post_data):
+        post_data['Date_Created'] = datetime.strptime(post_data['Date_Created'], "%a, %d %b %Y %H:%M:%S %Z")
+        post_data['Date_Receieved'] = datetime.strptime(post_data['Date_Receieved'], "%a, %d %b %Y %H:%M:%S %Z")
         self._SQL = """UPDATE actions SET
         action_number = %s,
         date_created = %s, 
@@ -125,10 +127,10 @@ class Connection():
         Keyed = %s, 
         Applied = %s 
         WHERE action_number = %s"""
-        self.cursor.execute(self._SQL, (post_data['action_number'], post_data['user_id'],
-                                        post_data['NOA'], post_data['Authority'], post_data['Processor_ieNumber'],
-                                        post_data['Date_Receieved'], post_data['Returned'], post_data['Keyed'],
-                                        post_data['Applied'], post_data['action_number']))
+        self.cursor.execute(self._SQL, (post_data['action_number'], post_data['Date_Created'],
+                                        post_data['recruit_action'], post_data['NOA'], post_data['Authority'],
+                                        post_data['ieNumber'], post_data['Date_Receieved'], post_data['Returned'], 
+                                        post_data['Keyed'], post_data['Applied'], post_data['action_number']))
         self.conn.commit()
 
 #{'action_number': 'TST-TST-2023-0001', 'Date_Created': 'Sun, 01 Jan 2023 00:00:00 GMT', 

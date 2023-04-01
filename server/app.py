@@ -116,10 +116,9 @@ def fetchDrillDownDataForForm():
 @app.route('/updateAction', methods=['POST'])
 def updateAction():
     if request.method == 'POST':
-        analyze = Analyze()
+        db = Connection()
         post_data = request.get_json()
-        print(post_data)
-        # action_data = analyze.fetch_drill_down_data_for_form(post_data)
+        db.updateAction(post_data)
     return jsonify('7')
 
 
