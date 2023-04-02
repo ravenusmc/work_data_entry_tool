@@ -125,7 +125,5 @@ def updateAction():
     return jsonify(table_data)
 
 
-
-
 if __name__ == '__main__':
     app.run()
