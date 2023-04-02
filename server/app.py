@@ -122,6 +122,7 @@ def updateAction():
         db.updateAction(post_data)
         post_data['ieNumber'] = post_data['userIENumber']
         table_data = analyze.get_non_missing_actions_for_user(post_data)
+        print(table_data)
     return jsonify(table_data)
 
 
