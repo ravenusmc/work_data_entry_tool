@@ -117,9 +117,12 @@ def fetchDrillDownDataForForm():
 def updateAction():
     if request.method == 'POST':
         db = Connection()
+        analyze = Analyze()
         post_data = request.get_json()
         db.updateAction(post_data)
-    return jsonify('7')
+        post_data['ieNumber'] = post_data['userIENumber']
+        table_data = analyze.get_non_missing_actions_for_user(post_data)
+    return jsonify(table_data)
 
 
 

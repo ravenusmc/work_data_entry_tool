@@ -99,10 +99,12 @@ const actions = {
 	},
 
 	updateData: ({ commit }, { payload }) => {
+		payload['id'] = store.state.session.userObject.id
+		payload['userIENumber'] = store.state.session.userObject.ieNumber
 		const path = 'http://localhost:5000/updateAction';
 		axios.post(path, payload)
 			.then((res) => {
-				commit('setActionData', res.data)
+				commit('setActionsByUser', res.data)
 			})
 			.catch((error) => {
 				console.log(error);

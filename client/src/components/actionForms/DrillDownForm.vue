@@ -240,11 +240,8 @@ export default {
         Date_Receieved: this.Date_Receieved,
         Returned: this.selectedValueReturned,
         Keyed: this.selectedValueKeyed,
-        Applied: this.selectedValueApplied,
-        // action_id: this.actionID,
-        // user_id: this.userObject["id"],
+        Applied: this.selectedValueApplied
       };
-      console.log(payload);
       this.updateData({ payload });
       let modalClose = this.showModal;
       modalClose = false;
