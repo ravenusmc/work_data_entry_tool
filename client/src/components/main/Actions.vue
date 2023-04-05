@@ -99,13 +99,15 @@ export default {
     ...mapGetters("data", ["actionsByUser"]),
   },
   methods: {
-    ...mapActions("data", ["getSpecificActionsByUser"]),
+    ...mapActions("data", ["getSpecificActionsByUser", "filterTableAction"]),
     filterTable() {
-      console.log("Hi");
-      // const payload = {
-      //   action_number: this.actionNumber,
-      // };
-      // this.submitMissingActionToDatabase({ payload });
+      const payload = {
+        action_number: this.action_number,
+        recruit_action: this.selectedValueRecruitAction,
+        NOA: this.NOA, 
+        Authority: this.Authority,
+      };
+      this.filterTableAction({ payload });
     },
   },
   mounted() {

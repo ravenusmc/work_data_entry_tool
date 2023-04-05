@@ -122,8 +122,19 @@ def updateAction():
         db.updateAction(post_data)
         post_data['ieNumber'] = post_data['userIENumber']
         table_data = analyze.get_non_missing_actions_for_user(post_data)
-        print(table_data)
     return jsonify(table_data)
+
+@app.route('/filterTable', methods=['POST'])
+def filterTable():
+    if request.method == 'POST':
+        db = Connection()
+        post_data = request.get_json()
+        print(post_data)
+        print(len(post_data))
+        # db.updateAction(post_data)
+        # post_data['ieNumber'] = post_data['userIENumber']
+        # table_data = analyze.get_non_missing_actions_for_user(post_data)
+    return jsonify('7')
 
 
 if __name__ == '__main__':

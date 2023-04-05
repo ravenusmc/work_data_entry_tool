@@ -111,6 +111,20 @@ const actions = {
 			});
 	},
 
+	filterTableAction: ({ commit }, { payload }) => {
+		payload['id'] = store.state.session.userObject.id
+		payload['userIENumber'] = store.state.session.userObject.ieNumber
+		const path = 'http://localhost:5000/filterTable';
+		axios.post(path, payload)
+			.then((res) => {
+				commit('setActionsByUser', res.data)
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	},
+
+
 };
 
 const mutations = {
