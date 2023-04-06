@@ -124,20 +124,18 @@ class Analyze():
         obj = Analyze()
         table_data = []
         columns = ['Action Number', 'Date Created', 'Recruit action', 'NOA',
-                   'Authority', 'Processor IENumber', 'Date Received', 'Returned', 
+                   'Authority', 'Processor IENumber', 'Date Received', 'Returned',
                    'Keyed', 'Applied']
         table_data.append(columns)
-        query = ("""SELECT action_number, date_created, recruit_action, NOA, Authority, 
+        query = ("""SELECT action_number, date_created, recruit_action, NOA, Authority,
         Processor_ieNumber, Date_Receieved, Returned, Keyed, Applied, action_id
         FROM actions WHERE Processor_ieNumber = %s""")
         self.cursor.execute(query, (post_data['ieNumber'],))
         data = self.cursor.fetchall()
-        obj.build_table(data, table_data)
-        return table_data
-    
+        return obj.build_table(data, table_data)
+
     def build_table(self, data, table_data):
         count = 0
-        print(data[0][1])
         while count < len(data):
             rows = []
             action_number = data[count][0]
@@ -173,14 +171,33 @@ class Analyze():
             table_data.append(rows)
             count += 1
         return table_data
-    
+
     def fetch_drill_down_data_for_form(self, post_data):
         query = (
             """SELECT action_number, date_created, recruit_action, user_id, NOA,
-            Authority, Processor_ieNumber, Date_Receieved, Returned, Keyed, Applied 
+            Authority, Processor_ieNumber, Date_Receieved, Returned, Keyed, Applied
             FROM actions WHERE action_number = %s""")
         self.cursor.execute(query, (post_data['actionNumber'],))
         return self.cursor.fetchone()
+
+    def filter_table_by_one_column(self, column_list):
+        obj = Analyze()
+        table_data = []
+        columns = ['Action Number', 'Date Created', 'Recruit action', 'NOA',
+                   'Authority', 'Processor IENumber', 'Date Received', 'Returned', 
+                   'Keyed', 'Applied']
+        table_data.append(columns)
+        query = ('''SELECT action_number, date_created, recruit_action, NOA, Authority, 
+        Processor_ieNumber, Date_Receieved, Returned, Keyed, Applied, action_id
+        FROM actions 
+        WHERE ''' + column_list[0] + ''' = %s AND Processor_ieNumber = %s ''')
+        self.cursor.execute(query, (column_list[1], column_list[2]))
+        rows = self.cursor.fetchall()
+        obj.build_table(rows, table_data)
+        return obj.build_table(rows, table_data)
+
+
+# ['recruit_action', True, 'ie7046', 1]
 
 
 # obj = Analyze()

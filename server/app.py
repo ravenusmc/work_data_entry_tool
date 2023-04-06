@@ -128,13 +128,14 @@ def updateAction():
 def filterTable():
     if request.method == 'POST':
         db = Connection()
+        analyze = Analyze()
         post_data = request.get_json()
-        print(post_data)
-        print(len(post_data))
+        column_list = db.determine_values_in_table_filter(post_data)
+        table_data = analyze.filter_table_by_one_column(column_list)
         # db.updateAction(post_data)
         # post_data['ieNumber'] = post_data['userIENumber']
         # table_data = analyze.get_non_missing_actions_for_user(post_data)
-    return jsonify('7')
+    return jsonify(table_data)
 
 
 if __name__ == '__main__':

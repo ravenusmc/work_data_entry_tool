@@ -21,6 +21,24 @@ class Connection():
         password = post_data['password'].encode('utf-8')
         hashed = bcrypt.hashpw(password, bcrypt.gensalt())
         return hashed
+    
+    def determine_values_in_table_filter(self, post_data):
+        column_list = []
+        if post_data['action_number'] != "":
+            column_list.append('action_number')
+            column_list.append(post_data['action_number'])
+        if post_data['recruit_action'] != "":
+            column_list.append('recruit_action')
+            column_list.append(post_data['recruit_action'])
+        if post_data['NOA'] != "":
+            column_list.append('NOA')
+            column_list.append(post_data['NOA'])
+        if post_data['Authority'] != "":
+            column_list.append('Authority')
+            column_list.append(post_data['Authority'])
+        column_list.append(post_data['userIENumber'])
+        column_list.append(post_data['id'])
+        return column_list
 
     # This method will insert a new user into the database.
     def insert(self, user, hashed):
@@ -132,6 +150,10 @@ class Connection():
                                         post_data['ieNumber'], post_data['Date_Receieved'], post_data['Returned'], 
                                         post_data['Keyed'], post_data['Applied'], post_data['action_number']))
         self.conn.commit()
+    
+
+
+
 
 #{'action_number': 'TST-TST-2023-0001', 'Date_Created': 'Sun, 01 Jan 2023 00:00:00 GMT', 
 # 'recruit_action': 1, 'NOA': 101, 'Authority': 'BWA', 'ieNumber': 'ie7046', 
