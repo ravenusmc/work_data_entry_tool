@@ -27,7 +27,7 @@ class Connection():
         if post_data['action_number'] != "":
             column_list.append('action_number')
             column_list.append(post_data['action_number'])
-        if post_data['recruit_action'] != "":
+        if post_data['recruit_action'] != None:
             column_list.append('recruit_action')
             column_list.append(post_data['recruit_action'])
         if post_data['NOA'] != "":
@@ -37,7 +37,6 @@ class Connection():
             column_list.append('Authority')
             column_list.append(post_data['Authority'])
         column_list.append(post_data['userIENumber'])
-        column_list.append(post_data['id'])
         return column_list
 
     # This method will insert a new user into the database.

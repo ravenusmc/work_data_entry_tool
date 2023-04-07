@@ -195,6 +195,45 @@ class Analyze():
         rows = self.cursor.fetchall()
         obj.build_table(rows, table_data)
         return obj.build_table(rows, table_data)
+    
+    def filter_table_by_two_columns(self, column_list):
+        obj = Analyze()
+        table_data = []
+        columns = ['Action Number', 'Date Created', 'Recruit action', 'NOA',
+                   'Authority', 'Processor IENumber', 'Date Received', 'Returned', 
+                   'Keyed', 'Applied']
+        table_data.append(columns)
+        query = ('''SELECT action_number, date_created, recruit_action, NOA, Authority, 
+        Processor_ieNumber, Date_Receieved, Returned, Keyed, Applied, action_id
+        FROM actions 
+        WHERE ''' + column_list[0] + ''' = %s AND ''' +
+        column_list[2] + ''' = %s
+        AND Processor_ieNumber = %s ''')
+        self.cursor.execute(query, (column_list[1], column_list[3], column_list[4]))
+        rows = self.cursor.fetchall()
+        obj.build_table(rows, table_data)
+        return obj.build_table(rows, table_data)
+
+    def filter_table_by_three_columns(self, column_list):
+        obj = Analyze()
+        table_data = []
+        columns = ['Action Number', 'Date Created', 'Recruit action', 'NOA',
+                   'Authority', 'Processor IENumber', 'Date Received', 'Returned', 
+                   'Keyed', 'Applied']
+        table_data.append(columns)
+        query = ('''SELECT action_number, date_created, recruit_action, NOA, Authority, 
+        Processor_ieNumber, Date_Receieved, Returned, Keyed, Applied, action_id
+        FROM actions 
+        WHERE ''' + column_list[0] + ''' = %s AND ''' +
+        column_list[2] + ''' = %s AND ''' +
+        column_list[4] + ''' = %s 
+        AND Processor_ieNumber = %s ''')
+        self.cursor.execute(query, (column_list[1], column_list[3], column_list[5], column_list[6]))
+        rows = self.cursor.fetchall()
+        obj.build_table(rows, table_data)
+        return obj.build_table(rows, table_data)
+    
+    
 
 
 # ['recruit_action', True, 'ie7046', 1]

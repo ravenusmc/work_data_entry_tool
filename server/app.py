@@ -131,10 +131,14 @@ def filterTable():
         analyze = Analyze()
         post_data = request.get_json()
         column_list = db.determine_values_in_table_filter(post_data)
-        table_data = analyze.filter_table_by_one_column(column_list)
-        # db.updateAction(post_data)
-        # post_data['ieNumber'] = post_data['userIENumber']
-        # table_data = analyze.get_non_missing_actions_for_user(post_data)
+        print(column_list)
+        if len(column_list) == 3:
+            table_data = analyze.filter_table_by_one_column(column_list)
+        if len(column_list) == 5:
+            table_data = analyze.filter_table_by_two_columns(column_list)
+        if len(column_list) == 7:
+            table_data = analyze.filter_table_by_three_columns(column_list)
+        print(table_data)
     return jsonify(table_data)
 
 
