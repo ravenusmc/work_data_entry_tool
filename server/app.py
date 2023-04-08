@@ -131,16 +131,18 @@ def filterTable():
         analyze = Analyze()
         post_data = request.get_json()
         column_list = db.determine_values_in_table_filter(post_data)
-        print(column_list)
+        # I don't believe that I need to do a search for when the action number is 
+        # used - there should only be one matching action number. I mean when action
+        # number is used I could simple search off that...fix???
         if len(column_list) == 3:
             table_data = analyze.filter_table_by_one_column(column_list)
         if len(column_list) == 5:
             table_data = analyze.filter_table_by_two_columns(column_list)
         if len(column_list) == 7:
             table_data = analyze.filter_table_by_three_columns(column_list)
-        print(table_data)
+        if len(column_list) == 9:
+            table_data = analyze.filter_table_by_four_columns(column_list)
     return jsonify(table_data)
-
 
 if __name__ == '__main__':
     app.run()
