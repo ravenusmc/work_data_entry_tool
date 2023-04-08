@@ -48,6 +48,16 @@
             Submit
           </button>
         </div>
+                <div class="btn-div">
+          <button
+            @click.prevent="resetTable"
+            type="submit"
+            name="resetTable"
+            class="btn btn-success"
+          >
+            Reset Table
+          </button>
+        </div>
       </form>
       <GraphCard
         :typeOne="typeOne"
@@ -109,12 +119,12 @@ export default {
       };
       this.filterTableAction({ payload });
     },
+    resetTable() {
+      this.getSpecificActionsByUser();
+    },
   },
   mounted() {
-    const payload = {
-      action_number: 7,
-    };
-    this.getSpecificActionsByUser({ payload });
+    this.getSpecificActionsByUser();
   },
 };
 </script>
