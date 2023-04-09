@@ -13,6 +13,7 @@ const data = {
 	missingActionSubmitted: false, 
 	actionsByUser: {},
 	actionData: [],
+	showUserActions: false, 
 };
 
 const getters = {
@@ -23,6 +24,7 @@ const getters = {
 	missingActionSubmitted: (state) => state.missingActionSubmitted,
 	actionsByUser: (state) => state.actionsByUser,
 	actionData: (state) => state.actionData,
+	showUserActions: (state) => state.showUserActions,
 };
 
 const actions = {

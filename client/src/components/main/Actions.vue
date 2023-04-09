@@ -48,7 +48,7 @@
             Submit
           </button>
         </div>
-                <div class="btn-div">
+        <div>
           <button
             @click.prevent="resetTable"
             type="submit"
@@ -80,7 +80,7 @@ export default {
   data() {
     return {
       action_number: "",
-      recruit_action: [true, false],
+      recruit_action: [true, false, null],
       selectedValueRecruitAction: null,
       NOA: "",
       Authority: "",
@@ -114,7 +114,7 @@ export default {
       const payload = {
         action_number: this.action_number,
         recruit_action: this.selectedValueRecruitAction,
-        NOA: this.NOA, 
+        NOA: this.NOA,
         Authority: this.Authority,
       };
       this.filterTableAction({ payload });
@@ -130,11 +130,14 @@ export default {
 </script>
 
 <style scoped>
-
 form {
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
 
+.btn-div {
+  margin-left: 1%;
+  margin-right: 1%;
+}
 </style>

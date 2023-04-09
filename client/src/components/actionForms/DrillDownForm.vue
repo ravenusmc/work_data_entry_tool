@@ -117,7 +117,7 @@
           </select>
         </div>
       </div>
-      <div class="btn-div">
+      <div>
         <button
           @click.prevent="updateAction"
           type="submit"
