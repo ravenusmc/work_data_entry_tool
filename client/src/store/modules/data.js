@@ -126,6 +126,17 @@ const actions = {
 			});
 	},
 
+	showUserActionTable: ({ commit }) => {
+		let value = store.state.data.showUserActions
+		if (value) {
+			value = false
+		}else {
+			value = true
+		}
+		console.log(value)
+		commit('setShowUserActions', value)
+	}
+
 
 };
 
@@ -157,6 +168,10 @@ const mutations = {
 
 	setActionData(state, value) {
 		state.actionData = value
+	},
+
+	setShowUserActions(state, value) {
+		state.showUserActions = value
 	},
 
 };

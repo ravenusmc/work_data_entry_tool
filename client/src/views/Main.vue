@@ -3,7 +3,7 @@
     <LocateAction />
     <ActionsForm v-if="actionFound" />
     <MissingAction v-if="actionNotFound" />
-    <div>
+    <div class='btn-div' v-if="!showUserActions">
       <button
         @click.prevent="showAllUserActions"
         type="submit"
@@ -11,6 +11,16 @@
         class="btn btn-success"
       >
         Show User Actions
+      </button>
+    </div>
+    <div class='btn-div' v-if="showUserActions">
+      <button
+        @click.prevent="showAllUserActions"
+        type="submit"
+        name="login"
+        class="btn btn-warning"
+      >
+        Hide User Actions
       </button>
     </div>
     <Actions v-if="showUserActions" />
@@ -26,6 +36,11 @@ import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "Main",
+  data() {
+    return {
+      userTable: false,
+    };
+  },
   components: {
     LocateAction,
     ActionsForm,
@@ -36,11 +51,19 @@ export default {
     ...mapGetters("data", ["actionFound", "actionNotFound", "showUserActions"]),
   },
   methods: {
+    ...mapActions("data", ["showUserActionTable"]),
     showAllUserActions() {
-      console.log('HI')
-      // this.getSpecificActionsByUser();
+      this.showUserActionTable();
     },
   },
 };
 </script>
+
+<style scoped>
+
+.btn-div {
+  margin: 1% 0 1% 0;
+}
+
+</style>
 
