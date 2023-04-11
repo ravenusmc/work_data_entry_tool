@@ -1,14 +1,14 @@
 <template>
   <div id="app">
     <Navbar />
-    <router-view/>
+    <router-view />
     <Footer />
   </div>
 </template>
 
 <script>
-import Navbar from '@/components/generic/Navbar.vue';
-import Footer from '@/components/generic/Footer.vue';
+import Navbar from "@/components/generic/Navbar.vue";
+import Footer from "@/components/generic/Footer.vue";
 
 export default {
   components: {
@@ -19,13 +19,21 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  /* color: #2c3e50; */
+* {
+  box-sizing: border-box;
 }
+
+html, body {
+  height: 100%;
+}
+
+#app {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  text-align: center;
+  min-height: 100vh;
+}
+
 
 nav {
   padding: 30px;
@@ -33,7 +41,6 @@ nav {
 
 nav a {
   font-weight: bold;
-  /* color: #2c3e50; */
 }
 
 nav a.router-link-exact-active {

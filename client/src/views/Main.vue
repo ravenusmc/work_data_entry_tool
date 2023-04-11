@@ -10,7 +10,7 @@
         name="login"
         class="btn btn-success"
       >
-        Show User Actions
+        Show User Action Table
       </button>
     </div>
     <div class='btn-div' v-if="showUserActions">
@@ -20,7 +20,7 @@
         name="login"
         class="btn btn-warning"
       >
-        Hide User Actions
+        Hide User Action Table
       </button>
     </div>
     <Actions v-if="showUserActions" />

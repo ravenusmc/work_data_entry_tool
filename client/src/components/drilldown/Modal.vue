@@ -9,7 +9,6 @@
             <!-- Modal Body area -->
             <DrillDownForm @clicked="onClickChild" />
             <!-- End Modal Body area -->
-            <hr />
             <!-- Modal Footer area -->
             <div class="modal-footer">
               <slot name="footer">

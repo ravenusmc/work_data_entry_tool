@@ -26,7 +26,9 @@
               />
             </div>
             <div class="field">
-              <label class='password-label' for="exampleInputPassword2">Password:</label>
+              <label class="password-label" for="exampleInputPassword2"
+                >Password:</label
+              >
               <input
                 class="input is-primary is-rounded"
                 type="password"
@@ -108,7 +110,7 @@ section {
   align-items: center;
 }
 .password-label {
-  margin-right: 3%;
+  margin-right: 2%;
 }
 
 button {
