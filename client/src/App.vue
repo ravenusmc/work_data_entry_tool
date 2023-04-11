@@ -23,17 +23,17 @@ export default {
   box-sizing: border-box;
 }
 
-html, body {
-  height: 100%;
+html,
+body {
+  min-height: 100vh;
 }
 
 #app {
   display: grid;
   grid-template-rows: auto 1fr auto;
   text-align: center;
-  min-height: 100vh;
+  /* min-height: 100vh; */
 }
-
 
 nav {
   padding: 30px;

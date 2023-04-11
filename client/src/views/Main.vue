@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class='main-div'>
     <LocateAction />
     <ActionsForm v-if="actionFound" />
     <MissingAction v-if="actionNotFound" />
@@ -60,6 +60,10 @@ export default {
 </script>
 
 <style scoped>
+
+.main-div {
+  min-height: 55vh;
+}
 
 .btn-div {
   margin: 1% 0 1% 0;
