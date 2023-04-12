@@ -1,7 +1,7 @@
 <template>
   <div>
-    <GChart
-      :type="typeOne"
+    <Graphs
+      :typeOne="typeOne"
       :data="allActionsByCount"
       :options="chartOptionsOne"
     />
@@ -10,12 +10,12 @@
 
 <script>
 import { mapGetters } from "vuex";
-import GraphCard from "@/components/Graphs/GraphCard.vue";
+import Graphs from "@/components/Graphs/Graphs.vue";
 
 export default {
   name: "ActionsByCount",
   components: {
-    GraphCard,
+    Graphs,
   },
   computed: {
     ...mapGetters("analyze", ["allActionsByCount"]),

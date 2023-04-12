@@ -1,10 +1,10 @@
 <template>
   <div>
-    <Modal
+    <!-- <Modal
       :showModal="showModal"
       :modalTitle="modalTitle"
       @close-modal="update"
-    />
+    /> -->
     <GChart
       :type="typeOne"
       :data="data"
@@ -17,20 +17,20 @@
 
 <script>
 import { mapActions } from "vuex";
-import Modal from "@/components/drilldown/Modal.vue";
+// import Modal from "@/components/drilldown/Modal.vue";
 import { GChart } from "vue-google-charts";
 
 export default {
-  name: "GraphCard",
-  props: ["typeOne", "data", "options"],
+  name: "Graphs",
+  props: ['typeOne', 'data', 'options'],
   components: {
-    Modal,
+    // Modal,
     GChart,
   },
   data() {
     return {
-      modalTitle: "",
-      showModal: false,
+      // modalTitle: "",
+      // showModal: false,
       chartEvents: {
         select: () => {
           console.log("HI")

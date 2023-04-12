@@ -1,7 +1,7 @@
 <template>
   <div>
-    <GChart
-      :type="typeOne"
+    <Graphs
+      :typeOne="typeOne"
       :data="recruitTypes"
       :options="chartOptionsOne"
     />
@@ -10,12 +10,12 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
-import GraphCard from "@/components/Graphs/GraphCard.vue";
+import Graphs from "@/components/Graphs/Graphs.vue";
 
 export default {
   name: "ActionsByRecruitType",
   components: {
-    GraphCard,
+    Graphs,
   },
   computed: {
     ...mapGetters("analyze", ["recruitTypes"]),

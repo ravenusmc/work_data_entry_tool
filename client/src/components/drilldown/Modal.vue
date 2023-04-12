@@ -56,7 +56,6 @@ export default {
     },
     // Need to fix this duplication here
     onClickChild(value) {
-      console.log(value)
       this.$emit("close-modal", value);
     }
   },

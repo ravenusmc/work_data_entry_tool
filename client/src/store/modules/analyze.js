@@ -52,7 +52,6 @@ const actions = {
 		const path = 'http://localhost:5000/changeDynamicGraphs';
 		axios.post(path, payload)
 			.then((res) => {
-				console.log(res.data[1])
 				commit('setActionsByIeNumber', res.data[0])
 				commit('setRecruitActionCount', res.data[1])
 			})

@@ -84,14 +84,12 @@ export default {
       selectedValueRecruitAction: null,
       NOA: "",
       Authority: "",
-      division_name: "Bottoms",
       typeOne: "Table",
       chartOptionsOne: {
         title: "All Actions by User",
         legend: { position: "top" },
         colors: ["#f24867"],
         height: 500,
-        allowHTML: true,
         animation: {
           duration: 1000,
           easing: "linear",
