@@ -33,7 +33,6 @@ export default {
       // showModal: false,
       chartEvents: {
         select: () => {
-          console.log("HI")
           this.modalTitle = "Drill Down Data for ";
           // console.log(this.data) // This will show you the data
           const chart = this.$refs.gChart.chartObject;
@@ -43,11 +42,12 @@ export default {
           let row = selection.row + 1;
           // This pulls out the specific date from the element that the user
           // clicked on
-          let actionNumber = this.data[row][0];
-          const payload = {
-            actionNumber,
-          };
-          this.fetchDrillDownDataForForm({ payload });
+          let selectedData = this.data[row][0];
+          console.log(selectedData)
+          // const payload = {
+          //   actionNumber,
+          // };
+          // this.fetchDrillDownDataForForm({ payload });
           this.showModal = true;
         },
       }, // End Chart Events
