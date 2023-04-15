@@ -144,5 +144,18 @@ def filterTable():
             table_data = analyze.filter_table_by_four_columns(column_list)
     return jsonify(table_data)
 
+
+@app.route('/fetchDrillDownDataForGraphs', methods=['POST'])
+def fetchDrillDownDataForGraphs():
+    if request.method == 'POST':
+        db = Connection()
+        analyze = Analyze()
+        post_data = request.get_json()
+        print(post_data)
+        # column_list = db.determine_values_in_table_filter(post_data)
+    return jsonify('7')
+
+
+
 if __name__ == '__main__':
     app.run()

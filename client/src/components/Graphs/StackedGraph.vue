@@ -27,7 +27,7 @@ export default {
         title: "All Actions by NOA and Processor",
         legend: { position: "top" },
         height: 500,
-				width: 650,
+				width: 651,
 				isStacked: true,
         vAxes: {
           0: { title: "Count" },

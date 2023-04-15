@@ -60,6 +60,18 @@ const actions = {
 			});
 	},
 
+	fetchDrillDownData: ({ commit }, { payload }) => {
+		const path = 'http://localhost:5000/fetchDrillDownDataForGraphs';
+		axios.post(path, payload)
+			.then((res) => {
+				// commit('setActionsByIeNumber', res.data[0])
+				// commit('setRecruitActionCount', res.data[1])
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	},
+
 };
 
 const mutations = {

@@ -1,10 +1,10 @@
 <template>
   <div>
-    <!-- <Modal
+    <Modal
       :showModal="showModal"
       :modalTitle="modalTitle"
       @close-modal="update"
-    /> -->
+    />
     <GChart
       :type="typeOne"
       :data="data"
@@ -17,25 +17,26 @@
 
 <script>
 import { mapActions } from "vuex";
-// import Modal from "@/components/drilldown/Modal.vue";
+import Modal from "@/components/drilldown/Modal.vue";
 import { GChart } from "vue-google-charts";
 
 export default {
   name: "Graphs",
-  props: ['typeOne', 'data', 'options'],
+  props: ["typeOne", "data", "options"],
   components: {
-    // Modal,
+    Modal,
     GChart,
   },
   data() {
     return {
-      // modalTitle: "",
-      // showModal: false,
+      modalTitle: "",
+      showModal: false,
       chartEvents: {
         select: () => {
           this.modalTitle = "Drill Down Data for ";
           // console.log(this.data) // This will show you the data
           const chart = this.$refs.gChart.chartObject;
+          let selectedGraph = chart.ga;
           const selection = chart.getSelection()[0];
           // I need to add one to the row because the first row contains the
           // column headers.
@@ -43,23 +44,20 @@ export default {
           // This pulls out the specific date from the element that the user
           // clicked on
           let selectedData = this.data[row][0];
-          console.log(selectedData)
-          // const payload = {
-          //   actionNumber,
-          // };
-          // this.fetchDrillDownDataForForm({ payload });
+          const payload = {
+            selectedData,
+          };
+          this.fetchDrillDownData({ payload });
           this.showModal = true;
         },
       }, // End Chart Events
     };
   },
   methods: {
-    ...mapActions('data', ['fetchDrillDownDataForForm']),
+    ...mapActions("analyze", ["fetchDrillDownData"]),
     update(close) {
       this.showModal = close;
     },
-    // close(close) {
-    // },
   }, // End of Methods
 };
 </script>
