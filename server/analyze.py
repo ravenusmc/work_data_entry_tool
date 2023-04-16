@@ -253,6 +253,9 @@ class Analyze():
         obj.build_table(rows, table_data)
         return obj.build_table(rows, table_data)
     
+    def getDrillDownData(self, post_data):
+        
+    
     
 
 # obj = Analyze()

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Modal
+    <AnalyzeModal
       :showModal="showModal"
       :modalTitle="modalTitle"
       @close-modal="update"
@@ -17,14 +17,14 @@
 
 <script>
 import { mapActions } from "vuex";
-import Modal from "@/components/drilldown/Modal.vue";
+import AnalyzeModal from "@/components/drilldown/AnalyzeModal.vue";
 import { GChart } from "vue-google-charts";
 
 export default {
   name: "Graphs",
   props: ["typeOne", "data", "options"],
   components: {
-    Modal,
+    AnalyzeModal,
     GChart,
   },
   data() {
