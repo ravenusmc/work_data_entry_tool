@@ -151,10 +151,9 @@ def fetchDrillDownDataForGraphs():
         db = Connection()
         analyze = Analyze()
         post_data = request.get_json()
-        analyze.getDrillDownData(post_data)
-        print(post_data)
-        # column_list = db.determine_values_in_table_filter(post_data)
-    return jsonify('7')
+        table_data = analyze.getDrillDownData(post_data)
+        print(table_data)
+    return jsonify(table_data)
 
 
 

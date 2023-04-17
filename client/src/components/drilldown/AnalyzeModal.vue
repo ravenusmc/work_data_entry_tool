@@ -7,7 +7,11 @@
             <h1>{{ modalTitle }}</h1>
             <hr />
             <!-- Modal Body area -->
-            <DrillDownForm @clicked="onClickChild" />
+            <GChart
+              :type="Table"
+              :data="drillDownData"
+              :options="chartOptionsDrillDown"
+            />
             <!-- End Modal Body area -->
             <!-- Modal Footer area -->
             <div class="modal-footer">
@@ -26,14 +30,14 @@
 </template>
 
 <script>
-import DrillDownForm from "@/components/actionForms/DrillDownForm.vue";
+// import AnalyzeGraphs from "@/components/Graphs/AnalyzeGraphs.vue";
 import { mapGetters } from "vuex";
 
 export default {
   name: "AnalyzeModal",
-  components: {
-    DrillDownForm,
-  },
+  // components: {
+  //   AnalyzeGraphs,
+  // },
   props: ["showModal", "modalTitle"],
   data() {
     return {
@@ -46,7 +50,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters("data", ["drillDownData"]),
+    ...mapGetters("analyze", ["drillDownData"]),
   }, // End Computed Area
   methods: {
     closeModal() {
@@ -57,7 +61,7 @@ export default {
     // Need to fix this duplication here
     onClickChild(value) {
       this.$emit("close-modal", value);
-    }
+    },
   },
 };
 </script>

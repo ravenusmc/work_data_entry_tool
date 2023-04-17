@@ -21,7 +21,7 @@ import AnalyzeModal from "@/components/drilldown/AnalyzeModal.vue";
 import { GChart } from "vue-google-charts";
 
 export default {
-  name: "Graphs",
+  name: "AnalyzeGraphs",
   props: ["typeOne", "data", "options"],
   components: {
     AnalyzeModal,
@@ -33,18 +33,25 @@ export default {
       showModal: false,
       chartEvents: {
         select: () => {
-          this.modalTitle = "Drill Down Data for ";
+          this.modalTitle = "Drill Down Data";
           // console.log(this.data) // This will show you the data
           const chart = this.$refs.gChart.chartObject;
+          // This gets the specific graph that has been clicked on
+          // There maybe a better way to do this. 
           let selectedGraph = chart.ga;
           const selection = chart.getSelection()[0];
           // I need to add one to the row because the first row contains the
           // column headers.
           let row = selection.row + 1;
+          let columnType = ''
+          if (selectedGraph === 648) {
+            columnType = 'NOA'
+          }
           // This pulls out the specific date from the element that the user
           // clicked on
           let selectedData = this.data[row][0];
           const payload = {
+            columnType,
             selectedData,
           };
           this.fetchDrillDownData({ payload });

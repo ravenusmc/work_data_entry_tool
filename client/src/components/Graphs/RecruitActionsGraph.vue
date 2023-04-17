@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Recruit</h1>
-    <Graphs
+    <AnalyzeGraphs
       :typeOne="typeOne"
       :data="recruitActionCount"
       :options="chartOptionsOne"
@@ -11,12 +11,12 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
-import Graphs from "@/components/Graphs/Graphs.vue";
+import AnalyzeGraphs from "@/components/Graphs/AnalyzeGraphs.vue";
 
 export default {
   name: "RecruitActionsGraph",
   components: {
-    Graphs,
+    AnalyzeGraphs,
   },
   computed: {
     ...mapGetters("analyze", ["recruitActionCount"]),

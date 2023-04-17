@@ -32,7 +32,8 @@ const data = {
 	['101', 54, 69, 63, 69],
 	['500', 60, 59, 61, 59],
 	['702', 55, 70, 57, 64],
-	['792', 57, 65, 75, 63]]
+	['792', 57, 65, 75, 63]],
+	drillDownData: [],
 };
 
 const getters = {
@@ -44,6 +45,7 @@ const getters = {
 	legalAuthority: (state) => state.legalAuthority,
 	recruitActionCount: (state) => state.recruitActionCount,
 	stackedGraph: (state) => state.stackedGraph,
+	drillDownData: (state) => state.drillDownData,
 };
 
 const actions = {
@@ -64,8 +66,8 @@ const actions = {
 		const path = 'http://localhost:5000/fetchDrillDownDataForGraphs';
 		axios.post(path, payload)
 			.then((res) => {
-				// commit('setActionsByIeNumber', res.data[0])
-				// commit('setRecruitActionCount', res.data[1])
+				console.log(res.data)
+				commit('setDrillDownData', res.data)
 			})
 			.catch((error) => {
 				console.log(error);
@@ -84,6 +86,9 @@ const mutations = {
 		state.recruitActionCount = value
 	},
 
+	setDrillDownData(state, value) {
+		state.drillDownData = value
+	},
 
 };
 
