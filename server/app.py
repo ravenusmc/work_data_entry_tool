@@ -148,11 +148,9 @@ def filterTable():
 @app.route('/fetchDrillDownDataForGraphs', methods=['POST'])
 def fetchDrillDownDataForGraphs():
     if request.method == 'POST':
-        db = Connection()
         analyze = Analyze()
         post_data = request.get_json()
         table_data = analyze.getDrillDownData(post_data)
-        print(table_data)
     return jsonify(table_data)
 
 

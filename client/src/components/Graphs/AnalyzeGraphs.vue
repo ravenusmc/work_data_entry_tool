@@ -44,16 +44,25 @@ export default {
           // column headers.
           let row = selection.row + 1;
           let columnType = ''
-          if (selectedGraph === 648) {
-            columnType = 'NOA'
-          }
           // This pulls out the specific date from the element that the user
           // clicked on
           let selectedData = this.data[row][0];
+          if (selectedGraph === 648) {
+            columnType = 'NOA'
+          }
+          if (selectedGraph === 649) {
+            if (selectedData === 'True') {
+              selectedData = true 
+            }else {
+              selectedData = false
+            }
+            columnType = 'recruit_action'
+          }
           const payload = {
             columnType,
             selectedData,
           };
+          console.log(typeof payload['selectedData'])
           this.fetchDrillDownData({ payload });
           this.showModal = true;
         },

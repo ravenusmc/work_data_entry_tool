@@ -44,7 +44,7 @@ export default {
       Table: "Table",
       chartOptionsDrillDown: {
         alternatingRowStyle: true,
-        height: 300,
+        height: 500,
         width: 800,
       }, // End Chart One Options
     };

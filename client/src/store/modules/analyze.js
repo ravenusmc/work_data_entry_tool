@@ -66,7 +66,6 @@ const actions = {
 		const path = 'http://localhost:5000/fetchDrillDownDataForGraphs';
 		axios.post(path, payload)
 			.then((res) => {
-				console.log(res.data)
 				commit('setDrillDownData', res.data)
 			})
 			.catch((error) => {
