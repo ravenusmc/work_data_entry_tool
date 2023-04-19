@@ -53,6 +53,25 @@ class Analyze():
             chart_data.append(rows)
         print(chart_data)
 
+    # def get_graph_data_ienumber_by_action_stacked(self):
+    #     chart_data = []
+    #     columns = ['Action Type', 'Count']
+    #     chart_data.append(columns)
+    #     count = 0
+    #     ieNumbers = ['ie7046', 'ie7001', 'ie7002', 'ie7003']
+    #     action_types = ['101', '500', '702', '792']
+    #     for action_type in action_types:
+    #         rows = []
+    #         query = ("""SELECT COUNT(NOA) FROM actions WHERE Processor_ieNumber = %s AND
+    #         NOA = %s""")
+    #         self.cursor.execute(query, (ieNumbers[count], action_type))
+    #         row = self.cursor.fetchone()
+    #         rows.append(action_type)
+    #         rows.append(row[0])
+    #         chart_data.append(rows)
+    #         count += 1
+    #     print(chart_data)
+
     def get_graph_data_ienumber_by_action(self, post_data):
         chart_data = []
         columns = ['Action Type', 'Count']
@@ -104,19 +123,24 @@ class Analyze():
 
     def get_graph_data_action_all_users(self):
         chart_data = []
-        columns = ['Recruit Action', 'Count']
+        columns = ['Action', 'ie7046', 'ie7001',  'ie7002', 'ie7003']
         chart_data.append(columns)
         action_types = ['101', '500', '702', '792']
         ieNumbers = ['ie7046', 'ie7001',  'ie7002', 'ie7003']
         for action_type in action_types:
+        # for ieNumber in ieNumbers:
             rows = []
             rows.append(action_type)
+            # rows.append(ieNumber)
             for ieNumber in ieNumbers:
+            # for action_type in action_types:
                 query = ("""SELECT COUNT(NOA) FROM actions WHERE Processor_ieNumber = %s AND
                 NOA = %s""")
                 self.cursor.execute(query, (ieNumber, action_type))
                 row = self.cursor.fetchone()
                 rows.append(row[0])
+                # print(rows)
+                # input()
             chart_data.append(rows)
         print(chart_data)
 
@@ -278,6 +302,10 @@ class Analyze():
 # obj.get_graph_data_by_legal_authority()
 # obj.get_graph_data_by_recruit_actions()
 # obj.get_graph_data_action_all_users()
+
+# obj.get_graph_data_ienumber_by_action_stacked()
+# obj.get_graph_data_action_all_users()
+
 
 
 

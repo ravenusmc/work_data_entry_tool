@@ -74,3 +74,6 @@ VALUES (1, 'TST-TST-2023-0001', '2023-01-01');
 -- VALUES (1, 1, True, 'TST-TST-2023-0001', 101, 'BWA', 'ie7046', '2023-01-01', False, True, True);
 
 DELETE FROM actions WHERE action_id = 1;
+
+SELECT COUNT(NOA) FROM actions WHERE Processor_ieNumber = 'ie7001' AND
+                NOA = 101;

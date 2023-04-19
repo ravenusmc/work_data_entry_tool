@@ -40,10 +40,15 @@ export default {
           // There maybe a better way to do this. 
           let selectedGraph = chart.ga;
           const selection = chart.getSelection()[0];
+          // console.log(this.data)
+          console.log(selection)
           // I need to add one to the row because the first row contains the
           // column headers.
           let row = selection.row + 1;
+          let selectedDataTwo = ''
           let columnType = ''
+          let columnTypeOne = ''
+          let columnTypeTwo = ''
           // This pulls out the specific date from the element that the user
           // clicked on
           let selectedData = this.data[row][0];
@@ -58,13 +63,31 @@ export default {
             }
             columnType = 'recruit_action'
           }
-          const payload = {
-            columnType,
-            selectedData,
-          };
-          console.log(typeof payload['selectedData'])
-          this.fetchDrillDownData({ payload });
-          this.showModal = true;
+          if (selectedGraph === 650) {
+            columnType = 'Authority'
+          }
+          if (selectedGraph === 651) {
+            let column = selection.column
+            selectedDataTwo = this.data[0][column]
+            columnTypeOne = 'NOA'
+            columnTypeTwo = 'Processor_ieNumber'
+            const payload = {
+              selectedData,
+              selectedDataTwo,
+              columnTypeOne,
+              columnTypeTwo
+            };
+            console.log(payload)
+            //  this.fetchDrillDownData({ payload });
+          }
+          if (selectedGraph !=  651) {
+            const payload = {
+              columnType,
+              selectedData,
+            };
+            // this.fetchDrillDownData({ payload });
+          }
+          // this.showModal = true;
         },
       }, // End Chart Events
     };
