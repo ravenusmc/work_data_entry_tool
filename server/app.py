@@ -150,7 +150,11 @@ def fetchDrillDownDataForGraphs():
     if request.method == 'POST':
         analyze = Analyze()
         post_data = request.get_json()
-        table_data = analyze.getDrillDownData(post_data)
+        if len(post_data) == 2:
+            table_data = analyze.getDrillDownData(post_data)
+        else: 
+            table_data = analyze.getDrillDownDataStackedChart(post_data)
+            print(len(table_data))
     return jsonify(table_data)
 
 

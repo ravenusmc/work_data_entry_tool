@@ -139,8 +139,6 @@ class Analyze():
                 self.cursor.execute(query, (ieNumber, action_type))
                 row = self.cursor.fetchone()
                 rows.append(row[0])
-                # print(rows)
-                # input()
             chart_data.append(rows)
         print(chart_data)
 
@@ -181,7 +179,6 @@ class Analyze():
                 Applied = 'False'
             elif data[count][9] == 1:
                 Applied = 'True'
-            Link = data[count][10]
             rows.append(action_number)
             rows.append(date_created)
             rows.append(recruit_action)
@@ -217,8 +214,8 @@ class Analyze():
         WHERE ''' + column_list[0] + ''' = %s AND Processor_ieNumber = %s ''')
         self.cursor.execute(query, (column_list[1], column_list[2]))
         rows = self.cursor.fetchall()
-        obj.build_table(rows, table_data)
-        return obj.build_table(rows, table_data)
+        table_data = obj.build_table(rows, table_data)
+        return table_data
     
     def filter_table_by_two_columns(self, column_list):
         obj = Analyze()
@@ -235,8 +232,8 @@ class Analyze():
         AND Processor_ieNumber = %s ''')
         self.cursor.execute(query, (column_list[1], column_list[3], column_list[4]))
         rows = self.cursor.fetchall()
-        obj.build_table(rows, table_data)
-        return obj.build_table(rows, table_data)
+        table_data = obj.build_table(rows, table_data)
+        return table_data
 
     def filter_table_by_three_columns(self, column_list):
         obj = Analyze()
@@ -254,8 +251,8 @@ class Analyze():
         AND Processor_ieNumber = %s ''')
         self.cursor.execute(query, (column_list[1], column_list[3], column_list[5], column_list[6]))
         rows = self.cursor.fetchall()
-        obj.build_table(rows, table_data)
-        return obj.build_table(rows, table_data)
+        table_data = obj.build_table(rows, table_data)
+        return table_data
     
     def filter_table_by_four_columns(self, column_list):
         obj = Analyze()
@@ -274,8 +271,8 @@ class Analyze():
         AND Processor_ieNumber = %s ''')
         self.cursor.execute(query, (column_list[1], column_list[3], column_list[5], column_list[7], column_list[8]))
         rows = self.cursor.fetchall()
-        obj.build_table(rows, table_data)
-        return obj.build_table(rows, table_data)
+        table_data = obj.build_table(rows, table_data)
+        return table_data
     
     def getDrillDownData(self, post_data):
         obj = Analyze()
@@ -290,9 +287,25 @@ class Analyze():
         WHERE ''' + post_data['columnType'] + ''' = %s ''')
         self.cursor.execute(query, (post_data['selectedData'],))
         rows = self.cursor.fetchall()
-        obj.build_table(rows, table_data)
-        return obj.build_table(rows, table_data)
+        table_data = obj.build_table(rows, table_data)
+        return table_data
     
+    def getDrillDownDataStackedChart(self, post_data):
+        obj = Analyze()
+        table_data = []
+        columns = ['Action Number', 'Date Created', 'Recruit action', 'NOA',
+                   'Authority', 'Processor IENumber', 'Date Received', 'Returned', 
+                   'Keyed', 'Applied']
+        table_data.append(columns)
+        query = ('''SELECT action_number, date_created, recruit_action, NOA, Authority, 
+        Processor_ieNumber, Date_Receieved, Returned, Keyed, Applied, action_id
+        FROM actions 
+        WHERE ''' + post_data['columnTypeOne'] + ''' = %s AND '''
+        + post_data['columnTypeTwo'] + ''' = %s ''')
+        self.cursor.execute(query, (post_data['selectedData'], post_data['selectedDataTwo'],))
+        rows = self.cursor.fetchall()
+        table_data = obj.build_table(rows, table_data)
+        return table_data
     
 
 # obj = Analyze()

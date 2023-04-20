@@ -77,17 +77,16 @@ export default {
               columnTypeOne,
               columnTypeTwo
             };
-            console.log(payload)
-            //  this.fetchDrillDownData({ payload });
+             this.fetchDrillDownData({ payload });
           }
           if (selectedGraph !=  651) {
             const payload = {
               columnType,
               selectedData,
             };
-            // this.fetchDrillDownData({ payload });
+            this.fetchDrillDownData({ payload });
           }
-          // this.showModal = true;
+          this.showModal = true;
         },
       }, // End Chart Events
     };
