@@ -154,7 +154,6 @@ def fetchDrillDownDataForGraphs():
             table_data = analyze.getDrillDownData(post_data)
         else: 
             table_data = analyze.getDrillDownDataStackedChart(post_data)
-            print(len(table_data))
     return jsonify(table_data)
 
 
