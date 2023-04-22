@@ -29,7 +29,7 @@ export default {
         legend: { position: "top" },
         colors: ["#50A8F1", "#F19950"],
         height: 500,
-        width: 650,
+        width: 653,
         vAxes: {
           0: { title: "Count" },
         },
