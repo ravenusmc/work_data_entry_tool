@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 import AnalyzeModal from "@/components/drilldown/AnalyzeModal.vue";
 import { GChart } from "vue-google-charts";
 
@@ -26,6 +26,9 @@ export default {
   components: {
     AnalyzeModal,
     GChart,
+  },
+  computed: {
+    ...mapGetters("analyze", ["selectedIENumber"]),
   },
   data() {
     return {
@@ -40,8 +43,6 @@ export default {
           // There maybe a better way to do this. 
           let selectedGraph = chart.ga;
           const selection = chart.getSelection()[0];
-          // console.log(this.data)
-          console.log(selection)
           // I need to add one to the row because the first row contains the
           // column headers.
           let row = selection.row + 1;
@@ -79,14 +80,23 @@ export default {
             };
              this.fetchDrillDownData({ payload });
           }
-          if (selectedGraph !=  651) {
+          if (selectedGraph === 652) {
+            const payload = {
+              columnType:'NOA',
+              selectedData,
+              needsIENUMBER: true, 
+            };
+             this.fetchDrillDownData({ payload });
+          }
+          if ((selectedGraph != 651) && (selectedGraph != 652)) {
+            console.log("HEREND")
             const payload = {
               columnType,
               selectedData,
             };
             this.fetchDrillDownData({ payload });
           }
-          this.showModal = true;
+          // this.showModal = true;
         },
       }, // End Chart Events
     };

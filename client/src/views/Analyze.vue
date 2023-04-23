@@ -44,12 +44,6 @@ export default {
 </script>
 
 <style scoped>
-section {
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
-}
-
 .static-graphs {
   margin: 5% 5% 0 5%;
   display: grid; 

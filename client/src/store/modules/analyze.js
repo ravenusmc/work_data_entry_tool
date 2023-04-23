@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from 'axios';
+import store from '@/store/index';
 
 Vue.use(Vuex);
 
@@ -19,6 +20,7 @@ const data = {
 	['ACC', 254],
 	['CON', 239]],
 	ieNumbers: ['ie7046', 'ie7001', 'ie7002', 'ie7003'],
+	selectedIENumber: 'ie7046',
 	typeOfAction: ['101', '500', '702', '792'],
 	actionsByIenumber: [['Action Type', 'Count'],
 	['101', 226],
@@ -46,11 +48,13 @@ const getters = {
 	recruitActionCount: (state) => state.recruitActionCount,
 	stackedGraph: (state) => state.stackedGraph,
 	drillDownData: (state) => state.drillDownData,
+	selectedIENumber: (state) => state.selectedIENumber,
 };
 
 const actions = {
 
 	changeDynamicGraphs: ({ commit }, { payload }) => {
+		commit('setSelectedIENumber', payload['ieNumber'])
 		const path = 'http://localhost:5000/changeDynamicGraphs';
 		axios.post(path, payload)
 			.then((res) => {
@@ -63,6 +67,9 @@ const actions = {
 	},
 
 	fetchDrillDownData: ({ commit }, { payload }) => {
+		if (payload['needsIENUMBER']) {
+			payload['IENumber'] = store.state.analyze.selectedIENumber
+		}
 		const path = 'http://localhost:5000/fetchDrillDownDataForGraphs';
 		axios.post(path, payload)
 			.then((res) => {
@@ -87,6 +94,10 @@ const mutations = {
 
 	setDrillDownData(state, value) {
 		state.drillDownData = value
+	},
+
+	setSelectedIENumber(state, value) {
+		state.selectedIENumber = value
 	},
 
 };
