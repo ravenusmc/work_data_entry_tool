@@ -288,6 +288,23 @@ class Analyze():
         table_data = obj.build_table(rows, table_data)
         return table_data
     
+    def getDrillDownDataIENumberSelectionCharts(self, post_data):
+        obj = Analyze()
+        table_data = []
+        columns = ['Action Number', 'Date Created', 'Recruit action', 'NOA',
+                   'Authority', 'Processor IENumber', 'Date Received', 'Returned', 
+                   'Keyed', 'Applied']
+        table_data.append(columns)
+        query = ('''SELECT action_number, date_created, recruit_action, NOA, Authority, 
+        Processor_ieNumber, Date_Receieved, Returned, Keyed, Applied, action_id
+        FROM actions 
+        WHERE ''' + post_data['columnType'] + ''' = %s AND Processor_ieNumber = %s ''')
+        self.cursor.execute(query, (post_data['selectedData'], post_data['IENumber'],))
+        rows = self.cursor.fetchall()
+        return obj.build_table(rows, table_data)
+
+    # {'columnType': 'NOA', 'selectedData': '101', 'needsIENUMBER': True, 'IENumber': 'ie7046'}
+    
 
 # obj = Analyze()
 # obj.get_all_actions_by_noa()

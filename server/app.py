@@ -152,6 +152,8 @@ def fetchDrillDownDataForGraphs():
         post_data = request.get_json()
         if len(post_data) == 2:
             table_data = analyze.getDrillDownData(post_data)
+        elif post_data['needsIENUMBER']:
+            table_data = analyze.getDrillDownDataIENumberSelectionCharts(post_data)
         else: 
             table_data = analyze.getDrillDownDataStackedChart(post_data)
     return jsonify(table_data)

@@ -25,7 +25,7 @@ export default {
     return {
       typeOne: "PieChart",
       chartOptionsOne: {
-        title: "All Actions by Legal Authority",
+        title: "Recruit Actions",
         legend: { position: "top" },
         colors: ["#50A8F1", "#F19950"],
         height: 500,

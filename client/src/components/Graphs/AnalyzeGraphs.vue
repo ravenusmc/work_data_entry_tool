@@ -40,63 +40,75 @@ export default {
           // console.log(this.data) // This will show you the data
           const chart = this.$refs.gChart.chartObject;
           // This gets the specific graph that has been clicked on
-          // There maybe a better way to do this. 
+          // There maybe a better way to do this.
           let selectedGraph = chart.ga;
           const selection = chart.getSelection()[0];
           // I need to add one to the row because the first row contains the
           // column headers.
           let row = selection.row + 1;
-          let selectedDataTwo = ''
-          let columnType = ''
-          let columnTypeOne = ''
-          let columnTypeTwo = ''
+          let selectedDataTwo = "";
+          let columnType = "";
+          let columnTypeOne = "";
+          let columnTypeTwo = "";
           // This pulls out the specific date from the element that the user
           // clicked on
           let selectedData = this.data[row][0];
           if (selectedGraph === 648) {
-            columnType = 'NOA'
+            columnType = "NOA";
           }
           if (selectedGraph === 649) {
-            if (selectedData === 'True') {
-              selectedData = true 
-            }else {
-              selectedData = false
+            if (selectedData === "True") {
+              selectedData = true;
+            } else {
+              selectedData = false;
             }
-            columnType = 'recruit_action'
+            columnType = "recruit_action";
           }
           if (selectedGraph === 650) {
-            columnType = 'Authority'
+            columnType = "Authority";
           }
           if (selectedGraph === 651) {
-            let column = selection.column
-            selectedDataTwo = this.data[0][column]
-            columnTypeOne = 'NOA'
-            columnTypeTwo = 'Processor_ieNumber'
+            let column = selection.column;
+            selectedDataTwo = this.data[0][column];
+            columnTypeOne = "NOA";
+            columnTypeTwo = "Processor_ieNumber";
             const payload = {
               selectedData,
               selectedDataTwo,
               columnTypeOne,
-              columnTypeTwo
+              columnTypeTwo,
             };
-             this.fetchDrillDownData({ payload });
+            this.fetchDrillDownData({ payload });
           }
           if (selectedGraph === 652) {
             const payload = {
-              columnType:'NOA',
+              columnType: "NOA",
               selectedData,
-              needsIENUMBER: true, 
+              needsIENUMBER: true,
             };
-             this.fetchDrillDownData({ payload });
+            this.fetchDrillDownData({ payload });
           }
-          if ((selectedGraph != 651) && (selectedGraph != 652)) {
-            console.log("HEREND")
+          if (selectedGraph === 653) {
+            if (selectedData === "True") {
+              selectedData = true;
+            } else {
+              selectedData = false;
+            }
+            const payload = {
+              columnType: "recruit_action",
+              selectedData,
+              needsIENUMBER: true,
+            };
+            this.fetchDrillDownData({ payload });
+          }
+          if (selectedGraph != 651 && selectedGraph != 652) {
             const payload = {
               columnType,
               selectedData,
             };
             this.fetchDrillDownData({ payload });
           }
-          // this.showModal = true;
+          this.showModal = true;
         },
       }, // End Chart Events
     };
