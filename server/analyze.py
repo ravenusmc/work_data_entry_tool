@@ -67,6 +67,7 @@ class Analyze():
             rows.append(action_type)
             rows.append(row[0])
             chart_data.append(rows)
+        print(chart_data)
         return chart_data
 
     def get_graph_data_by_legal_authority(self):

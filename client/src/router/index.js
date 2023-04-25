@@ -19,26 +19,40 @@ const routes = [
   {
     path: '/analyze',
     name: 'Analyze',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Analyze.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/Analyze.vue'),
+    beforeEnter: (to, from, next) => {
+      if (store.state.common.loginFlag === false) {
+        next('/login');
+      } else {
+        next();
+      }
+    },
+    beforeRouteLeave: (to, from, next) => {
+      if (store.state.common.loginFlag === false) {
+        next('/login');
+      } else {
+        next();
+      }
+    },
   },
   {
     path: '/main',
     name: 'main',
     component: () => import(/* webpackChunkName: "about" */ '../views/Main.vue'),
-    // beforeEnter: (to, from, next) => {
-    //   if (store.state.common.loginFlag === false) {
-    //     next('/login');
-    //   } else {
-    //     next();
-    //   }
-    // },
-    // beforeRouteLeave: (to, from, next) => {
-    //   if (store.state.common.loginFlag === false) {
-    //     next('/login');
-    //   } else {
-    //     next();
-    //   }
-    // },
+    beforeEnter: (to, from, next) => {
+      if (store.state.common.loginFlag === false) {
+        next('/login');
+      } else {
+        next();
+      }
+    },
+    beforeRouteLeave: (to, from, next) => {
+      if (store.state.common.loginFlag === false) {
+        next('/login');
+      } else {
+        next();
+      }
+    },
   },
   {
     path: '/sign_up',
