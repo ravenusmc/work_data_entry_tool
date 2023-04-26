@@ -40,7 +40,7 @@
           <a>
             <router-link v-if="!loginFlag" to="/sign_up">Sign up</router-link>
           </a>
-            <router-link @click="onClick"v-if="loginFlag" to="/login">Log Out</router-link>
+            <router-link @click.native="onClick" v-if="loginFlag" to="">Log Out</router-link>
           </a>
         </p>
       </div>
@@ -63,8 +63,7 @@ export default {
   },
   methods: {
     ...mapActions(["common/logout"]),
-    logoutHome() {
-      console.log('HERE')
+    onClick() {
       this.$store.dispatch("common/logout");
     },
   },
