@@ -40,6 +40,8 @@
           <a>
             <router-link v-if="!loginFlag" to="/sign_up">Sign up</router-link>
           </a>
+            <router-link @click="onClick"v-if="loginFlag" to="/login">Log Out</router-link>
+          </a>
         </p>
       </div>
     </section>
@@ -52,11 +54,20 @@
 </template>
 
 <script>
-// @ is an alias to /src
-//import HelloWorld from '@/components/HelloWorld.vue'
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "HomeView",
+  computed: {
+    ...mapGetters("common", ["loginFlag"]),
+  },
+  methods: {
+    ...mapActions(["common/logout"]),
+    logoutHome() {
+      console.log('HERE')
+      this.$store.dispatch("common/logout");
+    },
+  },
 };
 </script>
 

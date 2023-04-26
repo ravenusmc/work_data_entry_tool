@@ -33,7 +33,6 @@ export default {
       showModal: false,
       chartEvents: {
         select: () => {
-          console.log("HI")
           this.modalTitle = "Drill Down Data for ";
           // console.log(this.data) // This will show you the data
           const chart = this.$refs.gChart.chartObject;

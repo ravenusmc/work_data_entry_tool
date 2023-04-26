@@ -1,5 +1,7 @@
 
-# This file will deal with a lot of the data analysis for this project.
+# This file will deal with a lot of the data analysis for this project. I will say that this 
+# file is what happens when you do not plan out your projects fully...I wonder how many methods
+# I duplicated here...
 
 # importing supporting libraries
 import numpy as np
@@ -10,7 +12,6 @@ import json
 
 # importing files I built.
 # from db import *
-
 
 class Analyze():
 
@@ -67,7 +68,6 @@ class Analyze():
             rows.append(action_type)
             rows.append(row[0])
             chart_data.append(rows)
-        print(chart_data)
         return chart_data
 
     def get_graph_data_by_legal_authority(self):
