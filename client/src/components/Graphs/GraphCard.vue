@@ -34,7 +34,6 @@ export default {
       chartEvents: {
         select: () => {
           this.modalTitle = "Drill Down Data for ";
-          // console.log(this.data) // This will show you the data
           const chart = this.$refs.gChart.chartObject;
           const selection = chart.getSelection()[0];
           // I need to add one to the row because the first row contains the
