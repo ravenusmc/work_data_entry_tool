@@ -36,11 +36,7 @@ export default {
           this.modalTitle = "Drill Down Data for ";
           const chart = this.$refs.gChart.chartObject;
           const selection = chart.getSelection()[0];
-          // I need to add one to the row because the first row contains the
-          // column headers.
           let row = selection.row + 1;
-          // This pulls out the specific date from the element that the user
-          // clicked on
           let actionNumber = this.data[row][0];
           const payload = {
             actionNumber,
