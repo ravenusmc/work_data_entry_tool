@@ -49,3 +49,8 @@ https://github.com/ravenusmc/statues/blob/main/client/src/components/data/Modal.
 // action_number, date_created, recruit_action, user_id, NOA,
 //             Authority, Processor_ieNumber, Date_Receieved, Returned, Keyed
 //             Applied
+
+
+SELECT * FROM missing_actions WHERE action_number = 'TST-TST-2024-0099'
+
+TST-TST-2024-0099

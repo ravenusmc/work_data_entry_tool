@@ -1,9 +1,9 @@
 <template>
-  <div class='main-div'>
+  <div class="main-div">
     <LocateAction />
     <ActionsForm v-if="actionFound" />
     <MissingAction v-if="actionNotFound" />
-    <div class='btn-div' v-if="!showUserActions">
+    <div class="btn-div" v-if="!showUserActions">
       <button
         @click.prevent="showAllUserActions"
         type="submit"
@@ -13,7 +13,7 @@
         Show User Action Table
       </button>
     </div>
-    <div class='btn-div' v-if="showUserActions">
+    <div class="btn-div" v-if="showUserActions">
       <button
         @click.prevent="showAllUserActions"
         type="submit"
@@ -60,7 +60,6 @@ export default {
 </script>
 
 <style scoped>
-
 .main-div {
   min-height: 55vh;
 }
@@ -68,6 +67,5 @@ export default {
 .btn-div {
   margin: 1% 0 1% 0;
 }
-
 </style>
 

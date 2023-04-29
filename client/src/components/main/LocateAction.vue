@@ -14,6 +14,16 @@
         <button class="btn btn-primary form-submit-btn">Submit</button>
       </div>
     </form>
+    <div class="btn-div" v-if="!showUserActions">
+      <button
+        @click.prevent="hideForm"
+        type="submit"
+        name="login"
+        class="btn btn-success"
+      >
+        Hide Form
+      </button>
+    </div>
   </div>
 </template>
 
@@ -38,6 +48,10 @@ export default {
         actionNumber: this.actionNumber,
       };
       this.locateAction({ payload });
+    },
+    hideForm(evt) {
+      evt.preventDefault();
+      console.log('hi')
     },
   },
 };
