@@ -1,6 +1,7 @@
 <template>
   <div>
     <form class="location-action-form" @submit="findAction">
+      <!-- <div class='button-div'> -->
       <div class="field">
         <label for="exampleInputPassword2">Action Number:</label>
         <input
@@ -14,16 +15,16 @@
         <button class="btn btn-primary form-submit-btn">Submit</button>
       </div>
     </form>
-    <div class="btn-div" v-if="!showUserActions">
-      <button
-        @click.prevent="hideForm"
-        type="submit"
-        name="login"
-        class="btn btn-success"
-      >
-        Hide Form
-      </button>
-    </div>
+      <div class="btn-div" v-if="actionFound || actionNotFound">
+        <button
+          @click.prevent="hideForm"
+          type="submit"
+          name="login"
+          class="btn btn-warning"
+        >
+          Hide Form
+        </button>
+      </div>
   </div>
 </template>
 
@@ -40,8 +41,11 @@ export default {
       actionNumber: "",
     };
   },
+  computed: {
+    ...mapGetters("data", ["actionFound", "actionNotFound"]),
+  },
   methods: {
-    ...mapActions("data", ["locateAction"]),
+    ...mapActions("data", ["locateAction", "hideAddActionsForm"]),
     findAction(evt) {
       evt.preventDefault();
       const payload = {
@@ -51,7 +55,7 @@ export default {
     },
     hideForm(evt) {
       evt.preventDefault();
-      console.log('hi')
+      this.hideAddActionsForm();
     },
   },
 };
@@ -60,5 +64,9 @@ export default {
 <style scoped>
 .location-action-form {
   margin-top: 50px;
+}
+
+.btn-div {
+  margin-top: 10px;
 }
 </style>

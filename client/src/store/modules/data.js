@@ -134,8 +134,24 @@ const actions = {
 		}
 		console.log(value)
 		commit('setShowUserActions', value)
-	}
+	},
 
+	hideAddActionsForm: ({ commit }) => {
+		let actionFound = false 
+		let actionNotFound = false 
+		// console.log(store.state.data.actionNotFound)
+		// actionFound: false,
+		// actionNotFound: false, 
+		// let value = store.state.data.showUserActions
+		// if (value) {
+		// 	value = false
+		// }else {
+		// 	value = true
+		// }
+		// console.log(value)
+		commit('setActionFound', actionFound)
+		commit('setActionNotFound', actionNotFound)
+	},
 
 };
 
