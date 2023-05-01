@@ -150,27 +150,3 @@ class Connection():
                                         post_data['Keyed'], post_data['Applied'], post_data['action_number']))
         self.conn.commit()
     
-
-
-
-
-#{'action_number': 'TST-TST-2023-0001', 'Date_Created': 'Sun, 01 Jan 2023 00:00:00 GMT', 
-# 'recruit_action': 1, 'NOA': 101, 'Authority': 'BWA', 'ieNumber': 'ie7046', 
-# 'Date_Receieved': 'Sun, 29 Jan 2023 00:00:00 GMT', 'Returned': 0, 'Keyed': 1, 'Applied': 1}
-
-# CREATE TABLE actions 
-# (
-#   action_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-#   action_number VARCHAR(240) NOT NULL,
-#   date_created TIMESTAMP NOT NULL, 
-#   recruit_action BOOLEAN,
-#   user_id INT,
-#   NOA INT,
-#   Authority VARCHAR(240),
-#   Processor_ieNumber VARCHAR(240), 
-#   Date_Receieved TIMESTAMP, 
-#   Returned BOOLEAN,
-#   Keyed BOOLEAN, 
-#   Applied BOOLEAN, 
-#   FOREIGN KEY (user_id) REFERENCES users(user_id)
-# );

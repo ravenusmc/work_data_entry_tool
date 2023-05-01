@@ -156,7 +156,5 @@ def fetchDrillDownDataForGraphs():
             table_data = analyze.getDrillDownDataStackedChart(post_data)
     return jsonify(table_data)
 
-
-
 if __name__ == '__main__':
     app.run()

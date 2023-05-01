@@ -103,7 +103,6 @@ class Connection():
                 data_holder['Applied'] = creator.true_false_selector(support)
             obj.submitActionToDatabase(data_holder)
             count += 1
-        print('DONE')
 
     def submitActionToDatabase(self, data_holder):
         self._SQL = """insert into actions
@@ -117,6 +116,6 @@ class Connection():
                                         data_holder['Returned'], data_holder['Keyed'], data_holder['Applied']))
         self.conn.commit()
 
-obj = Connection()
+# obj = Connection()
 # obj.create_random_data_missing_actions()
-obj.create_random_data_for_actions()
+# obj.create_random_data_for_actions()
